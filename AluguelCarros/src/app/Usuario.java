@@ -1,7 +1,12 @@
 package app;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Usuario {
 
+	public static Scanner ler = new Scanner(System.in);
+	
 	private String nome;
 	private String cpf;
 	private String email;
@@ -10,18 +15,167 @@ public class Usuario {
 	private EnderecoRes endereco;
 	private String celular;
 	private CNH cnh;
+	private String login;
 	private String senha;
 	private Historico historico;
 
-	public Usuario(String no, String cp, String em, String na, String ge, String ce, String se) {
+	public Usuario(String no, String cp, String em, String na, String ge, String ce, String lo, String se) {
 
 		this.nome = no;
-		setCpf(cp);
+		this.cpf = cp;
 		this.email = em;
 		this.nacionalidade = na;
 		this.genero = ge;
 		this.celular = ce;
+		this.login = lo;
 		this.senha = se;
+	}
+	
+	public static void Cadastro() {
+
+		String nome;
+		String cpf;
+		String email;
+		String nacionalidade;
+		String genero;
+		String logradouro;
+		String numero;
+		String bairro;
+		String cidade;
+		String estado;
+		String pais;
+		String celular;
+		String login;
+		String senha;
+
+		Teste.clearBuffer(ler);
+		System.out.print(" Nome: ");
+		nome = ler.nextLine();
+
+		do {
+			System.out.print(" CPF (XXXXXXXXXXX): ");
+			cpf = ler.nextLine();
+			System.out.println("");
+		} while (isCPF(cpf) == false);
+
+		System.out.print(" E-mail: ");
+		email = ler.nextLine();
+
+		System.out.print(" Nacionalidade: ");
+		nacionalidade = ler.nextLine();
+
+		System.out.print(" Genero: ");
+		genero = ler.nextLine();
+
+		System.out.print(" Logradouro: ");
+		logradouro = ler.nextLine();
+
+		System.out.print(" Numero: ");
+		numero = ler.nextLine();
+
+		System.out.print(" Bairro: ");
+		bairro = ler.nextLine();
+
+		System.out.print(" Cidade: ");
+		cidade = ler.nextLine();
+
+		System.out.print(" Estado: ");
+		estado = ler.nextLine();
+
+		System.out.print(" País: ");
+		pais = ler.nextLine();
+
+		System.out.print(" Celular: ");
+		celular = ler.nextLine();
+
+		System.out.print(" Login: ");
+		login = ler.nextLine();
+
+		System.out.print(" Senha: ");
+		senha = ler.nextLine();
+
+		int num = 0;
+
+		for (int a = 0; a < Teste.MAX; a++)
+			if (Teste.cadastrar[a] == null) {
+				num = a;
+				break;
+			}
+
+		Teste.cadastrar[num] = new Usuario(nome, cpf, email, nacionalidade, genero, celular, login, senha);
+
+	}
+	
+	public static void ImprimirPerfil() {
+		System.out.print("=================================================\n\n");
+		System.out.print("                  DADOS DE PERFIL\n");
+		System.out.print("-------------------------------------------------\n");
+		Teste.cadastrar[Teste.pos].setPerfil();
+
+	}
+	
+	public static boolean isCPF(String CPF) {
+		// considera-se erro CPF's formados por uma sequencia de numeros iguais
+		if (CPF.equals("00000000000") || CPF.equals("11111111111") || CPF.equals("22222222222")
+				|| CPF.equals("33333333333") || CPF.equals("44444444444") || CPF.equals("55555555555")
+				|| CPF.equals("66666666666") || CPF.equals("77777777777") || CPF.equals("88888888888")
+				|| CPF.equals("99999999999") || (CPF.length() != 11))
+			return (false);
+
+		char dig10, dig11;
+		int sm, i, r, num, peso;
+
+		// "try" - protege o codigo para eventuais erros de conversao de tipo (int)
+		try {
+			// Calculo do 1o. Digito Verificador
+			sm = 0;
+			peso = 10;
+			for (i = 0; i < 9; i++) {
+				// converte o i-esimo caractere do CPF em um numero:
+				// por exemplo, transforma o caractere '0' no inteiro 0
+				// (48 eh a posicao de '0' na tabela ASCII)
+				num = (int) (CPF.charAt(i) - 48);
+				sm = sm + (num * peso);
+				peso = peso - 1;
+			}
+
+			r = 11 - (sm % 11);
+			if ((r == 10) || (r == 11))
+				dig10 = '0';
+			else
+				dig10 = (char) (r + 48); // converte no respectivo caractere numerico
+
+			// Calculo do 2o. Digito Verificador
+			sm = 0;
+			peso = 11;
+			for (i = 0; i < 10; i++) {
+				num = (int) (CPF.charAt(i) - 48);
+				sm = sm + (num * peso);
+				peso = peso - 1;
+			}
+
+			r = 11 - (sm % 11);
+			if ((r == 10) || (r == 11))
+				dig11 = '0';
+			else
+				dig11 = (char) (r + 48);
+
+			// Verifica se os digitos calculados conferem com os digitos informados.
+			if ((dig10 == CPF.charAt(9)) && (dig11 == CPF.charAt(10)))
+				return (true);
+			else
+				return (false);
+		} catch (InputMismatchException erro) {
+			return (false);
+		}
+	}
+	
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	public String getNacionalidade() {
