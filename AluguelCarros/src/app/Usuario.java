@@ -30,7 +30,6 @@ public class Usuario {
 		this.celular = ce;
 		this.login = lo;
 		this.senha = se;
-
 		endereco = new EnderecoRes(log, nu, ba, ci, es, pa);
 	}
 
@@ -120,7 +119,7 @@ public class Usuario {
 
 		Teste.cadastrar[escolha] = null;
 
-		for (int a = 0; a < Teste.MAX; a++)
+		for (int a = 0; a < Teste.MAX-1; a++)
 			if (Teste.cadastrar[a] == null && Teste.cadastrar[a + 1] != null) {
 				Teste.cadastrar[a] = Teste.cadastrar[a + 1];
 				Teste.cadastrar[a + 1] = null;
@@ -144,7 +143,9 @@ public class Usuario {
 		char edit;
 		String novo;
 		boolean repeat = false;
-
+		System.out.println("\n");
+		ImprimirPerfil();
+		
 		System.out.println("");
 		System.out.println(" 1- Nome");
 		System.out.println(" 2- CPF");
@@ -154,6 +155,7 @@ public class Usuario {
 
 		do {
 			edit = ler.next().charAt(0);
+			Teste.clearBuffer(ler);
 			switch (edit) {
 			case '1':
 				System.out.print(" Novo nome: ");
@@ -185,11 +187,14 @@ public class Usuario {
 			}
 		} while (repeat == true);
 
+		System.out.println("");
 		System.out.println(" Dado trocado com sucesso!");
 
 	}
 
 	public static void AdmEditar() {
+		
+		System.out.println("\n");
 		int total = Imprimir();
 		int escolha;
 		char edit;
@@ -210,6 +215,7 @@ public class Usuario {
 
 		do {
 			edit = ler.next().charAt(0);
+			Teste.clearBuffer(ler);
 			switch (edit) {
 			case '1':
 				System.out.print(" Novo nome: ");
@@ -241,6 +247,7 @@ public class Usuario {
 			}
 		} while (repeat == true);
 
+		System.out.println("");
 		System.out.println(" Dado trocado com sucesso!");
 
 	}

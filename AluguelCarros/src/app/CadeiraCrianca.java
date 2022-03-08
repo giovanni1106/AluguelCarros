@@ -10,8 +10,12 @@ public class CadeiraCrianca {
 	private Image foto;
 	private int valor;
 	
-	public CadeiraCrianca() {
+	public CadeiraCrianca(int id, int idade, int tam, int valor) {
 		
+		this.identificacao = id;
+		this.idade = idade;
+		this.tamanho = tam;
+		this.valor = valor;
 		
 	}
 	

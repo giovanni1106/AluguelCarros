@@ -5,7 +5,10 @@ public class Pagamento {
 	private Usuario cartaoCredito;
 	private Aluguel aluguel;
 	
-	public Pagamento() {
+	public Pagamento(Usuario cc, Aluguel al) {
+		
+		this.cartaoCredito = cc;
+		this.aluguel = al;
 		
 	}
 	

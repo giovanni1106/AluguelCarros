@@ -8,7 +8,12 @@ public class Fidelidade {
 	private int quantidade;
 	private int desconto;
 	
-	public Fidelidade() {
+	public Fidelidade(Usuario us, Aluguel al, int qtd, int des) {
+		
+		this.usuario = us;
+		this.aluguel = al;
+		this.quantidade = qtd;
+		this.desconto = des;
 		
 	}
 	

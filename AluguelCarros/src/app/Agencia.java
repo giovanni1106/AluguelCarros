@@ -13,7 +13,7 @@ public class Agencia {
 	private String cidade;
 	private String estado;
 	private String pais;
-	private static Carro carro[] = new Carro[Teste.MAX];
+	public Carro carro[] = new Carro[Teste.MAX];
 
 	public Agencia(String id, String lo, String nu, String ba, String ci, String es, String pa) {
 
@@ -101,6 +101,15 @@ public class Agencia {
 
 	public static void VincularCarro() {
 
+		int total1 = Imprimir();
+		int escolha1;
+
+		System.out.print(" Agencia que deseja vincular (0-" + total1 + "): ");
+		escolha1 = ler.nextInt();
+		System.out.println("");
+		
+		Agencia A = Teste.cadastrarAgencia[escolha1];
+		
 		int total = Carro.Imprimir();
 		int escolha = 0;
 		int a;
@@ -109,53 +118,74 @@ public class Agencia {
 		escolha = ler.nextInt();
 
 		for (a = 0; a < Teste.MAX; a++)
-			if (carro[a] == null)
+			if (A.carro[a] == null)
 				break;
 
-		carro[a] = Teste.cadastrarCarro[escolha];
+		A.carro[a] = Teste.cadastrarCarro[escolha];
 
-		System.out.print(" Carro vinculado com sucesso!");
+		System.out.println(" Carro vinculado com sucesso!");
+	}
+	
+	public static void VincularCarroBD(Carro C, Agencia A) {
+
+		int a;
+		
+		for (a = 0; a < Teste.MAX; a++)
+			if (A.carro[a] == null)
+				break;
+
+		A.carro[a] = C;
 	}
 
 	public static void DesvincularCarro() {
 
-		int total = ImprimirCarrosVinculados();
+		int total1 = Imprimir();
+		int escolha1;
+
+		System.out.print(" Agencia que deseja vincular (0-" + total1 + "): ");
+		escolha1 = ler.nextInt();
+		System.out.println("");
+		
+		Agencia A = Teste.cadastrarAgencia[escolha1];
+		
+		int total = ImprimirCarrosVinculados(A);
 		int escolha = 0;
 
 		System.out.print(" Escolha um carro (0-" + total + "): ");
 		escolha = ler.nextInt();
 
-		carro[escolha] = null;
+		A.carro[escolha] = null;
 
 		// repassar carros para posição de "cima"
-		for (int a = 0; a < Teste.MAX; a++)
-			if (carro[a] == null && carro[a + 1] != null) {
-				carro[a] = carro[a + 1];
-				carro[a + 1] = null;
+		for (int a = 0; a < Teste.MAX-1; a++)
+			if (A.carro[a] == null && A.carro[a + 1] != null) {
+				A.carro[a] = A.carro[a + 1];
+				A.carro[a + 1] = null;
 			}
 
-		System.out.print(" Carro desvinculado com sucesso!");
+		System.out.println(" Carro desvinculado com sucesso!");
 	}
 
-	public static int ImprimirCarrosVinculados() {
+	public static int ImprimirCarrosVinculados(Agencia A) {
 
 		int a;
 
 		for (a = 0; a < Teste.MAX; a++)
-			if (carro[a] != null)
-				System.out.println(" " + a + "- " + carro[a].getModelo());
+			if (A.carro[a] != null)
+				System.out.println(" " + a + "- " + A.carro[a].getModelo());
 			else
 				break;
 
 		return a - 1;
 	}
 
-	public static Carro[] getCarro() {
+	
+	public Carro[] getCarro() {
 		return carro;
 	}
 
-	public static void setCarro(Carro[] carro) {
-		Agencia.carro = carro;
+	public void setCarro(Carro[] carro) {
+		this.carro = carro;
 	}
 
 	public String getIdentificacao() {

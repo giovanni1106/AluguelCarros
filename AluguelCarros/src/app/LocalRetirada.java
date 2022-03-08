@@ -8,7 +8,11 @@ public class LocalRetirada {
 	private String horaRetirada;
 	private Agencia agencia;
 	
-	public LocalRetirada() {
+	public LocalRetirada(Agencia ag) {
+		
+		this.agencia = ag;
+		//this.dataRetirada = da;
+		//this.horaRetirada = ho;
 		
 	}
 	

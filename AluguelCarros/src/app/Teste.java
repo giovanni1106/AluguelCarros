@@ -93,6 +93,12 @@ public class Teste {
 							break;
 						case '4':
 							exit = true;
+							Logado = false;
+							repeat = 0;
+							break;
+						case '5':
+							MenuAlugar();
+							repeat = 0;
 							break;
 						case 'P':
 							PrintCPFUsuarios();
@@ -124,6 +130,20 @@ public class Teste {
 							break;
 						case '3':
 							MenuAgencia();
+							repeat = 0;
+							break;
+						case '4':
+							MenuUsuarios();
+							repeat = 0;
+							break;
+						case '6':
+							Logado = false;
+							repeat = 0;
+							break;
+						case '7':
+							exit = true;
+							Logado = false;
+							repeat = 0;
 							break;
 						case 'P':
 							PrintCPFUsuarios();
@@ -164,9 +184,7 @@ public class Teste {
 		System.out.print(" 4- Sair\n");
 		System.out.print("-------------------------------------------------\n");
 		System.out.println("------------------Opcoes de busca----------------\n");
-		System.out.print(" 5- Buscar veículos por classe\n");
-		System.out.print(" 6- Buscar veículos por marca\n");
-		System.out.print(" 7- Buscar veículos por preço\n");
+		System.out.print(" 5- Alugar\n");
 		System.out.print("-------------------------------------------------\n\n");
 	}
 
@@ -178,7 +196,7 @@ public class Teste {
 		System.out.print("  2- Carro\n");
 		System.out.print("  3- Agencia\n");
 		System.out.print("  4- Usuarios\n");
-		System.out.print("  5- Tarifas\n");
+		System.out.print("  5- Tarifas (INDISPONIVEL)\n");
 		System.out.print("  6- Deslogar\n");
 		System.out.print("  7- Sair\n\n");
 		System.out.print("-------------------------------------------------\n\n");
@@ -325,7 +343,7 @@ public class Teste {
 					exit = true;
 					break;
 				default:
-					System.out.print(" Favor inserir uma opção entre 1 e 4!\n\n");
+					System.out.println(" Favor inserir uma opção entre 1 e 6!\n");
 					repeat = 1;
 				}
 			} while (repeat == 1);
@@ -376,6 +394,55 @@ public class Teste {
 				}
 			} while (repeat == 1);
 		} while (exit == false);
+	}
+
+	public static void MenuAlugar() {
+		boolean exit = false;
+
+		do {
+			System.out.print("=================================================\n\n");
+			System.out.print("                        Alugar\n");
+			System.out.print("-------------------------------------------------\n\n");
+			System.out.print("  1- Buscar por marca\n");
+			System.out.print("  2- Buscar por modelo (INDISPONIVEL)\n");
+			System.out.print("  3- Buscar por classe (INDISPONIVEL)\n");
+			System.out.print("  4- Voltar\n");
+			System.out.print("-------------------------------------------------\n\n");
+
+			char escolha = 0;
+			int repeat = 0;
+
+			do {
+				System.out.print(" Escolha uma opção(1-4): ");
+				escolha = ler.next().charAt(0);
+				System.out.print("\n");
+
+				switch (escolha) {
+				case '1':
+					Aluguel.Alugar();
+					repeat = 0;
+					break;
+					/*
+				case '2':
+					Agencia.Excluir();
+					;
+					break;
+				case '3':
+					Agencia.Imprimir();
+					repeat = 0;
+					break;
+					*/
+				case '4':
+					repeat = 0;
+					exit = true;
+					break;
+				default:
+					System.out.println(" Favor inserir uma opção entre 1 e 4!\n");
+					repeat = 1;
+				}
+			} while (repeat == 1);
+		} while (exit == false);
+
 	}
 
 	public static void BancoDeDados() {
@@ -465,6 +532,38 @@ public class Teste {
 
 		cadastrarCarro[14] = new Carro(cadastrarClasse[3], "chevrolet", "spin", "prata", 5000, "DFR-4853", true, 7,
 				true, 4, 2, true, 1, 0, 2);
+
+		// ================================== CADASTRAR AGENCIA
+		// ==================================
+		// --------------------------------------------------------------------------------
+		
+		cadastrarAgencia[0] = new Agencia("AG001", "Rua 3", "35", "Bairro principal", "Cidade de Deus",
+				"Estado do bem", "Melhor Pais");
+		cadastrarAgencia[1] = new Agencia("AG002", "Rua 3", "35", "Bairro principal", "Cidade de Deus",
+				"Estado do bem", "Melhor Pais");
+		cadastrarAgencia[2] = new Agencia("AG003", "Rua 3", "35", "Bairro principal", "Cidade de Deus",
+				"Estado do bem", "Melhor Pais");
+		
+		
+
+		// ================================== VINCULAR VEICULOS COM AGENCIA
+		// ==================================
+		// --------------------------------------------------------------------------------
+
+		Agencia.VincularCarroBD(cadastrarCarro[0], cadastrarAgencia[0]);
+		Agencia.VincularCarroBD(cadastrarCarro[3], cadastrarAgencia[0]);
+		Agencia.VincularCarroBD(cadastrarCarro[5], cadastrarAgencia[0]);
+		
+		Agencia.VincularCarroBD(cadastrarCarro[0], cadastrarAgencia[1]);
+		Agencia.VincularCarroBD(cadastrarCarro[3], cadastrarAgencia[1]);
+		Agencia.VincularCarroBD(cadastrarCarro[5], cadastrarAgencia[1]);
+		Agencia.VincularCarroBD(cadastrarCarro[6], cadastrarAgencia[1]);
+		Agencia.VincularCarroBD(cadastrarCarro[10], cadastrarAgencia[1]);
+		Agencia.VincularCarroBD(cadastrarCarro[12], cadastrarAgencia[1]);
+		
+		for (int i = 0; i < 15; i++)
+			Agencia.VincularCarroBD(cadastrarCarro[i], cadastrarAgencia[2]);
+		
 	}
 
 	public static void PrintCPFUsuarios() {

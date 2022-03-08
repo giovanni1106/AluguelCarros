@@ -24,6 +24,7 @@ public class Carro {
 	private int carga;
 	private int combustivel;
 	private Image foto;
+	private boolean alugado;
 
 	public Carro(Classe cl, String ma, String mo, String co, int km, String pl, boolean ai, int as, boolean vi, int po,
 			int di, boolean ar, int em, int ca, int com) {
@@ -43,6 +44,7 @@ public class Carro {
 		this.embreagem = em;
 		this.carga = ca;
 		this.combustivel = com;
+		this.alugado = false;
 
 	}
 
@@ -287,6 +289,87 @@ public class Carro {
 				break;
 			}
 		return i;
+	}
+
+	public static int ImprimirMarca(Boolean imprimir, int escolha, boolean alugar, int escolhido) {
+		String marca[] = new String[Teste.MAX];
+
+		for (int i = 0; i < Teste.MAX; i++)
+			if (Teste.cadastrarCarro[i] != null) {
+				for (int a = 0; a < Teste.MAX; a++) {
+					if (Teste.cadastrarCarro[i].getMarca().equals(marca[a]) == false) {
+						if (marca[a] == null) {
+							marca[a] = Teste.cadastrarCarro[i].getMarca();
+							break;
+						}
+					} else
+						break;
+				}
+			}
+
+		if (imprimir == true) {
+			for (int i = 0; i < Teste.MAX; i++)
+				if (marca[i] != null)
+					System.out.println(" " + i + "- " + marca[i]);
+				else
+					return i;
+		} else if (alugar == false) {
+			return ImprimirCarroMarca(marca[escolha], false, 0);
+		} else
+			return ImprimirCarroMarca(marca[escolha], true, escolhido);
+
+		return 0;
+	}
+
+	public static int ImprimirCarroMarca(String marca, boolean alugar, int escolha) {
+		int cont = 0;
+
+		if (alugar == false) {
+			for (int a = 0; a < Teste.MAX; a++)
+				if (Teste.cadastrarCarro[a] != null)
+					if (Teste.cadastrarCarro[a].getMarca().equals(marca) == true) {
+						cont = cont + 1;
+						System.out.println(" " + cont + "- " + Teste.cadastrarCarro[a].getModelo());
+					}
+		} else {
+			for (int a = 0; a < Teste.MAX; a++)
+				if (Teste.cadastrarCarro[a] != null)
+					if (Teste.cadastrarCarro[a].getMarca().equals(marca) == true) {
+						cont = cont + 1;
+						if (escolha == cont)
+							return a;
+					}
+		}
+
+		return cont;
+	}
+
+	public static Carro BuscarMarca() {
+		int escolhaM = 0;
+		int escolhaC = 0;
+		int escolhido = 0;
+
+		int totalM = ImprimirMarca(true, 0, false, 0);
+
+		System.out.print(" Escolha a marca que deseja filtrar (0-" + totalM + "): ");
+		escolhaM = ler.nextInt();
+
+		int totalC = ImprimirMarca(false, escolhaM, false, 0);
+
+		System.out.print(" Escolha o carro que deseja alugar (0-" + totalC + "): ");
+		escolhaC = ler.nextInt();
+
+		escolhido = ImprimirMarca(false, escolhaM, true, escolhaC);
+
+		return Teste.cadastrarCarro[escolhido];
+	}
+
+	public boolean isAlugado() {
+		return alugado;
+	}
+
+	public void setAlugado(boolean alugado) {
+		this.alugado = alugado;
 	}
 
 	public boolean isAirBag() {

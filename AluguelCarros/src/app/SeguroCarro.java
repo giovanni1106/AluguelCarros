@@ -5,7 +5,10 @@ public class SeguroCarro {
 	private String caracteristicas;
 	private int valor;
 	
-	public SeguroCarro() {
+	public SeguroCarro(String carac, int valor) {
+		
+		this.caracteristicas = carac;
+		this.valor = valor;
 		
 	}
 	

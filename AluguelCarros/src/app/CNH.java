@@ -7,7 +7,10 @@ public class CNH {
 	private Image fotoFrente;
 	private Image fotoVerso;
 	
-	public CNH() {
+	public CNH(Image F, Image V) {
+		
+		this.fotoFrente = F;
+		this.fotoVerso = V;
 		
 	}
 	

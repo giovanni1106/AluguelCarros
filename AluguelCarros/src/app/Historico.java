@@ -5,7 +5,10 @@ public class Historico {
 	private Aluguel aluguel;
 	private Usuario usuario;
 	
-	public Historico() {
+	public Historico(Aluguel aluguel, Usuario usuario) {
+		
+		this.aluguel = aluguel;
+		this.usuario = usuario;
 		
 	}
 	

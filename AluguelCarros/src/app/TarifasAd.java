@@ -6,7 +6,11 @@ public class TarifasAd {
 	private CadeiraCrianca cadeira;
 	private boolean wifi;
 	
-	public TarifasAd() {
+	public TarifasAd(SeguroCarro seguro, CadeiraCrianca cadeira, boolean wifi) {
+		
+		this.seguro = seguro;
+		this.cadeira = cadeira;
+		this.wifi = wifi;
 		
 	}
 	
