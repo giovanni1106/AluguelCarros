@@ -13,8 +13,6 @@ public interface Login {
 		String senha;
 		boolean cadastrado = false;
 
-		Teste.clearBuffer(ler);
-
 		System.out.print(" login: ");
 		login = ler.nextLine();
 

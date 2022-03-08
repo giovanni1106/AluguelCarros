@@ -110,11 +110,11 @@ public class Teste {
 
 						switch (escolha) {
 						case '1':
-							Usuario.ImprimirPerfil();
+							MenuClasse();
 							repeat = 0;
 							break;
 						case '2':
-							Logado = false;
+							MenuCarro();
 							repeat = 0;
 							break;
 						case '3':
@@ -181,48 +181,108 @@ public class Teste {
 	}
 
 	public static void MenuClasse() {
-		System.out.print("=================================================\n\n");
-		System.out.print("                        CLASSE\n");
-		System.out.print("-------------------------------------------------\n\n");
-		System.out.print("  1- Cadastrar\n");
-		System.out.print("  2- Excluir\n");
-		System.out.print("  3- Listar\n");
-		System.out.print("  4- Voltar\n");
-		System.out.print("-------------------------------------------------\n\n");
-
-		char escolha = 0;
-		int repeat = 0;
+		boolean exit = false;
 
 		do {
-			System.out.print(" Escolha uma opção(1-7): ");
-			escolha = ler.next().charAt(0);
-			System.out.print("\n");
+			System.out.print("=================================================\n\n");
+			System.out.print("                        CLASSE\n");
+			System.out.print("-------------------------------------------------\n\n");
+			System.out.print("  1- Cadastrar\n");
+			System.out.print("  2- Excluir\n");
+			System.out.print("  3- Listar\n");
+			System.out.print("  4- Voltar\n");
+			System.out.print("-------------------------------------------------\n\n");
 
-			switch (escolha) {
-			case '1':
-				Classe.Cadastrar();
-				repeat = 0;
-				break;
-			case '2':
-				repeat = 0;
-				break;
-			case '3':
-				System.exit(repeat);
-				break;
-			case 'P':
-				PrintCPFUsuarios();
-				repeat = 0;
-				break;
-			default:
-				System.out.print(" Favor inserir uma opção entre 1 e 7!\n\n");
-				repeat = 1;
-			}
-		} while (repeat == 1);
+			char escolha = 0;
+			int repeat = 0;
+
+			do {
+				System.out.print(" Escolha uma opção(1-4): ");
+				escolha = ler.next().charAt(0);
+				System.out.print("\n");
+
+				switch (escolha) {
+				case '1':
+					Classe.Cadastrar();
+					repeat = 0;
+					break;
+				case '2':
+					Classe.Excluir();
+					repeat = 0;
+					break;
+				case '3':
+					Classe.Imprimir();
+					repeat = 0;
+					break;
+				case '4':
+					repeat = 0;
+					exit = true;
+					break;
+				case 'P':
+					PrintCPFUsuarios();
+					repeat = 0;
+					break;
+				default:
+					System.out.print(" Favor inserir uma opção entre 1 e 4!\n\n");
+					repeat = 1;
+				}
+			} while (repeat == 1);
+		} while (exit == false);
+	}
+
+	public static void MenuCarro() {
+		boolean exit = false;
+
+		do {
+			System.out.print("=================================================\n\n");
+			System.out.print("                        CARRO\n");
+			System.out.print("-------------------------------------------------\n\n");
+			System.out.print("  1- Cadastrar\n");
+			System.out.print("  2- Excluir\n");
+			System.out.print("  3- Listar\n");
+			System.out.print("  4- Voltar\n");
+			System.out.print("-------------------------------------------------\n\n");
+
+			char escolha = 0;
+			int repeat = 0;
+
+			do {
+				System.out.print(" Escolha uma opção(1-4): ");
+				escolha = ler.next().charAt(0);
+				System.out.print("\n");
+
+				switch (escolha) {
+				case '1':
+					Carro.Cadastrar();
+					repeat = 0;
+					break;
+				case '2':
+					Carro.Excluir();
+					;
+					break;
+				case '3':
+					Carro.Imprimir();
+					repeat = 0;
+					break;
+				case '4':
+					repeat = 0;
+					exit = true;
+					break;
+				case 'P':
+					PrintCPFUsuarios();
+					repeat = 0;
+					break;
+				default:
+					System.out.print(" Favor inserir uma opção entre 1 e 4!\n\n");
+					repeat = 1;
+				}
+			} while (repeat == 1);
+		} while (exit == false);
 	}
 
 	public static void BancoDeDados() {
 
-		// ==================================== USUARIOS
+		// ================================== USUARIOS
 		// ==================================
 		// --------------------------------------------------------------------------------
 
@@ -231,12 +291,34 @@ public class Teste {
 		cadastrar[1] = new Usuario("Maria Luiza", "64626578047", "malu@gmail.com", "Brasileira", "Feminino",
 				"61996502450", "malu1212", "malu2809");
 
+		// ================================== ADMINISTRADORES
+		// ==================================
+		// --------------------------------------------------------------------------------
+
+		cadastrarAdm[0] = new Admin("admin01", "123456");
+		cadastrarAdm[1] = new Admin("admin02", "123456");
+
+		// ==================================== CLASSES
+		// ====================================
+		// --------------------------------------------------------------------------------
+
+		cadastrarClasse[0] = new Classe("SEDA", 90, "Porta malas espacoso", true, true, true, true, true, true, true);
+
+		cadastrarClasse[1] = new Classe("PICAPE", 150, "Capaz de carregar cargas pesadas", true, true, true, true, true,
+				true, true);
+
+		cadastrarClasse[2] = new Classe("SUV", 180, "Grande para toda a familia", true, true, true, true, true, true,
+				true);
+
+		cadastrarClasse[3] = new Classe("MINIVAN", 200, "Para passeios longos", true, true, true, true, true, true,
+				true);
+
 		// ==================================== CARROS
 		// ====================================
 		// --------------------------------------------------------------------------------
 
-		cadastrarCarro[0] = new Carro(cadastrarClasse[0], "marca", "modelo", "cor", 500, "placa", true, 3, false, 2, 3,
-				true, 1, 50, 5);
+		cadastrarCarro[0] = new Carro(cadastrarClasse[0], "marca", "modelo", "cor", 500, "placa", true, 2, false, 2, 2,
+				true, 1, 50, 2);
 
 		// SEDA
 		cadastrarCarro[1] = new Carro(cadastrarClasse[0], "ford", "fiesta", "preto", 300, "MAD-2809", false, 5, false,
@@ -244,6 +326,7 @@ public class Teste {
 
 		cadastrarCarro[2] = new Carro(cadastrarClasse[0], "fiat", "uno", "verde", 500, "GHA-5675", true, 5, false, 1, 1,
 				false, 2, 2, 1);
+
 		cadastrarCarro[3] = new Carro(cadastrarClasse[0], "chevrolet", "onix", "prata", 200, "FGH-3267", true, 5, true,
 				2, 1, true, 2, 0, 2);
 
@@ -251,31 +334,37 @@ public class Teste {
 				2, 1, true, 2, 0, 2);
 
 		// PICAPE
-		cadastrarCarro[5] = new Carro(cadastrarClasse[0], "fiat", "strada", "azul", 3000, "OTH-8368", true, 2, true, 0,
+		cadastrarCarro[5] = new Carro(cadastrarClasse[1], "fiat", "strada", "azul", 3000, "OTH-8368", true, 2, true, 0,
 				1, true, 2, 700, 1);
-		cadastrarCarro[6] = new Carro(cadastrarClasse[0], "volkswagen", "saveiro", "prata", 6000, "KJS-2375", true, 2,
+
+		cadastrarCarro[6] = new Carro(cadastrarClasse[1], "volkswagen", "saveiro", "prata", 6000, "KJS-2375", true, 2,
 				true, 0, 1, true, 2, 700, 1);
-		cadastrarCarro[7] = new Carro(cadastrarClasse[0], "toyota", "hilux", "preto", 4000, "JER-4363", true, 5, true,
+
+		cadastrarCarro[7] = new Carro(cadastrarClasse[1], "toyota", "hilux", "preto", 4000, "JER-4363", true, 5, true,
 				0, 2, true, 2, 1000, 2);
-		cadastrarCarro[8] = new Carro(cadastrarClasse[0], "ford", "ranger", "vermelho", 3000, "EWY-2467", true, 5, true,
+
+		cadastrarCarro[8] = new Carro(cadastrarClasse[1], "ford", "ranger", "vermelho", 3000, "EWY-2467", true, 5, true,
 				0, 2, true, 2, 1000, 2);
 
 		// SUV
-		cadastrarCarro[9] = new Carro(cadastrarClasse[0], "ford", "ecosport", "azul", 1000, "JFO-3885", true, 5, true,
+		cadastrarCarro[9] = new Carro(cadastrarClasse[2], "ford", "ecosport", "azul", 1000, "JFO-3885", true, 5, true,
 				4, 2, true, 1, 0, 2);
-		cadastrarCarro[10] = new Carro(cadastrarClasse[0], "renault", "duster", "prata", 5000, "TGH-3256", true, 5,
+
+		cadastrarCarro[10] = new Carro(cadastrarClasse[2], "renault", "duster", "prata", 5000, "TGH-3256", true, 5,
 				true, 4, 2, true, 1, 0, 2);
-		cadastrarCarro[11] = new Carro(cadastrarClasse[0], "hyundai", "tucson", "preto", 200, "WFG-2345", true, 7, true,
+
+		cadastrarCarro[11] = new Carro(cadastrarClasse[2], "hyundai", "tucson", "preto", 200, "WFG-2345", true, 7, true,
 				6, 2, true, 1, 0, 3);
-		cadastrarCarro[12] = new Carro(cadastrarClasse[0], "jeep", "compassLongitude", "vermelho", 700, "MCG-2347",
+
+		cadastrarCarro[12] = new Carro(cadastrarClasse[2], "jeep", "compassLongitude", "vermelho", 700, "MCG-2347",
 				true, 7, true, 6, 2, true, 1, 0, 3);
 
 		// MINIVAN
-		cadastrarCarro[13] = new Carro(cadastrarClasse[0], "fiat", "doblo", "preto", 4500, "KFG-4578", true, 7, true, 2,
+		cadastrarCarro[13] = new Carro(cadastrarClasse[3], "fiat", "doblo", "preto", 4500, "KFG-4578", true, 7, true, 2,
 				1, true, 2, 0, 1);
-		cadastrarCarro[14] = new Carro(cadastrarClasse[0], "chevrolet", "spin", "prata", 5000, "DFR-4853", true, 7,
-				true, 4, 2, true, 1, 0, 2);
 
+		cadastrarCarro[14] = new Carro(cadastrarClasse[3], "chevrolet", "spin", "prata", 5000, "DFR-4853", true, 7,
+				true, 4, 2, true, 1, 0, 2);
 	}
 
 	public static void PrintCPFUsuarios() {

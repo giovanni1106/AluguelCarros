@@ -4,7 +4,7 @@ import java.awt.Image;
 import java.util.Scanner;
 
 public class Carro {
-	
+
 	public static Scanner ler = new Scanner(System.in);
 	public static int MAX = 1000;
 
@@ -45,10 +45,10 @@ public class Carro {
 		this.combustivel = com;
 
 	}
-	
-	public static void CadastrarCarro() {
 
-		int total = Classe.ImprimirClasses();
+	public static void Cadastrar() {
+
+		int total = Imprimir();
 		char escolha;
 		boolean repeat = false;
 
@@ -246,11 +246,47 @@ public class Carro {
 				break;
 			}
 
-		Teste.cadastrarCarro[num] = new Carro(Teste.cadastrarClasse[classe], marca, modelo, cor, km, placa, airBag, assentos, vidro,
-				portaMalas, direcao, ar, embreagem, carga, combustivel);
+		Teste.cadastrarCarro[num] = new Carro(Teste.cadastrarClasse[classe - 1], marca, modelo, cor, km, placa, airBag,
+				assentos, vidro, portaMalas, direcao, ar, embreagem, carga, combustivel);
 
 		System.out.println(" Carro cadastrado com sucesso!");
 
+	}
+
+	public static void Excluir() {
+
+		int total = Imprimir();
+
+		int escolha = 0;
+
+		System.out.print("\n Carro que deseja excluir (1-" + total + "): ");
+		escolha = ler.nextInt();
+
+		if (Teste.cadastrarCarro[escolha] != null)
+			Teste.cadastrarCarro[escolha] = null;
+
+		for (int i = 0; i < MAX - 1; i++)
+			if (Teste.cadastrarCarro[i] == null && Teste.cadastrarCarro[i + 1] != null) {
+				Teste.cadastrarCarro[i] = Teste.cadastrarCarro[i + 1];
+				Teste.cadastrarCarro[i + 1] = null;
+			}
+
+		System.out.println(" Carro excluido com sucesso");
+
+	}
+
+	public static int Imprimir() {
+
+		int i = 0;
+		for (int a = 0; a < MAX; a++)
+			if (Teste.cadastrarCarro[a] != null)
+				System.out.println(" " + a + "- " + Teste.cadastrarCarro[a].getClasse().getNome() + " | "
+						+ Teste.cadastrarCarro[a].getMarca() + " | " + Teste.cadastrarCarro[a].getModelo());
+			else {
+				i = a - 1;
+				break;
+			}
+		return i;
 	}
 
 	public boolean isAirBag() {

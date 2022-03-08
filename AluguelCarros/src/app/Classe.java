@@ -3,7 +3,7 @@ package app;
 import java.util.Scanner;
 
 public class Classe {
-	
+
 	public static Scanner ler = new Scanner(System.in);
 	public static int MAX = 1000;
 
@@ -24,6 +24,8 @@ public class Classe {
 		this.nome = no;
 		this.valorDia = va;
 		this.caracteristicas = carac;
+
+		// Prioridades para classificacao da classe
 		this.arCondicionado = ar;
 		this.portas = po;
 		this.portaMalas = portaMalas;
@@ -31,9 +33,9 @@ public class Classe {
 		this.vidro = vi;
 		this.assentos = as;
 		this.airBag = ai;
-		
+
 	}
-	
+
 	public static void Cadastrar() {
 
 		String nome;
@@ -47,17 +49,20 @@ public class Classe {
 		boolean assentos = false;
 		boolean airBag = false;
 
-		System.out.println(" Nome: ");
+		System.out.print(" Nome: ");
 		nome = ler.nextLine();
+		System.out.println("");
 
-		System.out.println(" Caracteristicas: ");
+		System.out.print(" Caracteristicas: ");
 		carac = ler.nextLine();
+		System.out.println("");
 
-		System.out.println(" Valor por dia: ");
+		System.out.print(" Valor por dia: ");
 		valorDia = ler.nextInt();
+		System.out.println("\n");
 
-		System.out.println(" Lista de avaliacao da Classe\n");
-		System.out.println(" Obs: O que a classe vai levar em conta\n na hora de classificar os carros cadastrados\n");
+		System.out.println(" LISTA DE AVALIACAO DE CLASSE\n");
+		System.out.println(" O que a classe vai levar em conta na\n hora de classificar os carros cadastrados\n");
 
 		char escolha;
 		boolean repeat = false;
@@ -66,8 +71,9 @@ public class Classe {
 			System.out.println(" Ar condicionado\n");
 			System.out.println(" 1- Sim");
 			System.out.println(" 2- Nao");
-			System.out.println(" R (1-2): ");
+			System.out.print(" R (1-2): ");
 			escolha = ler.next().charAt(0);
+			System.out.println("");
 
 			switch (escolha) {
 			case '1':
@@ -89,8 +95,9 @@ public class Classe {
 			System.out.println(" Numero de portas\n");
 			System.out.println(" 1- Sim");
 			System.out.println(" 2- Nao");
-			System.out.println(" R (1-2): ");
+			System.out.print(" R (1-2): ");
 			escolha = ler.next().charAt(0);
+			System.out.println("");
 
 			switch (escolha) {
 			case '1':
@@ -112,8 +119,9 @@ public class Classe {
 			System.out.println(" Tamanho do porta malas\n");
 			System.out.println(" 1- Sim");
 			System.out.println(" 2- Nao");
-			System.out.println(" R (1-2): ");
+			System.out.print(" R (1-2): ");
 			escolha = ler.next().charAt(0);
+			System.out.println("");
 
 			switch (escolha) {
 			case '1':
@@ -132,34 +140,12 @@ public class Classe {
 		} while (repeat == true);
 
 		do {
-			System.out.println(" Numero de portas\n");
-			System.out.println(" 1- Sim");
-			System.out.println(" 2- Nao");
-			System.out.println(" R (1-2): ");
-			escolha = ler.next().charAt(0);
-
-			switch (escolha) {
-			case '1':
-				portas = true;
-				repeat = false;
-				break;
-			case '2':
-				portas = false;
-				repeat = false;
-				break;
-			default:
-				System.out.println(" Favor escolher uma opcao entre 1 e 2");
-				repeat = true;
-				break;
-			}
-		} while (repeat == true);
-
-		do {
 			System.out.println(" Tipo de cambio (Manual ou Automatico)\n");
 			System.out.println(" 1- Sim");
 			System.out.println(" 2- Nao");
-			System.out.println(" R (1-2): ");
+			System.out.print(" R (1-2): ");
 			escolha = ler.next().charAt(0);
+			System.out.println("");
 
 			switch (escolha) {
 			case '1':
@@ -178,34 +164,12 @@ public class Classe {
 		} while (repeat == true);
 
 		do {
-			System.out.println(" Numero de portas\n");
-			System.out.println(" 1- Sim");
-			System.out.println(" 2- Nao");
-			System.out.println(" R (1-2): ");
-			escolha = ler.next().charAt(0);
-
-			switch (escolha) {
-			case '1':
-				portas = true;
-				repeat = false;
-				break;
-			case '2':
-				portas = false;
-				repeat = false;
-				break;
-			default:
-				System.out.println(" Favor escolher uma opcao entre 1 e 2");
-				repeat = true;
-				break;
-			}
-		} while (repeat == true);
-
-		do {
 			System.out.println(" Vidro eletrico\n");
 			System.out.println(" 1- Sim");
 			System.out.println(" 2- Nao");
-			System.out.println(" R (1-2): ");
+			System.out.print(" R (1-2): ");
 			escolha = ler.next().charAt(0);
+			System.out.println("");
 
 			switch (escolha) {
 			case '1':
@@ -227,8 +191,9 @@ public class Classe {
 			System.out.println(" Numero assentos\n");
 			System.out.println(" 1- Sim");
 			System.out.println(" 2- Nao");
-			System.out.println(" R (1-2): ");
+			System.out.print(" R (1-2): ");
 			escolha = ler.next().charAt(0);
+			System.out.println("");
 
 			switch (escolha) {
 			case '1':
@@ -250,8 +215,9 @@ public class Classe {
 			System.out.println(" Air bag\n");
 			System.out.println(" 1- Sim");
 			System.out.println(" 2- Nao");
-			System.out.println(" R (1-2): ");
+			System.out.print(" R (1-2): ");
 			escolha = ler.next().charAt(0);
+			System.out.println("");
 
 			switch (escolha) {
 			case '1':
@@ -272,7 +238,7 @@ public class Classe {
 		int num = 0;
 
 		for (int a = 0; a < MAX; a++)
-			if (Teste.cadastrar[a] == null) {
+			if (Teste.cadastrarClasse[a] == null) {
 				num = a;
 				break;
 			}
@@ -283,8 +249,39 @@ public class Classe {
 		System.out.println(" Classe cadastrada com sucesso!");
 
 	}
-	
-	public static int ImprimirClasses() {
+
+	public static void Excluir() {
+		int total = Imprimir();
+
+		int escolha = 0;
+		boolean valido = true;
+
+		System.out.print(" Classe que deseja excluir (0-" + total + "): ");
+		escolha = ler.nextInt();
+
+		for (int a = 0; a < MAX; a++)
+			if (Teste.cadastrarCarro[a] != null)
+				if (Teste.cadastrarCarro[a].getClasse() == Teste.cadastrarClasse[escolha]) {
+					System.out.println(
+							"\n Ainda existem carros cadastrados!\n Favor excluir todos os veiculos vinculados a essa classe");
+					valido = false;
+					break;
+				}
+
+		if (valido == true) {
+			Teste.cadastrarClasse[escolha] = null;
+			
+			for (int i = 0; i < MAX - 1; i++)
+				if(Teste.cadastrarClasse[i] == null && Teste.cadastrarClasse[i+1] != null) {
+					Teste.cadastrarClasse[i] = Teste.cadastrarClasse[i+1];
+					Teste.cadastrarClasse[i+1] = null;
+				}
+				
+			System.out.println(" Classe excluida com sucesso");
+		}
+	}
+
+	public static int Imprimir() {
 
 		int a;
 		for (a = 0; a < MAX; a++)
@@ -292,7 +289,7 @@ public class Classe {
 				System.out.println(" " + a + "- " + Teste.cadastrarClasse[a].getNome());
 			else
 				break;
-		return a;
+		return a - 1;
 	}
 
 	public String getNome() {
