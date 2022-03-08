@@ -9,7 +9,14 @@ public class EnderecoRes {
 	private String estado;
 	private String pais;
 	
-	public EnderecoRes() {
+	public EnderecoRes(String lo, String nu, String ba, String ci, String es, String pa) {
+		
+		this.logradouro = lo;
+		this.numero = nu;
+		this.bairro = ba;
+		this.cidade = ci;
+		this.estado = es;
+		this.pais = pa;
 		
 	}
 	

@@ -17,6 +17,7 @@ public class Teste {
 	public static Admin cadastrarAdm[] = new Admin[MAX];
 	public static Carro cadastrarCarro[] = new Carro[MAX];
 	public static Classe cadastrarClasse[] = new Classe[MAX];
+	public static Agencia cadastrarAgencia[] = new Agencia[MAX];
 
 	// Chave para poder cadastrar um Adm
 	public static String chaveAdm = "X2iU7Ghl0@vbT";
@@ -46,7 +47,7 @@ public class Teste {
 						repeat = 0;
 						break;
 					case '2':
-						Usuario.Cadastro();
+						Usuario.Cadastrar();
 						repeat = 0;
 						break;
 					case '3':
@@ -83,10 +84,14 @@ public class Teste {
 							repeat = 0;
 							break;
 						case '2':
-							Logado = false;
+							Usuario.Editar();
 							repeat = 0;
 							break;
 						case '3':
+							Logado = false;
+							repeat = 0;
+							break;
+						case '4':
 							exit = true;
 							break;
 						case 'P':
@@ -118,7 +123,7 @@ public class Teste {
 							repeat = 0;
 							break;
 						case '3':
-							System.exit(repeat);
+							MenuAgencia();
 							break;
 						case 'P':
 							PrintCPFUsuarios();
@@ -149,20 +154,19 @@ public class Teste {
 	}
 
 	public static void Menu() {
-		System.out.print("=================================================\n\n");
+		System.out.print("=================================================\n");
 		System.out.print("                 ALUGUEL DE CARROS\n");
 		System.out.print("-------------------------------------------------\n");
-		System.out.print("                   Opcoes da conta\n");
+		System.out.println("------------------Opcoes da conta----------------\n");
+		System.out.print(" 1- Perfil\n");
+		System.out.print(" 2- Editar\n");
+		System.out.print(" 3- Deslogar\n");
+		System.out.print(" 4- Sair\n");
 		System.out.print("-------------------------------------------------\n");
-		System.out.print("  1- Perfil\n");
-		System.out.print("  2- Deslogar\n");
-		System.out.print("  3- Sair\n");
-		System.out.print("-------------------------------------------------\n");
-		System.out.print("                   Opcoes de busca\n");
-		System.out.print("-------------------------------------------------\n");
-		System.out.print("  4- Buscar veículos por classe\n");
-		System.out.print("  5- Buscar veículos por marca\n");
-		System.out.print("  6- Buscar veículos por preço\n");
+		System.out.println("------------------Opcoes de busca----------------\n");
+		System.out.print(" 5- Buscar veículos por classe\n");
+		System.out.print(" 6- Buscar veículos por marca\n");
+		System.out.print(" 7- Buscar veículos por preço\n");
 		System.out.print("-------------------------------------------------\n\n");
 	}
 
@@ -218,10 +222,6 @@ public class Teste {
 					repeat = 0;
 					exit = true;
 					break;
-				case 'P':
-					PrintCPFUsuarios();
-					repeat = 0;
-					break;
 				default:
 					System.out.print(" Favor inserir uma opção entre 1 e 4!\n\n");
 					repeat = 1;
@@ -268,8 +268,106 @@ public class Teste {
 					repeat = 0;
 					exit = true;
 					break;
-				case 'P':
-					PrintCPFUsuarios();
+				default:
+					System.out.print(" Favor inserir uma opção entre 1 e 4!\n\n");
+					repeat = 1;
+				}
+			} while (repeat == 1);
+		} while (exit == false);
+	}
+
+	public static void MenuAgencia() {
+		boolean exit = false;
+
+		do {
+			System.out.print("=================================================\n\n");
+			System.out.print("                        Agencia\n");
+			System.out.print("-------------------------------------------------\n\n");
+			System.out.print("  1- Cadastrar\n");
+			System.out.print("  2- Excluir\n");
+			System.out.print("  3- Listar\n");
+			System.out.print("  4- Vincular carro\n");
+			System.out.print("  5- Desvincular carro\n");
+			System.out.print("  6- Voltar\n");
+			System.out.print("-------------------------------------------------\n\n");
+
+			char escolha = 0;
+			int repeat = 0;
+
+			do {
+				System.out.print(" Escolha uma opção(1-6): ");
+				escolha = ler.next().charAt(0);
+				System.out.print("\n");
+
+				switch (escolha) {
+				case '1':
+					Agencia.Cadastrar();
+					repeat = 0;
+					break;
+				case '2':
+					Agencia.Excluir();
+					;
+					break;
+				case '3':
+					Agencia.Imprimir();
+					repeat = 0;
+					break;
+				case '4':
+					Agencia.VincularCarro();
+					repeat = 0;
+					break;
+				case '5':
+					Agencia.DesvincularCarro();
+					repeat = 0;
+					break;
+				case '6':
+					repeat = 0;
+					exit = true;
+					break;
+				default:
+					System.out.print(" Favor inserir uma opção entre 1 e 4!\n\n");
+					repeat = 1;
+				}
+			} while (repeat == 1);
+		} while (exit == false);
+	}
+
+	public static void MenuUsuarios() {
+		boolean exit = false;
+
+		do {
+			System.out.print("=================================================\n\n");
+			System.out.print("                        Usuarios\n");
+			System.out.print("-------------------------------------------------\n\n");
+			System.out.print("  1- Listar\n");
+			System.out.print("  2- Excluir\n");
+			System.out.print("  3- Editar\n");
+			System.out.print("  4- Voltar\n");
+			System.out.print("-------------------------------------------------\n\n");
+
+			char escolha = 0;
+			int repeat = 0;
+
+			do {
+				System.out.print(" Escolha uma opção(1-4): ");
+				escolha = ler.next().charAt(0);
+				System.out.print("\n");
+
+				switch (escolha) {
+				case '1':
+					Usuario.Imprimir();
+					repeat = 0;
+					break;
+				case '2':
+					Usuario.Excluir();
+					;
+					break;
+				case '3':
+					Usuario.AdmEditar();
+					repeat = 0;
+					break;
+				case '4':
+					exit = true;
 					repeat = 0;
 					break;
 				default:
@@ -287,9 +385,11 @@ public class Teste {
 		// --------------------------------------------------------------------------------
 
 		cadastrar[0] = new Usuario("Giovanni", "97413115085", "giovanni.acg@gmail.com", "Brasileiro", "Masculino",
-				"12996389028", "gioacg", "giovanni1106");
+				"12996389028", "gioacg", "giovanni1106", "Rua 3", "35", "Bairro principal", "Cidade de Deus",
+				"Estado do bem", "Melhor Pais");
 		cadastrar[1] = new Usuario("Maria Luiza", "64626578047", "malu@gmail.com", "Brasileira", "Feminino",
-				"61996502450", "malu1212", "malu2809");
+				"61996502450", "malu1212", "malu2809", "Rua 3", "35", "Bairro principal", "Cidade de Deus",
+				"Estado do bem", "Melhor Pais");
 
 		// ================================== ADMINISTRADORES
 		// ==================================
