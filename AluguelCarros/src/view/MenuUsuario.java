@@ -12,12 +12,16 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 import Pessoas.Usuario;
 import Sistema.BancoDados;
+import Sistema.Login;
 
 public class MenuUsuario extends JFrame {
 
@@ -114,6 +118,12 @@ public class MenuUsuario extends JFrame {
 		btnNewButton_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton_1_1.setBounds(10, 19, 121, 40);
 		panel_2.add(btnNewButton_1_1);
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+				new UsuarioPerfil(BancoDados.cadastrarUsuario[BancoDados.pos]).main(null);
+			}
+		});
 		
 		JButton btnFidelidade = new JButton("Fidelidade");
 		btnFidelidade.setFont(new Font("Tahoma", Font.PLAIN, 16));

@@ -243,6 +243,12 @@ public class Usuario {
 	public static String imprimeCartao(String Cartao) {
 		return (Cartao.substring(0,4) + " " + Cartao.substring(4,9));
 	}
+	
+	public static String imprimeEndereco(EnderecoRes End) {
+		return (" Endereço: " + End.getLogradouro() + ", " + End.getNumero() + ", "
+				+ End.getBairro() + ", " + End.getCidade() + ", " + End.getEstado()
+				+ ", " + End.getPais());
+	}
 
 	public Fidelidade getFidelidade() {
 		return fidelidade;
