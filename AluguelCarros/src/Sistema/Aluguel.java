@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import Pessoas.Fidelidade;
 import Pessoas.Usuario;
-import app.Teste;
 import veiculo.Agencia;
 import veiculo.Carro;
 import veiculo.TarifasAd;

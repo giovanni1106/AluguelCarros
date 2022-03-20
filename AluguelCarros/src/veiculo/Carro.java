@@ -3,11 +3,10 @@ package veiculo;
 import java.awt.Image;
 import java.util.Scanner;
 
-import app.Teste;
+import Sistema.BancoDados;
 
 public class Carro {
 
-	public static Scanner ler = new Scanner(System.in);
 	public static int MAX = 1000;
 
 	private Classe classe;
@@ -50,258 +49,45 @@ public class Carro {
 
 	}
 
-	public static void Cadastrar() {
+	public static void Excluir(int escolha) {
 
-		int total = Imprimir();
-		char escolha;
-		boolean repeat = false;
-
-		int classe;
-		String marca;
-		String modelo;
-		String cor;
-		int km;
-		String placa;
-		boolean airBag = false;
-		int assentos;
-		boolean vidro = false;
-		int portaMalas;
-		int direcao = 1;
-		boolean ar = false;
-		int embreagem = 1;
-		int carga = 1;
-		int combustivel = 1;
-
-		System.out.print(" Escolha uma classe(1-" + total + "): ");
-		classe = ler.nextInt();
-
-		System.out.print(" Marca: ");
-		marca = ler.nextLine();
-
-		System.out.print(" Modelo: ");
-		modelo = ler.nextLine();
-
-		System.out.print(" Cor: ");
-		cor = ler.nextLine();
-
-		System.out.print(" Km: ");
-		km = ler.nextInt();
-
-		System.out.print(" Placa: ");
-		placa = ler.nextLine();
-
-		do {
-			System.out.println(" Possui Air Bag?\n");
-			System.out.println(" 1- Sim");
-			System.out.println(" 2- Nao");
-			System.out.println(" R (1-2): ");
-			escolha = ler.next().charAt(0);
-
-			switch (escolha) {
-			case '1':
-				airBag = true;
-				repeat = false;
-				break;
-			case '2':
-				airBag = false;
-				repeat = false;
-				break;
-			default:
-				System.out.println(" Favor escolher uma opcao entre 1 e 2");
-				repeat = true;
-				break;
-			}
-		} while (repeat == true);
-
-		System.out.print(" Assentos: ");
-		assentos = ler.nextInt();
-
-		do {
-			System.out.println(" Possui vidro eletrico?\n");
-			System.out.println(" 1- Sim");
-			System.out.println(" 2- Nao");
-			System.out.println(" R (1-2): ");
-			escolha = ler.next().charAt(0);
-
-			switch (escolha) {
-			case '1':
-				vidro = true;
-				repeat = false;
-				break;
-			case '2':
-				vidro = false;
-				repeat = false;
-				break;
-			default:
-				System.out.println(" Favor escolher uma opcao entre 1 e 2");
-				repeat = true;
-				break;
-			}
-		} while (repeat == true);
-
-		System.out.print(" Malas grandes que cabem no porta malas: ");
-		portaMalas = ler.nextInt();
-
-		do {
-			System.out.println(" Qual tipo de direcao?\n");
-			System.out.println(" 1- Hidraulica");
-			System.out.println(" 2- Eletrica");
-			System.out.println(" R (1-2): ");
-			escolha = ler.next().charAt(0);
-
-			switch (escolha) {
-			case '1':
-				direcao = 1;
-				repeat = false;
-				break;
-			case '2':
-				direcao = 2;
-				repeat = false;
-				break;
-			default:
-				System.out.println(" Favor escolher uma opcao entre 1 e 2");
-				repeat = true;
-				break;
-			}
-		} while (repeat == true);
-
-		do {
-			System.out.println(" Possui ar condicionado?\n");
-			System.out.println(" 1- Sim");
-			System.out.println(" 2- Nao");
-			System.out.println(" R (1-2): ");
-			escolha = ler.next().charAt(0);
-
-			switch (escolha) {
-			case '1':
-				ar = true;
-				repeat = false;
-				break;
-			case '2':
-				ar = false;
-				repeat = false;
-				break;
-			default:
-				System.out.println(" Favor escolher uma opcao entre 1 e 2");
-				repeat = true;
-				break;
-			}
-		} while (repeat == true);
-
-		do {
-			System.out.println(" Qual tipo de cambio?\n");
-			System.out.println(" 1- Automatico");
-			System.out.println(" 2- Manual");
-			System.out.println(" R (1-2): ");
-			escolha = ler.next().charAt(0);
-
-			switch (escolha) {
-			case '1':
-				embreagem = 1;
-				repeat = false;
-				break;
-			case '2':
-				embreagem = 2;
-				repeat = false;
-				break;
-			default:
-				System.out.println(" Favor escolher uma opcao entre 1 e 2");
-				repeat = true;
-				break;
-			}
-		} while (repeat == true);
-
-		System.out.print(" Peso maximo de carga em Kg: ");
-		portaMalas = ler.nextInt();
-
-		do {
-			System.out.println(" Qual tipo de combustivel?\n");
-			System.out.println(" 1- Gasolina");
-			System.out.println(" 2- Flex");
-			System.out.println(" 3- Disel");
-			System.out.println(" R (1-3): ");
-			escolha = ler.next().charAt(0);
-
-			switch (escolha) {
-			case '1':
-				combustivel = 1;
-				repeat = false;
-				break;
-			case '2':
-				combustivel = 2;
-				repeat = false;
-				break;
-			case '3':
-				combustivel = 2;
-				repeat = false;
-				break;
-			default:
-				System.out.println(" Favor escolher uma opcao entre 1 e 3");
-				repeat = true;
-				break;
-			}
-		} while (repeat == true);
-
-		int num = 0;
-
-		for (int a = 0; a < MAX; a++)
-			if (Teste.cadastrarCarro[a] == null) {
-				num = a;
-				break;
-			}
-
-		Teste.cadastrarCarro[num] = new Carro(Teste.cadastrarClasse[classe - 1], marca, modelo, cor, km, placa, airBag,
-				assentos, vidro, portaMalas, direcao, ar, embreagem, carga, combustivel);
-
-		System.out.println(" Carro cadastrado com sucesso!");
-
-	}
-
-	public static void Excluir() {
-
-		int total = Imprimir();
-
-		int escolha = 0;
-
-		System.out.print("\n Carro que deseja excluir (1-" + total + "): ");
-		escolha = ler.nextInt();
-
-		if (Teste.cadastrarCarro[escolha] != null)
-			Teste.cadastrarCarro[escolha] = null;
+		if (BancoDados.cadastrarCarro[escolha] != null)
+			BancoDados.cadastrarCarro[escolha] = null;
 
 		for (int i = 0; i < MAX - 1; i++)
-			if (Teste.cadastrarCarro[i] == null && Teste.cadastrarCarro[i + 1] != null) {
-				Teste.cadastrarCarro[i] = Teste.cadastrarCarro[i + 1];
-				Teste.cadastrarCarro[i + 1] = null;
+			if (BancoDados.cadastrarCarro[i] == null && BancoDados.cadastrarCarro[i + 1] != null) {
+				BancoDados.cadastrarCarro[i] = BancoDados.cadastrarCarro[i + 1];
+				BancoDados.cadastrarCarro[i + 1] = null;
 			}
 
 		System.out.println(" Carro excluido com sucesso");
 
 	}
 
-	public static int Imprimir() {
+	public static String[] Imprimir() {
 
-		int i = 0;
+		String[] carros = new String[MAX];
+		
 		for (int a = 0; a < MAX; a++)
-			if (Teste.cadastrarCarro[a] != null)
-				System.out.println(" " + a + "- " + Teste.cadastrarCarro[a].getClasse().getNome() + " | "
-						+ Teste.cadastrarCarro[a].getMarca() + " | " + Teste.cadastrarCarro[a].getModelo());
+			if (BancoDados.cadastrarCarro[a] != null)
+				carros[a] = " " + a + "- " + BancoDados.cadastrarCarro[a].getClasse().getNome() + " | "
+						+ BancoDados.cadastrarCarro[a].getMarca() + " | " + BancoDados.cadastrarCarro[a].getModelo();
 			else {
-				i = a - 1;
 				break;
 			}
-		return i;
+		System.out.println(carros[0]);
+		return carros;
 	}
 
 	public static int ImprimirMarca(Boolean imprimir, int escolha, boolean alugar, int escolhido) {
-		String marca[] = new String[Teste.MAX];
+		String marca[] = new String[BancoDados.MAX];
 
-		for (int i = 0; i < Teste.MAX; i++)
-			if (Teste.cadastrarCarro[i] != null) {
-				for (int a = 0; a < Teste.MAX; a++) {
-					if (Teste.cadastrarCarro[i].getMarca().equals(marca[a]) == false) {
+		for (int i = 0; i < BancoDados.MAX; i++)
+			if (BancoDados.cadastrarCarro[i] != null) {
+				for (int a = 0; a < BancoDados.MAX; a++) {
+					if (BancoDados.cadastrarCarro[i].getMarca().equals(marca[a]) == false) {
 						if (marca[a] == null) {
-							marca[a] = Teste.cadastrarCarro[i].getMarca();
+							marca[a] = BancoDados.cadastrarCarro[i].getMarca();
 							break;
 						}
 					} else
@@ -310,7 +96,7 @@ public class Carro {
 			}
 
 		if (imprimir == true) {
-			for (int i = 0; i < Teste.MAX; i++)
+			for (int i = 0; i < BancoDados.MAX; i++)
 				if (marca[i] != null)
 					System.out.println(" " + i + "- " + marca[i]);
 				else
@@ -327,16 +113,16 @@ public class Carro {
 		int cont = 0;
 
 		if (alugar == false) {
-			for (int a = 0; a < Teste.MAX; a++)
-				if (Teste.cadastrarCarro[a] != null)
-					if (Teste.cadastrarCarro[a].getMarca().equals(marca) == true) {
+			for (int a = 0; a < BancoDados.MAX; a++)
+				if (BancoDados.cadastrarCarro[a] != null)
+					if (BancoDados.cadastrarCarro[a].getMarca().equals(marca) == true) {
 						cont = cont + 1;
-						System.out.println(" " + cont + "- " + Teste.cadastrarCarro[a].getModelo());
+						System.out.println(" " + cont + "- " + BancoDados.cadastrarCarro[a].getModelo());
 					}
 		} else {
-			for (int a = 0; a < Teste.MAX; a++)
-				if (Teste.cadastrarCarro[a] != null)
-					if (Teste.cadastrarCarro[a].getMarca().equals(marca) == true) {
+			for (int a = 0; a < BancoDados.MAX; a++)
+				if (BancoDados.cadastrarCarro[a] != null)
+					if (BancoDados.cadastrarCarro[a].getMarca().equals(marca) == true) {
 						cont = cont + 1;
 						if (escolha == cont)
 							return a;
@@ -346,25 +132,6 @@ public class Carro {
 		return cont;
 	}
 
-	public static Carro BuscarMarca() {
-		int escolhaM = 0;
-		int escolhaC = 0;
-		int escolhido = 0;
-
-		int totalM = ImprimirMarca(true, 0, false, 0);
-
-		System.out.print(" Escolha a marca que deseja filtrar (0-" + totalM + "): ");
-		escolhaM = ler.nextInt();
-
-		int totalC = ImprimirMarca(false, escolhaM, false, 0);
-
-		System.out.print(" Escolha o carro que deseja alugar (0-" + totalC + "): ");
-		escolhaC = ler.nextInt();
-
-		escolhido = ImprimirMarca(false, escolhaM, true, escolhaC);
-
-		return Teste.cadastrarCarro[escolhido];
-	}
 
 	public boolean isAlugado() {
 		return alugado;

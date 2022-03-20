@@ -1,7 +1,6 @@
 package Pessoas;
 
 import Sistema.Aluguel;
-import Sistema.BancoDados;
 
 public class Fidelidade {
 
@@ -9,47 +8,55 @@ public class Fidelidade {
 	private Usuario usuario;
 	private Aluguel aluguel;
 	private int quantidade;
-	private int desconto;
+	private float desconto;
 	
-	public Fidelidade(Usuario us, Aluguel al, int qtd, int des) {
+	public Fidelidade(Usuario us, Aluguel al, int qtd) {
 		
 		this.usuario = us;
 		this.aluguel = al;
 		this.quantidade = qtd;
-		this.desconto = des;
 		
 	}
 	
-	public Fidelidade[] getUsuario() {
-		
-		for (int a = 0; a < BancoDados.MAX; a++) {
-			if(usuario.getFidelidade())
-			
-			
-		}
-		
-		
-		return usuario.getFidelidade();
+	public void getUsuario() {
+		usuario.getFidelidade().quantidade += 1;
 	}
+	
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	
 	public Aluguel getAluguel() {
 		return aluguel;
 	}
+	
 	public void setAluguel(Aluguel aluguel) {
 		this.aluguel = aluguel;
 	}
+	
 	public int getQuantidade() {
 		return quantidade;
 	}
+	
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
-	public int getDesconto() {
+	
+	public float getDesconto() {
+		
+		int qtd = quantidade;
+		float contador = 1;
+		
+		for(int a = 0; a < qtd; a++) {
+			desconto = desconto + contador;
+			
+			if (contador <= 100)
+				contador = (float) (contador + 0.25);
+		}
 		return desconto;
 	}
-	public void setDesconto(int desconto) {
+	
+	public void setDesconto(float desconto) {
 		this.desconto = desconto;
 	}
 	

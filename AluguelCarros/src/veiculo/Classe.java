@@ -2,7 +2,7 @@ package veiculo;
 
 import java.util.Scanner;
 
-import app.Teste;
+import Sistema.BancoDados;
 
 public class Classe {
 
@@ -240,12 +240,12 @@ public class Classe {
 		int num = 0;
 
 		for (int a = 0; a < MAX; a++)
-			if (Teste.cadastrarClasse[a] == null) {
+			if (BancoDados.cadastrarClasse[a] == null) {
 				num = a;
 				break;
 			}
 
-		Teste.cadastrarClasse[num] = new Classe(nome, valorDia, carac, ar, portas, portaMalas, cambio, vidro, assentos,
+		BancoDados.cadastrarClasse[num] = new Classe(nome, valorDia, carac, ar, portas, portaMalas, cambio, vidro, assentos,
 				airBag);
 
 		System.out.println(" Classe cadastrada com sucesso!");
@@ -262,8 +262,8 @@ public class Classe {
 		escolha = ler.nextInt();
 
 		for (int a = 0; a < MAX; a++)
-			if (Teste.cadastrarCarro[a] != null)
-				if (Teste.cadastrarCarro[a].getClasse() == Teste.cadastrarClasse[escolha]) {
+			if (BancoDados.cadastrarCarro[a] != null)
+				if (BancoDados.cadastrarCarro[a].getClasse() == BancoDados.cadastrarClasse[escolha]) {
 					System.out.println(
 							"\n Ainda existem carros cadastrados!\n Favor excluir todos os veiculos vinculados a essa classe");
 					valido = false;
@@ -271,12 +271,12 @@ public class Classe {
 				}
 
 		if (valido == true) {
-			Teste.cadastrarClasse[escolha] = null;
+			BancoDados.cadastrarClasse[escolha] = null;
 			
 			for (int i = 0; i < MAX - 1; i++)
-				if(Teste.cadastrarClasse[i] == null && Teste.cadastrarClasse[i+1] != null) {
-					Teste.cadastrarClasse[i] = Teste.cadastrarClasse[i+1];
-					Teste.cadastrarClasse[i+1] = null;
+				if(BancoDados.cadastrarClasse[i] == null && BancoDados.cadastrarClasse[i+1] != null) {
+					BancoDados.cadastrarClasse[i] = BancoDados.cadastrarClasse[i+1];
+					BancoDados.cadastrarClasse[i+1] = null;
 				}
 				
 			System.out.println(" Classe excluida com sucesso");
@@ -287,8 +287,8 @@ public class Classe {
 
 		int a;
 		for (a = 0; a < MAX; a++)
-			if (Teste.cadastrarClasse[a] != null)
-				System.out.println(" " + a + "- " + Teste.cadastrarClasse[a].getNome());
+			if (BancoDados.cadastrarClasse[a] != null)
+				System.out.println(" " + a + "- " + BancoDados.cadastrarClasse[a].getNome());
 			else
 				break;
 		return a - 1;

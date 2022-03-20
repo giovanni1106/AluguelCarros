@@ -2,7 +2,7 @@ package veiculo;
 
 import java.util.Scanner;
 
-import app.Teste;
+import Sistema.BancoDados;
 
 public class Agencia {
 
@@ -15,7 +15,7 @@ public class Agencia {
 	private String cidade;
 	private String estado;
 	private String pais;
-	public Carro carro[] = new Carro[Teste.MAX];
+	public Carro carro[] = new Carro[BancoDados.MAX];
 
 	public Agencia(String id, String lo, String nu, String ba, String ci, String es, String pa) {
 
@@ -61,13 +61,13 @@ public class Agencia {
 
 		int num = 0;
 
-		for (int a = 0; a < Teste.MAX; a++)
-			if (Teste.cadastrarAgencia[a] == null) {
+		for (int a = 0; a < BancoDados.MAX; a++)
+			if (BancoDados.cadastrarAgencia[a] == null) {
 				num = a;
 				break;
 			}
 
-		Teste.cadastrarAgencia[num] = new Agencia(identificacao, logradouro, numero, bairro, cidade, estado, pais);
+		BancoDados.cadastrarAgencia[num] = new Agencia(identificacao, logradouro, numero, bairro, cidade, estado, pais);
 
 		System.out.println(" Agencia cadastrada com sucesso!");
 	}
@@ -79,12 +79,12 @@ public class Agencia {
 		System.out.print(" Agencia que deseja excluir (0-" + total + "): ");
 		escolha = ler.nextInt();
 
-		Teste.cadastrarAgencia[escolha] = null;
+		BancoDados.cadastrarAgencia[escolha] = null;
 
-		for (int a = 0; a < Teste.MAX-1; a++)
-			if (Teste.cadastrarAgencia[a] == null && Teste.cadastrarAgencia[a + 1] != null) {
-				Teste.cadastrarAgencia[a] = Teste.cadastrarAgencia[a + 1];
-				Teste.cadastrarAgencia[a + 1] = null;
+		for (int a = 0; a < BancoDados.MAX-1; a++)
+			if (BancoDados.cadastrarAgencia[a] == null && BancoDados.cadastrarAgencia[a + 1] != null) {
+				BancoDados.cadastrarAgencia[a] = BancoDados.cadastrarAgencia[a + 1];
+				BancoDados.cadastrarAgencia[a + 1] = null;
 			}
 		
 		System.out.println(" Agencia excluida com sucesso!");
@@ -93,9 +93,9 @@ public class Agencia {
 	public static int Imprimir() {
 		int a;
 
-		for (a = 0; a < Teste.MAX; a++)
-			if (Teste.cadastrarAgencia[a] != null)
-				System.out.println(" " + a + "- " + Teste.cadastrarAgencia[a].getIdentificacao());
+		for (a = 0; a < BancoDados.MAX; a++)
+			if (BancoDados.cadastrarAgencia[a] != null)
+				System.out.println(" " + a + "- " + BancoDados.cadastrarAgencia[a].getIdentificacao());
 			else
 				break;
 		return a - 1;
@@ -110,20 +110,20 @@ public class Agencia {
 		escolha1 = ler.nextInt();
 		System.out.println("");
 		
-		Agencia A = Teste.cadastrarAgencia[escolha1];
+		Agencia A = BancoDados.cadastrarAgencia[escolha1];
 		
-		int total = Carro.Imprimir();
+		//int total = Carro.Imprimir();
 		int escolha = 0;
 		int a;
 
-		System.out.print(" Escolha um carro (0-" + total + "): ");
+		//System.out.print(" Escolha um carro (0-" + total + "): ");
 		escolha = ler.nextInt();
 
-		for (a = 0; a < Teste.MAX; a++)
+		for (a = 0; a < BancoDados.MAX; a++)
 			if (A.carro[a] == null)
 				break;
 
-		A.carro[a] = Teste.cadastrarCarro[escolha];
+		A.carro[a] = BancoDados.cadastrarCarro[escolha];
 
 		System.out.println(" Carro vinculado com sucesso!");
 	}
@@ -132,7 +132,7 @@ public class Agencia {
 
 		int a;
 		
-		for (a = 0; a < Teste.MAX; a++)
+		for (a = 0; a < BancoDados.MAX; a++)
 			if (A.carro[a] == null)
 				break;
 
@@ -148,7 +148,7 @@ public class Agencia {
 		escolha1 = ler.nextInt();
 		System.out.println("");
 		
-		Agencia A = Teste.cadastrarAgencia[escolha1];
+		Agencia A = BancoDados.cadastrarAgencia[escolha1];
 		
 		int total = ImprimirCarrosVinculados(A);
 		int escolha = 0;
@@ -159,7 +159,7 @@ public class Agencia {
 		A.carro[escolha] = null;
 
 		// repassar carros para posição de "cima"
-		for (int a = 0; a < Teste.MAX-1; a++)
+		for (int a = 0; a < BancoDados.MAX-1; a++)
 			if (A.carro[a] == null && A.carro[a + 1] != null) {
 				A.carro[a] = A.carro[a + 1];
 				A.carro[a + 1] = null;
@@ -172,7 +172,7 @@ public class Agencia {
 
 		int a;
 
-		for (a = 0; a < Teste.MAX; a++)
+		for (a = 0; a < BancoDados.MAX; a++)
 			if (A.carro[a] != null)
 				System.out.println(" " + a + "- " + A.carro[a].getModelo());
 			else

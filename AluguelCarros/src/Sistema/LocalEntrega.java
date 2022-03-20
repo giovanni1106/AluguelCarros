@@ -10,11 +10,11 @@ public class LocalEntrega {
 	private String horaEntrega;
 	private Agencia agencia;
 	
-	public LocalEntrega(Agencia ag) {
+	public LocalEntrega(Agencia ag, Date da, String ho) {
 		
 		this.agencia = ag;
-		//this.dataEntrega = da;
-		//this.horaEntrega = ho;
+		this.dataEntrega = da;
+		this.horaEntrega = ho;
 		
 	}
 	
