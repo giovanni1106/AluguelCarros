@@ -20,7 +20,7 @@ public class Usuario {
 	private Fidelidade fidelidade;
 
 	public Usuario(String no, String cp, String em, String na, String ge, String ce, String lo, String se, String log,
-			String nu, String ba, String ci, String es, String pa, String ca) {
+			String nu, String ba, String ci, String es, String pa) {
 
 		this.nome = no;
 		this.cpf = cp;
@@ -30,10 +30,18 @@ public class Usuario {
 		this.celular = ce;
 		this.login = lo;
 		this.senha = se;
-		this.cartaoCredito = ca;
 		endereco = new EnderecoRes(log, nu, ba, ci, es, pa);
 	}
 
+	public static int Cadastrar() {
+		
+		for (int a = 0; a < BancoDados.MAX; a++) 
+			if(BancoDados.cadastrarUsuario[a] == null)
+				return a;
+
+		return -1;
+	}
+	
 	public static void Excluir(int escolha) {
 
 		BancoDados.cadastrarUsuario[escolha] = null;

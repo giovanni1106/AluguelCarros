@@ -119,6 +119,12 @@ public class TelaLogin extends JFrame {
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton_1.setBounds(196, 365, 191, 45);
 		contentPane.add(btnNewButton_1);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+				CadastrarUsuario.main(null);
+			}
+		});
 		
 		JButton btnNewButton_2 = new JButton("Cadastrar Adm");
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 16));

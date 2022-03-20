@@ -39,10 +39,10 @@ public class BancoDados {
 
 		cadastrarUsuario[0] = new Usuario("Giovanni Alvissus Camargo Giampauli", "97413115085", "giovanni.acg@gmail.com", "Brasileiro", "Masculino",
 				"(12) 99638-9028", "gioacg", "giovanni1106", "Rua 3", "35", "Bairro principal", "Cidade de Deus",
-				"Estado do bem", "Melhor Pais", "12345678");
+				"Estado do bem", "Melhor Pais");
 		cadastrarUsuario[1] = new Usuario("Maria Luiza", "64626578047", "malu@gmail.com", "Brasileira", "Feminino",
 				"(61) 99650-2450", "malu1212", "malu2809", "Rua 4", "70", "Bairro da capital", "Cidade do amanha",
-				"Estado do mal", "País dos deuses", "12345678");
+				"Estado do mal", "País dos deuses");
 
 		// ================================== ADMINISTRADORES
 		// ==================================
