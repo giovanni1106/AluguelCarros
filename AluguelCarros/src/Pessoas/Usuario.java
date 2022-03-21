@@ -165,6 +165,16 @@ public class Usuario {
 		}
 	}
 
+	public static boolean TesteLogin(String login) {
+		for (int a = 0; a < BancoDados.MAX; a++)
+			if (BancoDados.cadastrarUsuario[a] != null)
+				if (BancoDados.cadastrarUsuario[a].getLogin().equals(login))
+					return false;
+		return true;
+	}
+	
+	
+	
 	public String getLogin() {
 		return login;
 	}

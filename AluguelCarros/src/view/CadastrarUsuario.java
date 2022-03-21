@@ -59,7 +59,6 @@ public class CadastrarUsuario extends JFrame {
 	 */
 	public CadastrarUsuario() {
 		getContentPane().setBackground(new Color(135, 206, 235));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 500);
 		contentPane = new JPanel();
 		setLocationRelativeTo(null);
@@ -219,6 +218,8 @@ public class CadastrarUsuario extends JFrame {
 
 				if (Usuario.isCPF(textCPF.getText()) == false)
 					JOptionPane.showMessageDialog(null, "CPF inválido");
+				else if (Usuario.TesteLogin(textLogin.getText()) == false)
+					JOptionPane.showMessageDialog(null, "Login ja existente");
 				else if (textNome.getText().length() <= 0 || textCPF.getText().length() <= 0
 						|| textEmail.getText().length() <= 0 || indexNac == null || indexGen == null
 						|| textCelular.getText().length() <= 0 || textLogin.getText().length() <= 0
@@ -236,7 +237,6 @@ public class CadastrarUsuario extends JFrame {
 					setVisible(false);
 					JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso");
 				}
-
 			}
 		});
 	}

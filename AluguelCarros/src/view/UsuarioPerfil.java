@@ -37,9 +37,10 @@ public class UsuarioPerfil extends JFrame {
 
 	
 	public UsuarioPerfil(Usuario Us) {
+		setBackground(Color.GREEN);
 		setBounds(100, 100, 600, 500);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(245, 255, 250));
+		contentPane.setBackground(new Color(176, 196, 222));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
