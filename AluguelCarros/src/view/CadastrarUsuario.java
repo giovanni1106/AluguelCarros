@@ -41,7 +41,7 @@ public class CadastrarUsuario extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void Construtor() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -216,8 +216,6 @@ public class CadastrarUsuario extends JFrame {
 		setVisible(true);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				System.out.println("Nome: " + textNome.getText());
 
 				if (Usuario.isCPF(textCPF.getText()) == false)
 					JOptionPane.showMessageDialog(null, "CPF inválido");

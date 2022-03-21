@@ -34,14 +34,14 @@ public class Usuario {
 	}
 
 	public static int Cadastrar() {
-		
-		for (int a = 0; a < BancoDados.MAX; a++) 
-			if(BancoDados.cadastrarUsuario[a] == null)
+
+		for (int a = 0; a < BancoDados.MAX; a++)
+			if (BancoDados.cadastrarUsuario[a] == null)
 				return a;
 
 		return -1;
 	}
-	
+
 	public static void Excluir(int escolha) {
 
 		BancoDados.cadastrarUsuario[escolha] = null;
@@ -70,17 +70,43 @@ public class Usuario {
 	public static void Editar(int escolha, String novo) {
 
 		switch (escolha) {
+		case 0:
+			// Nome
+			BancoDados.cadastrarUsuario[BancoDados.pos].setNome(novo);
+			break;
 		case 1:
+			// E-mail
+			BancoDados.cadastrarUsuario[BancoDados.pos].setEmail(novo);
 			break;
 		case 2:
+			// Celular
+			BancoDados.cadastrarUsuario[BancoDados.pos].setCelular(novo);
 			break;
 		case 3:
+			// Logradouro
+			BancoDados.cadastrarUsuario[BancoDados.pos].getEndereco().setLogradouro(novo);
 			break;
 		case 4:
+			// Numero
+			BancoDados.cadastrarUsuario[BancoDados.pos].getEndereco().setNumero(novo);
 			break;
-
+		case 5:
+			// Bairro
+			BancoDados.cadastrarUsuario[BancoDados.pos].getEndereco().setBairro(novo);
+			break;
+		case 6:
+			// Cidade
+			BancoDados.cadastrarUsuario[BancoDados.pos].getEndereco().setCidade(novo);
+			break;
+		case 7:
+			// Estado
+			BancoDados.cadastrarUsuario[BancoDados.pos].getEndereco().setEstado(novo);
+			break;
+		case 8:
+			// País
+			BancoDados.cadastrarUsuario[BancoDados.pos].getEndereco().setPais(novo);
+			break;
 		}
-
 	}
 
 	public static boolean isCPF(String CPF) {
@@ -236,8 +262,8 @@ public class Usuario {
 		Dados[2] = (" Celular: " + getCelular());
 		Dados[3] = (" E-mail: " + getEmail());
 		Dados[4] = (" Endereço: " + getEndereco().getLogradouro() + ", " + getEndereco().getNumero() + ", "
-				+ getEndereco().getBairro() + ", " + getEndereco().getCidade() + ", " + getEndereco().getEstado()
-				+ ", " + getEndereco().getPais());
+				+ getEndereco().getBairro() + ", " + getEndereco().getCidade() + ", " + getEndereco().getEstado() + ", "
+				+ getEndereco().getPais());
 		Dados[5] = (" Cartão de Crédito: ");
 		Dados[6] = ("Genero: " + getGenero());
 		return Dados;
@@ -247,15 +273,14 @@ public class Usuario {
 		return (CPF.substring(0, 3) + "." + CPF.substring(3, 6) + "." + CPF.substring(6, 9) + "-"
 				+ CPF.substring(9, 11));
 	}
-	
+
 	public static String imprimeCartao(String Cartao) {
-		return (Cartao.substring(0,4) + " " + Cartao.substring(4,9));
+		return (Cartao.substring(0, 4) + " " + Cartao.substring(4, 9));
 	}
-	
+
 	public static String imprimeEndereco(EnderecoRes End) {
-		return (" Endereço: " + End.getLogradouro() + ", " + End.getNumero() + ", "
-				+ End.getBairro() + ", " + End.getCidade() + ", " + End.getEstado()
-				+ ", " + End.getPais());
+		return (End.getLogradouro() + ", " + End.getNumero() + ", " + End.getBairro() + ", " + End.getCidade() + ", "
+				+ End.getEstado() + ", " + End.getPais());
 	}
 
 	public Fidelidade getFidelidade() {

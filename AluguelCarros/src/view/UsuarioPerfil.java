@@ -22,7 +22,7 @@ public class UsuarioPerfil extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void Construtor() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -35,11 +35,8 @@ public class UsuarioPerfil extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public UsuarioPerfil(Usuario Us) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 500);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(245, 255, 250));

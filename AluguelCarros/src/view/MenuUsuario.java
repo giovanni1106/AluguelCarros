@@ -30,7 +30,7 @@ public class MenuUsuario extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void Construtor() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -113,6 +113,12 @@ public class MenuUsuario extends JFrame {
 		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnEditar.setBounds(10, 70, 121, 40);
 		panel_2.add(btnEditar);
+		btnEditar.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+				new UsuarioEditar().Construtor();
+			}
+		});
 		
 		JButton btnNewButton_1_1 = new JButton("Perfil");
 		btnNewButton_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -121,7 +127,7 @@ public class MenuUsuario extends JFrame {
 		btnNewButton_1_1.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				new UsuarioPerfil(BancoDados.cadastrarUsuario[BancoDados.pos]).main(null);
+				new UsuarioPerfil(BancoDados.cadastrarUsuario[BancoDados.pos]).Construtor();
 			}
 		});
 		

@@ -30,32 +30,9 @@ public class TelaLogin extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtLogin;
-	
-	private static boolean primeiroAcesso = true;
 	private JPasswordField txtSenha;
 	
-	public static void main(String[] args) {
-		
-		if (primeiroAcesso == true) {
-			BancoDados.DadosPreCadastrados();
-			primeiroAcesso = false;
-		}
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaLogin frame = new TelaLogin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public TelaLogin() {
 		setBackground(Color.LIGHT_GRAY);
 		setTitle("Login");
@@ -107,7 +84,7 @@ public class TelaLogin extends JFrame {
 					JOptionPane.showMessageDialog(null, "Login ou senha incorretos");
 				else {
 					if(BancoDados.Administrador == false)
-						new MenuUsuario(BancoDados.cadastrarUsuario[BancoDados.pos]).main(null);
+						new MenuUsuario(BancoDados.cadastrarUsuario[BancoDados.pos]).Construtor();
 						
 					setVisible(false);
 				}
@@ -122,7 +99,7 @@ public class TelaLogin extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				CadastrarUsuario.main(null);
+				CadastrarUsuario.Construtor();
 			}
 		});
 		
