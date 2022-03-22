@@ -30,6 +30,23 @@ public class BancoDados {
 	// Posição do no Array do Usuario/Admin logado
 	public static int pos;
 	
+	public static int CadastrarUsu() {
+
+		for (int a = 0; a < MAX; a++)
+			if (cadastrarUsuario[a] == null)
+				return a;
+
+		return -1;
+	}
+	
+	public static int CadastrarAdmin() {
+
+		for (int a = 0; a < MAX; a++)
+			if (cadastrarAdm[a] == null)
+				return a;
+
+		return -1;
+	}
 	
 	public static void DadosPreCadastrados() {
 

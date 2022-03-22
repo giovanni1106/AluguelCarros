@@ -33,15 +33,6 @@ public class Usuario {
 		endereco = new EnderecoRes(log, nu, ba, ci, es, pa);
 	}
 
-	public static int Cadastrar() {
-
-		for (int a = 0; a < BancoDados.MAX; a++)
-			if (BancoDados.cadastrarUsuario[a] == null)
-				return a;
-
-		return -1;
-	}
-
 	public static void Excluir(int escolha) {
 
 		BancoDados.cadastrarUsuario[escolha] = null;
@@ -172,8 +163,6 @@ public class Usuario {
 					return false;
 		return true;
 	}
-	
-	
 	
 	public String getLogin() {
 		return login;

@@ -4,28 +4,25 @@ import Sistema.Aluguel;
 
 public class Historico {
 
-	private Aluguel aluguel;
-	private Usuario usuario;
+	private Aluguel aluguel[];
+
 	
-	public Historico(Aluguel aluguel, Usuario usuario) {
+	public Historico(Aluguel aluguel[]) {
 		
 		this.aluguel = aluguel;
-		this.usuario = usuario;
-		
 	}
-	
-	public Aluguel getAluguel() {
+
+
+	public Aluguel[] getAluguel() {
 		return aluguel;
 	}
-	public void setAluguel(Aluguel aluguel) {
+
+
+	public void setAluguel(Aluguel[] aluguel) {
 		this.aluguel = aluguel;
 	}
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+	
+	
 	
 	
 }

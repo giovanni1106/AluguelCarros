@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Pessoas.Admin;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -97,7 +100,6 @@ public class TelaLogin extends JFrame {
 		btnNewButton_1.setBounds(196, 365, 191, 45);
 		contentPane.add(btnNewButton_1);
 		btnNewButton_1.addActionListener(new ActionListener() {
-			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				CadastrarUsuario.Construtor();
 			}
@@ -107,5 +109,10 @@ public class TelaLogin extends JFrame {
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton_2.setBounds(196, 410, 191, 45);
 		contentPane.add(btnNewButton_2);
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CadastrarAdmin.Construtor();
+			}
+		});
 	}
 }

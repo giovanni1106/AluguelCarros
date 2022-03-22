@@ -2,6 +2,8 @@ package Pessoas;
 
 import java.util.Scanner;
 
+import Sistema.BancoDados;
+
 
 public class Admin {
 
@@ -18,10 +20,12 @@ public class Admin {
 		
 	}
 	
-	public static void Cadastro() {
-
-		
-
+	public static boolean TesteLogin(String login) {
+		for (int a = 0; a < BancoDados.MAX; a++)
+			if (BancoDados.cadastrarAdm[a] != null)
+				if (BancoDados.cadastrarAdm[a].getLogin().equals(login))
+					return false;
+		return true;
 	}
 	
 	public String getLogin() {

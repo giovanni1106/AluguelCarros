@@ -229,7 +229,7 @@ public class CadastrarUsuario extends JFrame {
 						|| textPais.getText().length() <= 0) {
 					JOptionPane.showMessageDialog(null, "Dados incompletos");
 				} else {
-					int posicao = Usuario.Cadastrar();
+					int posicao = BancoDados.CadastrarUsu();
 					BancoDados.cadastrarUsuario[posicao] = new Usuario(textNome.getText(), textCPF.getText(),
 							textEmail.getText(), indexNac, indexGen, textCelular.getText(), textLogin.getText(),
 							textSenha.getText(), textLogradouro.getText(), textNumero.getText(), textBairro.getText(),
