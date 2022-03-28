@@ -39,7 +39,7 @@ public class UsuarioAlugar extends JFrame {
 	private static JList<String[]> list_1;
 
 	private static JLabel marca;
-	
+
 	public static int Index = 0;
 	public static int IndexList1 = 0;
 	public static int IndexList2 = 0;
@@ -48,6 +48,7 @@ public class UsuarioAlugar extends JFrame {
 
 	public static String[] Lista = new String[BancoDados.MAX];
 	public static String[] Lista2 = new String[BancoDados.MAX];
+	public static String ItemList1;
 
 	public static void main(String[] args) {
 
@@ -96,7 +97,7 @@ public class UsuarioAlugar extends JFrame {
 
 		list.addListSelectionListener(e -> {
 
-			String ItemList1 = String.valueOf(list.getSelectedValue());
+			ItemList1 = String.valueOf(list.getSelectedValue());
 
 			for (int i = 0; i < BancoDados.MAX; i++) {
 				Lista2[i] = "-";
@@ -133,8 +134,10 @@ public class UsuarioAlugar extends JFrame {
 		list_1.addListSelectionListener(e -> {
 			IndexList2 = list_1.getSelectedIndex();
 
-			if (Carros[IndexList2] != null) 
+			if (Carros[IndexList2] != null) {
 				System.out.println("Carro escolhido é um " + Carros[IndexList2].getModelo());
+				MostrarCarro.Construtor(Carros[IndexList2]);
+			}
 		});
 
 		JScrollPane scrollPane2 = new JScrollPane(list_1);
@@ -142,7 +145,7 @@ public class UsuarioAlugar extends JFrame {
 		contentPane.add(scrollPane2);
 
 		JComboBox<String> Filtro = new JComboBox<String>();
-		Filtro.setBounds(10, 57, 180, 22);
+		Filtro.setBounds(10, 57, 161, 22);
 		contentPane.add(Filtro);
 		Filtro.addItem("Classe");
 		Filtro.addItem("Marca");
@@ -187,8 +190,16 @@ public class UsuarioAlugar extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnNewButton.setBounds(437, 90, 103, 37);
 		contentPane.add(btnNewButton);
+
+		JButton btnDetalhar = new JButton("DETALHAR");
+		btnDetalhar.setForeground(Color.BLACK);
+		btnDetalhar.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnDetalhar.setBackground(SystemColor.activeCaptionBorder);
+		btnDetalhar.setBounds(437, 138, 103, 37);
+		contentPane.add(btnDetalhar);
+
 	}
-	
+
 	public void ConstruirList(String[] List) {
 
 		for (int i = 0; i < BancoDados.MAX; i++)
@@ -202,7 +213,7 @@ public class UsuarioAlugar extends JFrame {
 		ResetList(1);
 	}
 
-	public void ConstruirList2(String[] Cars) {
+	public static void ConstruirList2(String[] Cars) {
 
 		for (int i = 0; i < BancoDados.MAX; i++)
 			Lista2[i] = null;
@@ -216,7 +227,7 @@ public class UsuarioAlugar extends JFrame {
 		ResetList(2);
 	}
 
-	public void ResetList(int Opc) {
+	public static void ResetList(int Opc) {
 
 		if (Opc == 1) {
 			list.setSelectedIndex(0);
