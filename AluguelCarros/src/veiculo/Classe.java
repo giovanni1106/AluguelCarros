@@ -23,7 +23,7 @@ public class Classe {
 	public Classe(String no, int va, String carac, boolean ar, boolean po, boolean portaMalas, boolean ca, boolean vi,
 			boolean as, boolean ai) {
 
-		this.nome = no;
+		this.nome = no.toUpperCase();
 		this.valorDia = va;
 		this.caracteristicas = carac;
 

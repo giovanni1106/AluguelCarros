@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.util.Scanner;
 
 import Sistema.BancoDados;
+import view.UsuarioAlugar;
 
 public class Carro {
 
@@ -31,11 +32,11 @@ public class Carro {
 			int di, boolean ar, int em, int ca, int com) {
 
 		this.classe = cl;
-		this.marca = ma;
-		this.modelo = mo;
-		this.cor = co;
+		this.marca = ma.toUpperCase();
+		this.modelo = mo.toUpperCase();
+		this.cor = co.toUpperCase();
 		this.km = km;
-		this.placa = pl;
+		this.placa = pl.toUpperCase();
 		this.airBag = ai;
 		this.assentos = as;
 		this.vidroEletrico = vi;
@@ -64,10 +65,44 @@ public class Carro {
 
 	}
 
-	public static String[] Imprimir() {
+	
+	public static String[] ImprimirClasse() {
+
+		String[] Classes = new String[BancoDados.MAX];
+
+		for (int i = 0; i < BancoDados.MAX; i++)
+			if (BancoDados.cadastrarCarro[i] != null) {
+				for (int a = 0; a < BancoDados.MAX; a++) {
+					if (BancoDados.cadastrarCarro[i].getClasse().getNome().equals(Classes[a]) == false) {
+						if (Classes[a] == null) {
+							Classes[a] = BancoDados.cadastrarCarro[i].getClasse().getNome();
+							break;
+						}
+					} else
+						break;
+				}
+			}
+
+		return Classes;
+	}
+
+	public static String[] ImprimirModelo() {
 
 		String[] carros = new String[MAX];
-		
+
+		for (int a = 0; a < MAX; a++)
+			if (BancoDados.cadastrarCarro[a] != null)
+				carros[a] = BancoDados.cadastrarCarro[a].getModelo();
+			else {
+				break;
+			}
+		return carros;
+	}
+	
+	public static String[] ImprimirCarro() {
+
+		String[] carros = new String[MAX];
+
 		for (int a = 0; a < MAX; a++)
 			if (BancoDados.cadastrarCarro[a] != null)
 				carros[a] = " " + a + "- " + BancoDados.cadastrarCarro[a].getClasse().getNome() + " | "
@@ -75,13 +110,13 @@ public class Carro {
 			else {
 				break;
 			}
-		System.out.println(carros[0]);
 		return carros;
 	}
 
-	public static int ImprimirMarca(Boolean imprimir, int escolha, boolean alugar, int escolhido) {
-		String marca[] = new String[BancoDados.MAX];
+	public static String[] ImprimirMarca() {
 
+		String marca[] = new String[BancoDados.MAX];
+		
 		for (int i = 0; i < BancoDados.MAX; i++)
 			if (BancoDados.cadastrarCarro[i] != null) {
 				for (int a = 0; a < BancoDados.MAX; a++) {
@@ -94,45 +129,66 @@ public class Carro {
 						break;
 				}
 			}
-
-		if (imprimir == true) {
-			for (int i = 0; i < BancoDados.MAX; i++)
-				if (marca[i] != null)
-					System.out.println(" " + i + "- " + marca[i]);
-				else
-					return i;
-		} else if (alugar == false) {
-			return ImprimirCarroMarca(marca[escolha], false, 0);
-		} else
-			return ImprimirCarroMarca(marca[escolha], true, escolhido);
-
-		return 0;
+		return marca;
 	}
 
-	public static int ImprimirCarroMarca(String marca, boolean alugar, int escolha) {
+	public static String[] ImprimirCarroMarca(String marca) {
 		int cont = 0;
-
-		if (alugar == false) {
-			for (int a = 0; a < BancoDados.MAX; a++)
-				if (BancoDados.cadastrarCarro[a] != null)
-					if (BancoDados.cadastrarCarro[a].getMarca().equals(marca) == true) {
-						cont = cont + 1;
-						System.out.println(" " + cont + "- " + BancoDados.cadastrarCarro[a].getModelo());
-					}
-		} else {
-			for (int a = 0; a < BancoDados.MAX; a++)
-				if (BancoDados.cadastrarCarro[a] != null)
-					if (BancoDados.cadastrarCarro[a].getMarca().equals(marca) == true) {
-						cont = cont + 1;
-						if (escolha == cont)
-							return a;
-					}
+		
+		String[] CarroMarca = new String[BancoDados.MAX];
+		
+		for(int i = 0; i < BancoDados.MAX; i++) {
+			UsuarioAlugar.Carros[i] = null;
 		}
-
-		return cont;
+		
+		for (int a = 0; a < BancoDados.MAX; a++)
+			if (BancoDados.cadastrarCarro[a] != null)
+				if (BancoDados.cadastrarCarro[a].getMarca().equals(marca) == true) {
+					CarroMarca[cont] = BancoDados.cadastrarCarro[a].getModelo();
+					UsuarioAlugar.Carros[cont] = BancoDados.cadastrarCarro[a];
+					cont++;
+				}
+		return CarroMarca;
 	}
 
+	public static String[] ImprimirCarroClasse(String classe) {
+		int cont = 0;
+		
+		String[] CarroClasse = new String[BancoDados.MAX];
+		
+		for(int i = 0; i < BancoDados.MAX; i++) {
+			UsuarioAlugar.Carros[i] = null;
+		}
+		
+		for (int a = 0; a < BancoDados.MAX; a++)
+			if (BancoDados.cadastrarCarro[a] != null)
+				if (BancoDados.cadastrarCarro[a].getClasse().getNome().equals(classe) == true) {
+					CarroClasse[cont] = BancoDados.cadastrarCarro[a].getModelo();
+					UsuarioAlugar.Carros[cont] = BancoDados.cadastrarCarro[a];
+					cont++;
+				}
+		return CarroClasse;
+	}
 
+	public static String[] ImprimirCarroModelo(String modelo) {
+		int cont = 0;
+		
+		for(int i = 0; i < BancoDados.MAX; i++) {
+			UsuarioAlugar.Carros[i] = null;
+		}
+		
+		String[] CarroModelo = new String[BancoDados.MAX];
+		
+		for (int a = 0; a < BancoDados.MAX; a++)
+			if (BancoDados.cadastrarCarro[a] != null)
+				if (BancoDados.cadastrarCarro[a].getModelo().equals(modelo) == true) {
+					CarroModelo[cont] = BancoDados.cadastrarCarro[a].getModelo();
+					UsuarioAlugar.Carros[cont] = BancoDados.cadastrarCarro[a];
+					cont++;
+				}
+		return CarroModelo;
+	}
+	
 	public boolean isAlugado() {
 		return alugado;
 	}

@@ -87,8 +87,8 @@ public class BancoDados {
 		// ====================================
 		// --------------------------------------------------------------------------------
 
-		cadastrarCarro[0] = new Carro(cadastrarClasse[0], "marca", "modelo", "cor", 500, "placa", true, 2, false, 2, 2,
-				true, 1, 50, 2);
+		cadastrarCarro[0] = new Carro(cadastrarClasse[0], "ford", "fiesta", "preto", 300, "MAD-2809", false, 5, false,
+				1, 1, false, 2, 0, 1);
 
 		// SEDA
 		cadastrarCarro[1] = new Carro(cadastrarClasse[0], "ford", "fiesta", "preto", 300, "MAD-2809", false, 5, false,
@@ -140,11 +140,11 @@ public class BancoDados {
 		// ==================================
 		// --------------------------------------------------------------------------------
 		
-		cadastrarAgencia[0] = new Agencia("AG001", "Rua 3", "35", "Bairro principal", "Cidade de Deus",
+		cadastrarAgencia[0] = new Agencia("AG001", "Rua 3", "35", "Bairro principal", "São Paulo",
 				"Estado do bem", "Melhor Pais");
-		cadastrarAgencia[1] = new Agencia("AG002", "Rua 3", "35", "Bairro principal", "Cidade de Deus",
+		cadastrarAgencia[1] = new Agencia("AG002", "Rua 3", "35", "Bairro principal", "Brasília",
 				"Estado do bem", "Melhor Pais");
-		cadastrarAgencia[2] = new Agencia("AG003", "Rua 3", "35", "Bairro principal", "Cidade de Deus",
+		cadastrarAgencia[2] = new Agencia("AG003", "Rua 3", "35", "Bairro principal", "Manaus",
 				"Estado do bem", "Melhor Pais");
 		
 		
@@ -157,15 +157,19 @@ public class BancoDados {
 		Agencia.VincularCarroBD(cadastrarCarro[3], cadastrarAgencia[0]);
 		Agencia.VincularCarroBD(cadastrarCarro[5], cadastrarAgencia[0]);
 		
-		Agencia.VincularCarroBD(cadastrarCarro[0], cadastrarAgencia[1]);
-		Agencia.VincularCarroBD(cadastrarCarro[3], cadastrarAgencia[1]);
-		Agencia.VincularCarroBD(cadastrarCarro[5], cadastrarAgencia[1]);
+		Agencia.VincularCarroBD(cadastrarCarro[1], cadastrarAgencia[1]);
 		Agencia.VincularCarroBD(cadastrarCarro[6], cadastrarAgencia[1]);
 		Agencia.VincularCarroBD(cadastrarCarro[10], cadastrarAgencia[1]);
 		Agencia.VincularCarroBD(cadastrarCarro[12], cadastrarAgencia[1]);
 		
-		for (int i = 0; i < 15; i++)
-			Agencia.VincularCarroBD(cadastrarCarro[i], cadastrarAgencia[2]);
+		Agencia.VincularCarroBD(cadastrarCarro[2], cadastrarAgencia[2]);
+		Agencia.VincularCarroBD(cadastrarCarro[4], cadastrarAgencia[2]);
+		Agencia.VincularCarroBD(cadastrarCarro[7], cadastrarAgencia[2]);
+		Agencia.VincularCarroBD(cadastrarCarro[8], cadastrarAgencia[2]);
+		Agencia.VincularCarroBD(cadastrarCarro[9], cadastrarAgencia[2]);
+		Agencia.VincularCarroBD(cadastrarCarro[11], cadastrarAgencia[2]);
+		Agencia.VincularCarroBD(cadastrarCarro[13], cadastrarAgencia[2]);
+		Agencia.VincularCarroBD(cadastrarCarro[14], cadastrarAgencia[2]);
 		
 	}
 }
