@@ -7,7 +7,6 @@ public class CadeiraCrianca {
 	private int identificacao;
 	private int idade;
 	private int tamanho;
-	private Image foto;
 	private int valor;
 	
 	public CadeiraCrianca(int id, int idade, int tam, int valor) {
@@ -37,12 +36,6 @@ public class CadeiraCrianca {
 	}
 	public void setTamanho(int tamanho) {
 		this.tamanho = tamanho;
-	}
-	public Image getFoto() {
-		return foto;
-	}
-	public void setFoto(Image foto) {
-		this.foto = foto;
 	}
 	public int getValor() {
 		return valor;

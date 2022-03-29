@@ -42,7 +42,7 @@ public class UsuarioAlugar extends JFrame {
 
 	public static int Index = 0;
 	public static int IndexList1 = 0;
-	public static int IndexList2 = 0;
+	public static int IndexList2 = -1;
 
 	public static Carro[] Carros = new Carro[BancoDados.MAX];
 
@@ -133,11 +133,6 @@ public class UsuarioAlugar extends JFrame {
 
 		list_1.addListSelectionListener(e -> {
 			IndexList2 = list_1.getSelectedIndex();
-
-			if (Carros[IndexList2] != null) {
-				System.out.println("Carro escolhido é um " + Carros[IndexList2].getModelo());
-				MostrarCarro.Construtor(Carros[IndexList2]);
-			}
 		});
 
 		JScrollPane scrollPane2 = new JScrollPane(list_1);
@@ -184,12 +179,22 @@ public class UsuarioAlugar extends JFrame {
 		lblNewLabel_1.setBounds(10, 25, 180, 21);
 		contentPane.add(lblNewLabel_1);
 
-		JButton btnNewButton = new JButton("ALUGAR");
-		btnNewButton.setForeground(new Color(0, 0, 0));
-		btnNewButton.setBackground(SystemColor.activeCaptionBorder);
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnNewButton.setBounds(437, 90, 103, 37);
-		contentPane.add(btnNewButton);
+		JButton btnAlugar = new JButton("ALUGAR");
+		btnAlugar.setForeground(new Color(0, 0, 0));
+		btnAlugar.setBackground(SystemColor.activeCaptionBorder);
+		btnAlugar.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnAlugar.setBounds(437, 90, 103, 37);
+		contentPane.add(btnAlugar);
+		
+		btnAlugar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (IndexList2 != -1) {
+					if (Carros[IndexList2] != null) {
+						Alugar.Construtor(Carros[IndexList2]);
+					}
+				}
+			}
+		});
 
 		JButton btnDetalhar = new JButton("DETALHAR");
 		btnDetalhar.setForeground(Color.BLACK);
@@ -197,6 +202,16 @@ public class UsuarioAlugar extends JFrame {
 		btnDetalhar.setBackground(SystemColor.activeCaptionBorder);
 		btnDetalhar.setBounds(437, 138, 103, 37);
 		contentPane.add(btnDetalhar);
+
+		btnDetalhar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (IndexList2 != -1) {
+					if (Carros[IndexList2] != null) {
+						MostrarCarro.Construtor(Carros[IndexList2]);
+					}
+				}
+			}
+		});
 
 	}
 

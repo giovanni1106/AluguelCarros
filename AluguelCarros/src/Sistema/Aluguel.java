@@ -11,7 +11,6 @@ import veiculo.TarifasAd;
 
 public class Aluguel {
 
-	private int Identificacao;
 	private Usuario usuario;
 	private LocalRetirada retirada;
 	private LocalEntrega entrega;
@@ -21,9 +20,8 @@ public class Aluguel {
 	private int valorTotal;
 	private Pagamento pagamento;
 
-	public Aluguel(int id, Usuario usuario, LocalRetirada LR, LocalEntrega LE, Carro carro, int valorTotal) {
+	public Aluguel(Usuario usuario, LocalRetirada LR, LocalEntrega LE, Carro carro, int valorTotal) {
 
-		this.Identificacao = id; 
 		this.usuario = usuario;
 		this.carro = carro;
 		this.valorTotal = valorTotal;
@@ -32,20 +30,6 @@ public class Aluguel {
 		carro.setAlugado(true);
 
 	}
-
-	
-	
-	public int getIdentificacao() {
-		return Identificacao;
-	}
-
-
-
-	public void setIdentificacao(int identificacao) {
-		Identificacao = identificacao;
-	}
-
-
 
 	public Usuario getUsuario() {
 		return usuario;

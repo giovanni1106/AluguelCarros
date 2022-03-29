@@ -64,13 +64,39 @@ public class MostrarCarro extends JFrame {
 			Embreagem = "MANUAL";
 			break;
 			default:
+				Embreagem = "Desconhecida";
 				
 		}
-		String PortaMalas = null;
+		
+		
+		String PortaMalas = carro.getPortaMalas() + " Malas pequenas";
+		
+		System.out.println(carro.getPortaMalas());
+		
 		String Carga = null;
+		
+		if (carro.getCarga() == 0)
+			Carga = "0";
+		else
+			Carga = String.valueOf(carro.getCarga());
+		
 		String Combustivel = null;
 		
-		setBounds(100, 100, 600, 500);
+		switch(carro.getCombustivel()) {
+		case 1:
+			Combustivel = "Gasolina";
+			break;
+		case 2:
+			Combustivel = "Flex";
+			break;
+		case 3:
+			Combustivel = "Disel";
+			break;
+			default:
+				Combustivel = "Desconhecido";
+		}
+		
+		setBounds(100, 100, 420, 420);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -93,85 +119,40 @@ public class MostrarCarro extends JFrame {
 		modelo.setBounds(10, 176, 125, 14);
 		contentPane.add(modelo);
 
-		JLabel lblCor = new JLabel("Cor");
-		lblCor.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblCor.setBounds(491, 11, 46, 14);
-		contentPane.add(lblCor);
-
 		JLabel cor = new JLabel(Cor);
 		cor.setBounds(10, 230, 125, 14);
 		contentPane.add(cor);
 
-		JLabel lblKm = new JLabel("Km");
-		lblKm.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblKm.setBounds(491, 36, 46, 21);
-		contentPane.add(lblKm);
-
 		JLabel km = new JLabel(Km);
-		km.setBounds(103, 124, 125, 20);
+		km.setBounds(10, 284, 125, 20);
 		contentPane.add(km);
 
-		JLabel lblPlaca = new JLabel("Placa");
-		lblPlaca.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblPlaca.setBounds(491, 68, 46, 23);
-		contentPane.add(lblPlaca);
-
 		JLabel placa = new JLabel(Placa);
-		placa.setBounds(103, 156, 125, 22);
+		placa.setBounds(10, 344, 125, 22);
 		contentPane.add(placa);
 
-		JLabel lblNewLabel_6_1 = new JLabel("Assentos");
-		lblNewLabel_6_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_6_1.setBounds(491, 102, 70, 14);
-		contentPane.add(lblNewLabel_6_1);
-
 		JLabel assentos = new JLabel(Assentos);
-		assentos.setBounds(103, 190, 125, 14);
+		assentos.setBounds(281, 348, 125, 14);
 		contentPane.add(assentos);
 
-		JLabel lblNewLabel_6_1_1 = new JLabel("Dire\u00E7\u00E3o");
-		lblNewLabel_6_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_6_1_1.setBounds(491, 127, 70, 21);
-		contentPane.add(lblNewLabel_6_1_1);
-
 		JLabel direcao = new JLabel(Direcao);
-		direcao.setBounds(103, 215, 125, 14);
+		direcao.setBounds(281, 64, 125, 14);
 		contentPane.add(direcao);
 
-		JLabel lblNewLabel_6_1_1_1 = new JLabel("Embreagem");
-		lblNewLabel_6_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_6_1_1_1.setBounds(491, 159, 83, 19);
-		contentPane.add(lblNewLabel_6_1_1_1);
-
 		JLabel embreagem = new JLabel(Embreagem);
-		embreagem.setBounds(103, 247, 125, 18);
+		embreagem.setBounds(281, 122, 125, 18);
 		contentPane.add(embreagem);
 
-		JLabel lblNewLabel_6_1_1_2 = new JLabel("Porta Malas");
-		lblNewLabel_6_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_6_1_1_2.setBounds(491, 189, 83, 17);
-		contentPane.add(lblNewLabel_6_1_1_2);
-
 		JLabel portaMalas = new JLabel(PortaMalas);
-		portaMalas.setBounds(103, 277, 125, 16);
+		portaMalas.setBounds(281, 176, 125, 14);
 		contentPane.add(portaMalas);
 
-		JLabel lblNewLabel_6_1_1_3 = new JLabel("Carga");
-		lblNewLabel_6_1_1_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_6_1_1_3.setBounds(491, 217, 70, 21);
-		contentPane.add(lblNewLabel_6_1_1_3);
-
 		JLabel carga = new JLabel(Carga);
-		carga.setBounds(103, 308, 125, 14);
+		carga.setBounds(281, 230, 125, 14);
 		contentPane.add(carga);
 
-		JLabel lblNewLabel_6_1_1_4 = new JLabel("Combustivel");
-		lblNewLabel_6_1_1_4.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_6_1_1_4.setBounds(491, 245, 83, 14);
-		contentPane.add(lblNewLabel_6_1_1_4);
-
 		JLabel combustivel = new JLabel(Combustivel);
-		combustivel.setBounds(103, 333, 125, 13);
+		combustivel.setBounds(281, 284, 125, 13);
 		contentPane.add(combustivel);
 		
 		JLabel lblMarca = new JLabel("Marca");
@@ -189,9 +170,44 @@ public class MostrarCarro extends JFrame {
 		lblCor_1.setBounds(10, 201, 125, 18);
 		contentPane.add(lblCor_1);
 		
-		JLabel lblClasse_1 = new JLabel("Classe");
+		JLabel lblClasse_1 = new JLabel("Km");
 		lblClasse_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblClasse_1.setBounds(10, 255, 125, 18);
 		contentPane.add(lblClasse_1);
+		
+		JLabel lblClasse_1_1 = new JLabel("Placa");
+		lblClasse_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblClasse_1_1.setBounds(10, 315, 125, 18);
+		contentPane.add(lblClasse_1_1);
+		
+		JLabel lblClasse_1_2 = new JLabel("Assentos");
+		lblClasse_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblClasse_1_2.setBounds(281, 308, 125, 18);
+		contentPane.add(lblClasse_1_2);
+		
+		JLabel lblClasse_1_3 = new JLabel("Dire\u00E7\u00E3o");
+		lblClasse_1_3.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblClasse_1_3.setBounds(281, 35, 125, 18);
+		contentPane.add(lblClasse_1_3);
+		
+		JLabel lblClasse_1_4 = new JLabel("Embreagem");
+		lblClasse_1_4.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblClasse_1_4.setBounds(281, 89, 125, 18);
+		contentPane.add(lblClasse_1_4);
+		
+		JLabel lblClasse_1_5 = new JLabel("Porta Malas");
+		lblClasse_1_5.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblClasse_1_5.setBounds(281, 151, 125, 18);
+		contentPane.add(lblClasse_1_5);
+		
+		JLabel lblClasse_1_6 = new JLabel("Carga");
+		lblClasse_1_6.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblClasse_1_6.setBounds(281, 201, 125, 18);
+		contentPane.add(lblClasse_1_6);
+		
+		JLabel lblClasse_1_7 = new JLabel("Combustivel");
+		lblClasse_1_7.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblClasse_1_7.setBounds(281, 255, 125, 18);
+		contentPane.add(lblClasse_1_7);
 	}
 }
