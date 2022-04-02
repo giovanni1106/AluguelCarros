@@ -190,7 +190,7 @@ public class UsuarioAlugar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (IndexList2 != -1) {
 					if (Carros[IndexList2] != null) {
-						Alugar.Construtor(Carros[IndexList2]);
+						UsuarioAlugar2.Construtor(Carros[IndexList2]);
 					}
 				}
 			}

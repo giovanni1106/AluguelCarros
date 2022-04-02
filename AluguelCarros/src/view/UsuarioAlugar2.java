@@ -20,7 +20,7 @@ import java.awt.SystemColor;
 import veiculo.Carro;
 import Sistema.BancoDados;
 
-public class Alugar extends JFrame {
+public class UsuarioAlugar2 extends JFrame {
 
 	private JPanel contentPane;
 
@@ -31,7 +31,7 @@ public class Alugar extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Alugar frame = new Alugar(carro);
+					UsuarioAlugar2 frame = new UsuarioAlugar2(carro);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class Alugar extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Alugar(Carro carro) {
+	public UsuarioAlugar2(Carro carro) {
 		
 		setBounds(100, 100, 750, 550);
 		contentPane = new JPanel();
@@ -96,9 +96,9 @@ public class Alugar extends JFrame {
 		chckbxWifi.setBounds(10, 318, 227, 23);
 		panel.add(chckbxWifi);
 		
-		JButton btnNewButton_3 = new JButton("Valor total das tarifas");
-		btnNewButton_3.setBounds(10, 455, 227, 23);
-		panel.add(btnNewButton_3);
+		JButton btnValorTotalTarifas = new JButton("Valor total das tarifas");
+		btnValorTotalTarifas.setBounds(10, 455, 227, 23);
+		panel.add(btnValorTotalTarifas);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(SystemColor.menu);
@@ -227,15 +227,15 @@ public class Alugar extends JFrame {
 		carroEscolhido.setBounds(10, 11, 237, 38);
 		panel_2.add(carroEscolhido);
 		
-		JButton btnNewButton = new JButton("Confirmar Aluguel");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnNewButton.setBounds(10, 277, 237, 54);
-		panel_2.add(btnNewButton);
+		JButton btnConfirmarAluguel = new JButton("Confirmar Aluguel");
+		btnConfirmarAluguel.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnConfirmarAluguel.setBounds(10, 277, 237, 54);
+		panel_2.add(btnConfirmarAluguel);
 		
-		JButton btnPreoTotal = new JButton("Revis\u00E3o");
-		btnPreoTotal.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnPreoTotal.setBounds(10, 212, 237, 54);
-		panel_2.add(btnPreoTotal);
+		JButton btnRevisar = new JButton("Revisar pedido");
+		btnRevisar.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnRevisar.setBounds(10, 212, 237, 54);
+		panel_2.add(btnRevisar);
 		
 		JLabel nomeUsuario = new JLabel(BancoDados.cadastrarUsuario[BancoDados.pos].getNome());
 		nomeUsuario.setHorizontalAlignment(SwingConstants.CENTER);
