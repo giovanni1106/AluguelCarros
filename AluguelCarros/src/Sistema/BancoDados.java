@@ -10,7 +10,7 @@ public class BancoDados {
 
 	// Valor inteiro para definir o maximo de cadastros
 	public static int MAX = 1000;
-	
+
 	// Chave para poder cadastrar um Adm
 	public static String CHAVEADM = "X2iU7Ghl0@vbT";
 
@@ -20,16 +20,32 @@ public class BancoDados {
 	public static Carro cadastrarCarro[] = new Carro[MAX];
 	public static Classe cadastrarClasse[] = new Classe[MAX];
 	public static Agencia cadastrarAgencia[] = new Agencia[MAX];
-	
+
 	// Se o usuario conseguir logar
-	public static boolean Logado = false;	
-	
+	public static boolean Logado = false;
+
 	// Caso ele seja um Admin
 	public static boolean Administrador = false;
-	
+
 	// Posição do no Array do Usuario/Admin logado
 	public static int pos;
-	
+
+	public static Agencia[] ImprimirAgencias(Carro car) {
+		Agencia[] Agencias = new Agencia[MAX];
+		int cont = 0;
+
+		for (int i = 0; i < MAX; i++) {
+			for (int a = 0; a < MAX; a++)
+				if (cadastrarAgencia[i] != null)
+					if (cadastrarAgencia[i].carro[a] == car && Agencias[cont] != cadastrarAgencia[i]) {
+						Agencias[cont] = cadastrarAgencia[i];
+						cont++;
+					}
+		}
+
+		return Agencias;
+	}
+
 	public static int CadastrarUsu() {
 
 		for (int a = 0; a < MAX; a++)
@@ -38,7 +54,7 @@ public class BancoDados {
 
 		return -1;
 	}
-	
+
 	public static int CadastrarAdmin() {
 
 		for (int a = 0; a < MAX; a++)
@@ -47,16 +63,16 @@ public class BancoDados {
 
 		return -1;
 	}
-	
+
 	public static void DadosPreCadastrados() {
 
 		// ================================== USUARIOS
 		// ==================================
 		// --------------------------------------------------------------------------------
 
-		cadastrarUsuario[0] = new Usuario("Giovanni Alvissus Camargo Giampauli", "97413115085", "giovanni.acg@gmail.com", "Brasileiro", "Masculino",
-				"(12) 99638-9028", "gioacg", "giovanni1106", "Rua 3", "35", "Bairro principal", "Cidade de Deus",
-				"Estado do bem", "Melhor Pais");
+		cadastrarUsuario[0] = new Usuario("Giovanni Alvissus Camargo Giampauli", "97413115085",
+				"giovanni.acg@gmail.com", "Brasileiro", "Masculino", "(12) 99638-9028", "gioacg", "giovanni1106",
+				"Rua 3", "35", "Bairro principal", "Cidade de Deus", "Estado do bem", "Melhor Pais");
 		cadastrarUsuario[1] = new Usuario("Maria Luiza", "64626578047", "malu@gmail.com", "Brasileira", "Feminino",
 				"(61) 99650-2450", "malu1212", "malu2809", "Rua 4", "70", "Bairro da capital", "Cidade do amanha",
 				"Estado do mal", "País dos deuses");
@@ -72,16 +88,13 @@ public class BancoDados {
 		// ====================================
 		// --------------------------------------------------------------------------------
 
-		cadastrarClasse[0] = new Classe("SEDA", 90, "Porta malas espacoso", true, true, true, true, true, true, true);
+		cadastrarClasse[0] = new Classe("SEDA", 90, "Porta malas espacoso");
 
-		cadastrarClasse[1] = new Classe("PICAPE", 150, "Capaz de carregar cargas pesadas", true, true, true, true, true,
-				true, true);
+		cadastrarClasse[1] = new Classe("PICAPE", 150, "Capaz de carregar cargas pesadas");
 
-		cadastrarClasse[2] = new Classe("SUV", 180, "Grande para toda a familia", true, true, true, true, true, true,
-				true);
+		cadastrarClasse[2] = new Classe("SUV", 180, "Grande para toda a familia");
 
-		cadastrarClasse[3] = new Classe("MINIVAN", 200, "Para passeios longos", true, true, true, true, true, true,
-				true);
+		cadastrarClasse[3] = new Classe("MINIVAN", 200, "Para passeios longos");
 
 		// ==================================== CARROS
 		// ====================================
@@ -139,15 +152,13 @@ public class BancoDados {
 		// ================================== CADASTRAR AGENCIA
 		// ==================================
 		// --------------------------------------------------------------------------------
-		
-		cadastrarAgencia[0] = new Agencia("AG001", "Rua 3", "35", "Bairro principal", "São Paulo",
-				"Estado do bem", "Melhor Pais");
-		cadastrarAgencia[1] = new Agencia("AG002", "Rua 3", "35", "Bairro principal", "Brasília",
-				"Estado do bem", "Melhor Pais");
-		cadastrarAgencia[2] = new Agencia("AG003", "Rua 3", "35", "Bairro principal", "Manaus",
-				"Estado do bem", "Melhor Pais");
-		
-		
+
+		cadastrarAgencia[0] = new Agencia("AG001", "Rua 3", "35", "Bairro principal", "São Paulo", "Estado do bem",
+				"Melhor Pais");
+		cadastrarAgencia[1] = new Agencia("AG002", "Rua 3", "35", "Bairro principal", "Brasília", "Estado do bem",
+				"Melhor Pais");
+		cadastrarAgencia[2] = new Agencia("AG003", "Rua 3", "35", "Bairro principal", "Manaus", "Estado do bem",
+				"Melhor Pais");
 
 		// ================================== VINCULAR VEICULOS COM AGENCIA
 		// ==================================
@@ -156,12 +167,12 @@ public class BancoDados {
 		Agencia.VincularCarroBD(cadastrarCarro[0], cadastrarAgencia[0]);
 		Agencia.VincularCarroBD(cadastrarCarro[3], cadastrarAgencia[0]);
 		Agencia.VincularCarroBD(cadastrarCarro[5], cadastrarAgencia[0]);
-		
+
 		Agencia.VincularCarroBD(cadastrarCarro[1], cadastrarAgencia[1]);
 		Agencia.VincularCarroBD(cadastrarCarro[6], cadastrarAgencia[1]);
 		Agencia.VincularCarroBD(cadastrarCarro[10], cadastrarAgencia[1]);
 		Agencia.VincularCarroBD(cadastrarCarro[12], cadastrarAgencia[1]);
-		
+
 		Agencia.VincularCarroBD(cadastrarCarro[2], cadastrarAgencia[2]);
 		Agencia.VincularCarroBD(cadastrarCarro[4], cadastrarAgencia[2]);
 		Agencia.VincularCarroBD(cadastrarCarro[7], cadastrarAgencia[2]);
@@ -170,6 +181,6 @@ public class BancoDados {
 		Agencia.VincularCarroBD(cadastrarCarro[11], cadastrarAgencia[2]);
 		Agencia.VincularCarroBD(cadastrarCarro[13], cadastrarAgencia[2]);
 		Agencia.VincularCarroBD(cadastrarCarro[14], cadastrarAgencia[2]);
-		
+
 	}
 }

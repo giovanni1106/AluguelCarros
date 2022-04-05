@@ -16,17 +16,20 @@ import java.awt.Color;
 import javax.swing.JProgressBar;
 import javax.swing.JCheckBox;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
+import java.util.Calendar;
+import java.text.DateFormat;
 
 import veiculo.Carro;
 import Sistema.BancoDados;
+import veiculo.Agencia;
 
 public class UsuarioAlugar2 extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void Construtor(Carro carro) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -40,10 +43,14 @@ public class UsuarioAlugar2 extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public UsuarioAlugar2(Carro carro) {
+		
+		int cont = 0;
+		
+		Calendar DataAtual = Calendar.getInstance();
+		int anoAtual = DataAtual.get(Calendar.YEAR);
+		int mesAtual = DataAtual.get(Calendar.MONTH);
+		int diaAtual = DataAtual.get(Calendar.DAY_OF_MONTH);
 		
 		setBounds(100, 100, 750, 550);
 		contentPane = new JPanel();
@@ -119,13 +126,26 @@ public class UsuarioAlugar2 extends JFrame {
 		lblAgencia_2.setBounds(10, 53, 170, 16);
 		panel_1.add(lblAgencia_2);
 		
-		JComboBox comboRetirada = new JComboBox();
+		JComboBox<String> comboRetirada = new JComboBox<String>();
 		comboRetirada.setBounds(10, 80, 170, 22);
 		panel_1.add(comboRetirada);
+		
+		Agencia[] Agencias = BancoDados.ImprimirAgencias(carro);
+		
+		cont = 0;
+		while (Agencias[cont] != null) {
+			comboRetirada.addItem(Agencias[cont].getIdentificacao());
+			cont ++;
+		}
 		
 		JButton btnEnderecoRetirada = new JButton("Endere\u00E7o");
 		btnEnderecoRetirada.setBounds(10, 113, 170, 23);
 		panel_1.add(btnEnderecoRetirada);
+		btnEnderecoRetirada.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EnderecoAgencia.Construtor(Agencias[comboRetirada.getSelectedIndex()]);
+			}
+		});
 		
 		JLabel lblDataRetirada_2 = new JLabel("Dia");
 		lblDataRetirada_2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -149,13 +169,23 @@ public class UsuarioAlugar2 extends JFrame {
 		comboAnoRetirada.setBounds(120, 174, 60, 22);
 		panel_1.add(comboAnoRetirada);
 		
+		comboAnoRetirada.addItem(anoAtual);
+		
 		JComboBox comboMesRetirada = new JComboBox();
 		comboMesRetirada.setBounds(65, 174, 45, 22);
 		panel_1.add(comboMesRetirada);
 		
+		for(int i = 0; i < Math.abs(mesAtual-12); i++) {
+			comboMesRetirada.addItem(mesAtual+i+1);
+		}
+		
 		JComboBox comboDiaRetirada = new JComboBox();
 		comboDiaRetirada.setBounds(10, 174, 45, 22);
 		panel_1.add(comboDiaRetirada);
+		
+		for(int i = 0; i < 31; i++) {
+			comboDiaRetirada.addItem(i+1);
+		}
 		
 		JPanel panel_1_1 = new JPanel();
 		panel_1_1.setLayout(null);
@@ -176,13 +206,24 @@ public class UsuarioAlugar2 extends JFrame {
 		lblAgencia_1_1_1.setBounds(10, 53, 170, 16);
 		panel_1_1.add(lblAgencia_1_1_1);
 		
-		JComboBox comboEntrega = new JComboBox();
+		JComboBox<String> comboEntrega = new JComboBox<String>();
 		comboEntrega.setBounds(10, 80, 170, 22);
 		panel_1_1.add(comboEntrega);
 		
+		cont = 0;
+		while(BancoDados.cadastrarAgencia[cont] != null) {
+			comboEntrega.addItem(BancoDados.cadastrarAgencia[cont].getIdentificacao());
+			cont ++;
+		}
+
 		JButton btnEnderecoEntrega = new JButton("Endere\u00E7o");
 		btnEnderecoEntrega.setBounds(10, 113, 170, 23);
 		panel_1_1.add(btnEnderecoEntrega);
+		btnEnderecoEntrega.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EnderecoAgencia.Construtor(BancoDados.cadastrarAgencia[comboEntrega.getSelectedIndex()]);
+			}
+		});
 		
 		JLabel lblDataRetirada_1_1_1 = new JLabel("Dia");
 		lblDataRetirada_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -201,18 +242,30 @@ public class UsuarioAlugar2 extends JFrame {
 		lblAno_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblAno_1_1_1.setBounds(120, 147, 60, 16);
 		panel_1_1.add(lblAno_1_1_1);
-		
+
 		JComboBox comboAnoEntrega = new JComboBox();
 		comboAnoEntrega.setBounds(120, 174, 60, 22);
 		panel_1_1.add(comboAnoEntrega);
+		
+		for(int i = 0; i < 2; i++) {
+			comboAnoEntrega.addItem(anoAtual+i);
+		}
 		
 		JComboBox comboMesEntrega = new JComboBox();
 		comboMesEntrega.setBounds(65, 174, 45, 22);
 		panel_1_1.add(comboMesEntrega);
 		
+		for(int i = 0; i < 12; i++) {
+			comboMesEntrega.addItem(i+1);
+		}
+		
 		JComboBox comboDiaEntrega = new JComboBox();
 		comboDiaEntrega.setBounds(10, 174, 45, 22);
 		panel_1_1.add(comboDiaEntrega);
+		
+		for(int i = 0; i < 31; i++) {
+			comboDiaEntrega.addItem(i+1);
+		}
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 3));

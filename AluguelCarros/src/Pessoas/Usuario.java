@@ -256,15 +256,15 @@ public class Usuario {
 
 		String[] Dados = new String[10];
 
-		Dados[0] = (" Nome: " + getNome());
-		Dados[1] = (" CPF: " + imprimeCPF(getCpf()));
-		Dados[2] = (" Celular: " + getCelular());
-		Dados[3] = (" E-mail: " + getEmail());
-		Dados[4] = (" Endereço: " + getEndereco().getLogradouro() + ", " + getEndereco().getNumero() + ", "
+		Dados[0] = (getNome());
+		Dados[1] = (imprimeCPF(getCpf()));
+		Dados[2] = (getCelular());
+		Dados[3] = (getEmail());
+		Dados[4] = (getEndereco().getLogradouro() + ", " + getEndereco().getNumero() + ", "
 				+ getEndereco().getBairro() + ", " + getEndereco().getCidade() + ", " + getEndereco().getEstado() + ", "
 				+ getEndereco().getPais());
 		Dados[5] = (" Cartão de Crédito: ");
-		Dados[6] = ("Genero: " + getGenero());
+		Dados[6] = (getGenero());
 		return Dados;
 	}
 

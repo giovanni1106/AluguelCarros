@@ -47,68 +47,6 @@ public class Agencia {
 		return Cidades;
 	}
 
-	public static void Cadastrar() {
-
-		String identificacao;
-		String logradouro;
-		String numero;
-		String bairro;
-		String cidade;
-		String estado;
-		String pais;
-
-		System.out.print(" Identificacao: ");
-		identificacao = ler.nextLine();
-
-		System.out.print(" Logradouro: ");
-		logradouro = ler.nextLine();
-
-		System.out.print(" Numero: ");
-		numero = ler.nextLine();
-
-		System.out.print(" Bairro: ");
-		bairro = ler.nextLine();
-
-		System.out.print(" Cidade: ");
-		cidade = ler.nextLine();
-
-		System.out.print(" Estado: ");
-		estado = ler.nextLine();
-
-		System.out.print(" Pais: ");
-		pais = ler.nextLine();
-
-		int num = 0;
-
-		for (int a = 0; a < BancoDados.MAX; a++)
-			if (BancoDados.cadastrarAgencia[a] == null) {
-				num = a;
-				break;
-			}
-
-		BancoDados.cadastrarAgencia[num] = new Agencia(identificacao, logradouro, numero, bairro, cidade, estado, pais);
-
-		System.out.println(" Agencia cadastrada com sucesso!");
-	}
-
-	public static void Excluir() {
-		int total = Imprimir();
-		int escolha;
-
-		System.out.print(" Agencia que deseja excluir (0-" + total + "): ");
-		escolha = ler.nextInt();
-
-		BancoDados.cadastrarAgencia[escolha] = null;
-
-		for (int a = 0; a < BancoDados.MAX - 1; a++)
-			if (BancoDados.cadastrarAgencia[a] == null && BancoDados.cadastrarAgencia[a + 1] != null) {
-				BancoDados.cadastrarAgencia[a] = BancoDados.cadastrarAgencia[a + 1];
-				BancoDados.cadastrarAgencia[a + 1] = null;
-			}
-
-		System.out.println(" Agencia excluida com sucesso!");
-	}
-
 	public static int Imprimir() {
 		int a;
 
@@ -142,7 +80,7 @@ public class Agencia {
 
 		Agencia A = BancoDados.cadastrarAgencia[escolha1];
 
-		// repassar carros para posição de "cima"
+		// repassar carros para posição anterior
 		for (int a = 0; a < BancoDados.MAX - 1; a++)
 			if (A.carro[a] == null && A.carro[a + 1] != null) {
 				A.carro[a] = A.carro[a + 1];
@@ -240,6 +178,15 @@ public class Agencia {
 
 	public void setPais(String pais) {
 		this.pais = pais;
+	}
+	
+	public String getEndereco() {
+		String Endereco = "";
+		
+		
+		Endereco = getLogradouro() + ", " + getNumero() + ", " + getBairro() + ", " + getCidade() + ", " + getEstado() + ", " + getPais();
+		
+		return Endereco;
 	}
 
 }
