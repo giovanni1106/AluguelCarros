@@ -89,7 +89,7 @@ public class MenuAdmin extends JFrame {
 		btnEditar.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				
+				MenuCarros.Construtor();
 			}
 		});
 		

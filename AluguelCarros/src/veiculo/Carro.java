@@ -49,6 +49,28 @@ public class Carro {
 		this.alugado = false;
 
 	}
+	
+	public static void Editar(int escolha, String dado, Carro car, Classe cl) {
+		switch(escolha) {
+		case 0:
+			// classe
+			if(cl != null)
+				car.setClasse(cl);
+			break;
+		case 1:
+			// cor
+			car.setCor(dado.toUpperCase());
+			break;
+		case 2:
+			// km
+			car.setKm(Integer.parseInt(dado));
+			break;
+		case 3:
+			// placa
+			car.setPlaca(dado.toUpperCase());
+			break;
+		}
+	}
 
 	public static void Excluir(int escolha) {
 
