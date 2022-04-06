@@ -4,47 +4,25 @@ import Sistema.Aluguel;
 
 public class Fidelidade {
 
-	
-	private Usuario usuario;
-	private Aluguel aluguel;
-	private int quantidade;
+	private int pontos;
 	private float desconto;
 	
-	public Fidelidade(Usuario us, Aluguel al, int qtd) {
+	public Fidelidade(int pontos) {
 		
-		this.usuario = us;
-		this.aluguel = al;
-		this.quantidade = qtd;
-		
+		this.setPontos(pontos);
 	}
 	
-	public void getUsuario() {
-		usuario.getFidelidade().quantidade += 1;
+	public int getPontos() {
+		return pontos;
 	}
 	
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-	
-	public Aluguel getAluguel() {
-		return aluguel;
-	}
-	
-	public void setAluguel(Aluguel aluguel) {
-		this.aluguel = aluguel;
-	}
-	
-	public int getQuantidade() {
-		return quantidade;
-	}
-	
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
+	public void setPontos(int pontos) {
+		this.pontos += pontos;
 	}
 	
 	public float getDesconto() {
 		
-		int qtd = quantidade;
+		int qtd = pontos;
 		float contador = 1;
 		
 		for(int a = 0; a < qtd; a++) {
@@ -57,7 +35,7 @@ public class Fidelidade {
 	}
 	
 	public void setDesconto(float desconto) {
-		this.desconto = desconto;
+		this.desconto += desconto;
 	}
 	
 	
