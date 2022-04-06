@@ -67,6 +67,15 @@ public class BancoDados {
 
 		return -1;
 	}
+	
+	public static int CadastrarCarro() {
+
+		for (int a = 0; a < MAX; a++)
+			if (cadastrarCarro[a] == null)
+				return a;
+
+		return -1;
+	}
 
 	public static void DadosPreCadastrados() {
 
@@ -105,53 +114,53 @@ public class BancoDados {
 		// --------------------------------------------------------------------------------
 
 		cadastrarCarro[0] = new Carro(cadastrarClasse[0], "ford", "fiesta", "preto", 300, "MAD-2809", false, 5, false,
-				1, 1, false, 2, 0, 1);
+				1, 1, false, 2, 0, 1, 2010);
 
 		// SEDA
 		cadastrarCarro[1] = new Carro(cadastrarClasse[0], "ford", "fiesta", "preto", 300, "MAD-2809", false, 5, false,
-				1, 1, false, 2, 0, 1);
+				1, 1, false, 2, 0, 1, 2012);
 
 		cadastrarCarro[2] = new Carro(cadastrarClasse[0], "fiat", "uno", "verde", 500, "GHA-5675", true, 5, false, 1, 1,
-				false, 2, 2, 1);
+				false, 2, 2, 1, 2020);
 
 		cadastrarCarro[3] = new Carro(cadastrarClasse[0], "chevrolet", "onix", "prata", 200, "FGH-3267", true, 5, true,
-				2, 1, true, 2, 0, 2);
+				2, 1, true, 2, 0, 2, 2022);
 
 		cadastrarCarro[4] = new Carro(cadastrarClasse[0], "hyundai", "hb20", "vermelho", 100, "KFT-3736", true, 5, true,
-				2, 1, true, 2, 0, 2);
+				2, 1, true, 2, 0, 2, 2018);
 
 		// PICAPE
 		cadastrarCarro[5] = new Carro(cadastrarClasse[1], "fiat", "strada", "azul", 3000, "OTH-8368", true, 2, true, 0,
-				1, true, 2, 700, 1);
+				1, true, 2, 700, 1, 2018);
 
 		cadastrarCarro[6] = new Carro(cadastrarClasse[1], "volkswagen", "saveiro", "prata", 6000, "KJS-2375", true, 2,
-				true, 0, 1, true, 2, 700, 1);
+				true, 0, 1, true, 2, 700, 1, 2018);
 
 		cadastrarCarro[7] = new Carro(cadastrarClasse[1], "toyota", "hilux", "preto", 4000, "JER-4363", true, 5, true,
-				0, 2, true, 2, 1000, 2);
+				0, 2, true, 2, 1000, 2, 2018);
 
 		cadastrarCarro[8] = new Carro(cadastrarClasse[1], "ford", "ranger", "vermelho", 3000, "EWY-2467", true, 5, true,
-				0, 2, true, 2, 1000, 2);
+				0, 2, true, 2, 1000, 2, 2018);
 
 		// SUV
 		cadastrarCarro[9] = new Carro(cadastrarClasse[2], "ford", "ecosport", "azul", 1000, "JFO-3885", true, 5, true,
-				4, 2, true, 1, 0, 2);
+				4, 2, true, 1, 0, 2, 2018);
 
 		cadastrarCarro[10] = new Carro(cadastrarClasse[2], "renault", "duster", "prata", 5000, "TGH-3256", true, 5,
-				true, 4, 2, true, 1, 0, 2);
+				true, 4, 2, true, 1, 0, 2, 2010);
 
 		cadastrarCarro[11] = new Carro(cadastrarClasse[2], "hyundai", "tucson", "preto", 200, "WFG-2345", true, 7, true,
-				6, 2, true, 1, 0, 3);
+				6, 2, true, 1, 0, 3, 2016);
 
 		cadastrarCarro[12] = new Carro(cadastrarClasse[2], "jeep", "compassLongitude", "vermelho", 700, "MCG-2347",
-				true, 7, true, 6, 2, true, 1, 0, 3);
+				true, 7, true, 6, 2, true, 1, 0, 3, 2020);
 
 		// MINIVAN
 		cadastrarCarro[13] = new Carro(cadastrarClasse[3], "fiat", "doblo", "preto", 4500, "KFG-4578", true, 7, true, 2,
-				1, true, 2, 0, 1);
+				1, true, 2, 0, 1, 2019);
 
 		cadastrarCarro[14] = new Carro(cadastrarClasse[3], "chevrolet", "spin", "prata", 5000, "DFR-4853", true, 7,
-				true, 4, 2, true, 1, 0, 2);
+				true, 4, 2, true, 1, 0, 2, 2016);
 
 		// ================================== CADASTRAR AGENCIA
 		// ==================================

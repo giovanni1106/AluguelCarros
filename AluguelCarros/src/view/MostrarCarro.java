@@ -84,14 +84,16 @@ public class MostrarCarro extends JFrame {
 		
 		switch(carro.getCombustivel()) {
 		case 1:
-			Combustivel = "Gasolina";
+			Combustivel = "GASOLINA";
 			break;
 		case 2:
-			Combustivel = "Flex";
+			Combustivel = "FLEX";
 			break;
 		case 3:
-			Combustivel = "Disel";
+			Combustivel = "DISEL";
 			break;
+		case 4:
+			Combustivel = "ELÉTRICO";
 			default:
 				Combustivel = "Desconhecido";
 		}

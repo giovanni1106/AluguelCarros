@@ -27,9 +27,10 @@ public class Carro {
 	private int combustivel;
 	private Image foto;
 	private boolean alugado;
+	private int ano;
 
 	public Carro(Classe cl, String ma, String mo, String co, int km, String pl, boolean ai, int as, boolean vi, int po,
-			int di, boolean ar, int em, int ca, int com) {
+			int di, boolean ar, int em, int ca, int com, int ano) {
 
 		this.classe = cl;
 		this.marca = ma.toUpperCase();
@@ -46,8 +47,8 @@ public class Carro {
 		this.embreagem = em;
 		this.carga = ca;
 		this.combustivel = com;
+		this.ano = ano;
 		this.alugado = false;
-
 	}
 	
 	public static void Editar(int escolha, String dado, Carro car, Classe cl) {

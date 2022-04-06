@@ -86,7 +86,7 @@ public class MenuCarros extends JFrame {
 		panel.add(btnPerfil);
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UsuarioPerfil.Construtor(BancoDados.cadastrarUsuario[comboBox.getSelectedIndex()]);
+				CarroCadastrar.Construtor();
 			}
 		});
 		
