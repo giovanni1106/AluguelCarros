@@ -79,6 +79,11 @@ public class MenuCarros extends JFrame {
 		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnExcluir.setBounds(219, 169, 185, 59);
 		panel.add(btnExcluir);
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CarroExcluir.Construtor(BancoDados.cadastrarCarro[comboBox.getSelectedIndex()]);
+			}
+		});
 		
 		JButton btnPerfil = new JButton("Cadastrar");
 		btnPerfil.setFont(new Font("Tahoma", Font.PLAIN, 15));

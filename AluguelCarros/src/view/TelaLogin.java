@@ -27,6 +27,7 @@ import java.awt.Font;
 import Sistema.Login;
 import Sistema.BancoDados;
 import viewAdmin.MenuAdmin;
+import java.awt.SystemColor;
 
 
 
@@ -43,7 +44,7 @@ public class TelaLogin extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 500);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.ORANGE);
+		contentPane.setBackground(SystemColor.activeCaption);
 		contentPane.setToolTipText("");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

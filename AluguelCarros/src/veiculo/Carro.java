@@ -73,19 +73,22 @@ public class Carro {
 		}
 	}
 
-	public static void Excluir(int escolha) {
-
-		if (BancoDados.cadastrarCarro[escolha] != null)
-			BancoDados.cadastrarCarro[escolha] = null;
+	public static boolean Excluir(Carro car) {
+		boolean excluir = false;
+		
+		for(int i = 0; i < BancoDados.MAX; i++)
+			if (BancoDados.cadastrarCarro[i] == car) {
+				BancoDados.cadastrarCarro[i] = null;
+				excluir = true;
+			}
 
 		for (int i = 0; i < MAX - 1; i++)
 			if (BancoDados.cadastrarCarro[i] == null && BancoDados.cadastrarCarro[i + 1] != null) {
 				BancoDados.cadastrarCarro[i] = BancoDados.cadastrarCarro[i + 1];
 				BancoDados.cadastrarCarro[i + 1] = null;
 			}
-
-		System.out.println(" Carro excluido com sucesso");
-
+		
+		return excluir;
 	}
 
 	
