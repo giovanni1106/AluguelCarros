@@ -5,6 +5,8 @@ import Pessoas.Usuario;
 import veiculo.Agencia;
 import veiculo.Carro;
 import veiculo.Classe;
+import veiculo.CadeiraCrianca;
+import veiculo.SeguroCarro;
 
 public class BancoDados {
 
@@ -20,6 +22,8 @@ public class BancoDados {
 	public static Carro cadastrarCarro[] = new Carro[MAX];
 	public static Classe cadastrarClasse[] = new Classe[MAX];
 	public static Agencia cadastrarAgencia[] = new Agencia[MAX];
+	public static CadeiraCrianca cadastrarCadeira[] = new CadeiraCrianca[MAX];
+	public static SeguroCarro cadastrarSeguro[] = new SeguroCarro[MAX];
 
 	// Se o usuario conseguir logar
 	public static boolean Logado = false;
@@ -181,6 +185,23 @@ public class BancoDados {
 		Agencia.VincularCarroBD(cadastrarCarro[11], cadastrarAgencia[2]);
 		Agencia.VincularCarroBD(cadastrarCarro[13], cadastrarAgencia[2]);
 		Agencia.VincularCarroBD(cadastrarCarro[14], cadastrarAgencia[2]);
+
+		// ================================== CADASTRAR CADEIRAS
+		// ==================================
+		// --------------------------------------------------------------------------------
+
+		cadastrarCadeira[0] = new CadeiraCrianca("Cadeira 1", 8, 5);
+		cadastrarCadeira[1] = new CadeiraCrianca("Cadeira 2", 10, 10);
+		cadastrarCadeira[2] = new CadeiraCrianca("Cadeira 3", 3, 5);
+		cadastrarCadeira[3] = new CadeiraCrianca("Cadeira 4", 1, 10);
+
+		// ================================== CADASTRAR SEGURO
+		// ==================================
+		// --------------------------------------------------------------------------------
+		
+		cadastrarSeguro[0] = new SeguroCarro("Seguro 1", "Muita coisa", 200);
+		cadastrarSeguro[1] = new SeguroCarro("Seguro 2", "Coisa", 100);
+		cadastrarSeguro[2] = new SeguroCarro("Seguro 3", "Pouca coisa", 50);
 
 	}
 }

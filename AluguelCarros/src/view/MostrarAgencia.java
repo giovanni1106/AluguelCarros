@@ -12,7 +12,7 @@ import javax.swing.SwingConstants;
 
 import veiculo.Agencia;
 
-public class EnderecoAgencia extends JFrame {
+public class MostrarAgencia extends JFrame {
 
 	private JPanel contentPane;
 
@@ -23,7 +23,7 @@ public class EnderecoAgencia extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EnderecoAgencia frame = new EnderecoAgencia(agencia);
+					MostrarAgencia frame = new MostrarAgencia(agencia);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +32,7 @@ public class EnderecoAgencia extends JFrame {
 		});
 	}
 
-	public EnderecoAgencia(Agencia agencia) {
+	public MostrarAgencia(Agencia agencia) {
 		setBounds(100, 100, 450, 210);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

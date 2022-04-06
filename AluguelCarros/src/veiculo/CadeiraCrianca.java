@@ -2,27 +2,37 @@ package veiculo;
 
 import java.awt.Image;
 
+import Sistema.BancoDados;
+
 public class CadeiraCrianca {
 
-	private int identificacao;
+	private String identificacao;
 	private int idade;
-	private int tamanho;
 	private int valor;
 	
-	public CadeiraCrianca(int id, int idade, int tam, int valor) {
+	public CadeiraCrianca(String id, int idade, int valor) {
 		
 		this.identificacao = id;
 		this.idade = idade;
-		this.tamanho = tam;
 		this.valor = valor;
 		
 	}
 	
+	public CadeiraCrianca[] ImprimirCadeiras() {
+		CadeiraCrianca[] Cadeiras = new CadeiraCrianca[BancoDados.MAX];
+		
+		for(int i = 0; i < BancoDados.MAX; i++) {
+			if (BancoDados.cadastrarSeguro[i] != null)
+				Cadeiras[i] = BancoDados.cadastrarCadeira[i];
+		}
+		
+		return Cadeiras;
+	}
 	
-	public int getIdentificacao() {
+	public String getIdentificacao() {
 		return identificacao;
 	}
-	public void setIdentificacao(int identificacao) {
+	public void setIdentificacao(String identificacao) {
 		this.identificacao = identificacao;
 	}
 	public int getIdade() {
@@ -30,12 +40,6 @@ public class CadeiraCrianca {
 	}
 	public void setIdade(int idade) {
 		this.idade = idade;
-	}
-	public int getTamanho() {
-		return tamanho;
-	}
-	public void setTamanho(int tamanho) {
-		this.tamanho = tamanho;
 	}
 	public int getValor() {
 		return valor;

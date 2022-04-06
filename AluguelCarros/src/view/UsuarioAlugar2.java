@@ -72,21 +72,44 @@ public class UsuarioAlugar2 extends JFrame {
 		lblTarifasAdicionais.setBounds(10, 11, 227, 25);
 		panel.add(lblTarifasAdicionais);
 		
-		JComboBox comboSeguro = new JComboBox();
+		JComboBox<String> comboSeguro = new JComboBox<String>();
 		comboSeguro.setBounds(10, 98, 227, 22);
 		panel.add(comboSeguro);
+		
+		cont = 0;
+		while(BancoDados.cadastrarSeguro[cont] != null) {
+			comboSeguro.addItem(BancoDados.cadastrarSeguro[cont].getIdentificacao());
+			cont ++;
+		}
 		
 		JButton btnDetalharSeguro = new JButton("Detalhar");
 		btnDetalharSeguro.setBounds(10, 131, 227, 23);
 		panel.add(btnDetalharSeguro);
+		btnDetalharSeguro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MostrarSeguro.Construtor(BancoDados.cadastrarSeguro[comboSeguro.getSelectedIndex()]);
+			}
+		});
 		
-		JComboBox comboCadeira = new JComboBox();
+		
+		JComboBox<String> comboCadeira = new JComboBox<String>();
 		comboCadeira.setBounds(10, 219, 227, 22);
 		panel.add(comboCadeira);
+		
+		cont = 0;
+		while(BancoDados.cadastrarCadeira[cont] != null) {
+			comboCadeira.addItem(BancoDados.cadastrarCadeira[cont].getIdentificacao());
+			cont ++;
+		}
 		
 		JButton btnDetalharCadeira = new JButton("Detalhar");
 		btnDetalharCadeira.setBounds(10, 252, 227, 23);
 		panel.add(btnDetalharCadeira);
+		btnDetalharCadeira.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MostrarCadeira.Construtor(BancoDados.cadastrarCadeira[comboSeguro.getSelectedIndex()]);
+			}
+		});
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Cadeira crian\u00E7a");
 		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -143,7 +166,7 @@ public class UsuarioAlugar2 extends JFrame {
 		panel_1.add(btnEnderecoRetirada);
 		btnEnderecoRetirada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EnderecoAgencia.Construtor(Agencias[comboRetirada.getSelectedIndex()]);
+				MostrarAgencia.Construtor(Agencias[comboRetirada.getSelectedIndex()]);
 			}
 		});
 		
@@ -221,7 +244,7 @@ public class UsuarioAlugar2 extends JFrame {
 		panel_1_1.add(btnEnderecoEntrega);
 		btnEnderecoEntrega.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EnderecoAgencia.Construtor(BancoDados.cadastrarAgencia[comboEntrega.getSelectedIndex()]);
+				MostrarAgencia.Construtor(BancoDados.cadastrarAgencia[comboEntrega.getSelectedIndex()]);
 			}
 		});
 		
