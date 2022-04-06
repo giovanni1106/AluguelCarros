@@ -26,6 +26,7 @@ import java.awt.Font;
 
 import Sistema.Login;
 import Sistema.BancoDados;
+import viewAdmin.MenuAdmin;
 
 
 
@@ -87,7 +88,9 @@ public class TelaLogin extends JFrame {
 					JOptionPane.showMessageDialog(null, "Login ou senha incorretos");
 				else {
 					if(BancoDados.Administrador == false)
-						new MenuUsuario(BancoDados.cadastrarUsuario[BancoDados.pos]).Construtor();
+						MenuUsuario.Construtor();
+					else
+						MenuAdmin.Construtor();
 						
 					setVisible(false);
 				}

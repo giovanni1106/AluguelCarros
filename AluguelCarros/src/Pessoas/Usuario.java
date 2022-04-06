@@ -58,44 +58,44 @@ public class Usuario {
 		return a - 1;
 	}
 
-	public static void Editar(int escolha, String novo) {
+	public static void Editar(int escolha, String novo, Usuario us) {
 
 		switch (escolha) {
 		case 0:
 			// Nome
-			BancoDados.cadastrarUsuario[BancoDados.pos].setNome(novo);
+			us.setNome(novo);
 			break;
 		case 1:
 			// E-mail
-			BancoDados.cadastrarUsuario[BancoDados.pos].setEmail(novo);
+			us.setEmail(novo);
 			break;
 		case 2:
 			// Celular
-			BancoDados.cadastrarUsuario[BancoDados.pos].setCelular(novo);
+			us.setCelular(novo);
 			break;
 		case 3:
 			// Logradouro
-			BancoDados.cadastrarUsuario[BancoDados.pos].getEndereco().setLogradouro(novo);
+			us.getEndereco().setLogradouro(novo);
 			break;
 		case 4:
 			// Numero
-			BancoDados.cadastrarUsuario[BancoDados.pos].getEndereco().setNumero(novo);
+			us.getEndereco().setNumero(novo);
 			break;
 		case 5:
 			// Bairro
-			BancoDados.cadastrarUsuario[BancoDados.pos].getEndereco().setBairro(novo);
+			us.getEndereco().setBairro(novo);
 			break;
 		case 6:
 			// Cidade
-			BancoDados.cadastrarUsuario[BancoDados.pos].getEndereco().setCidade(novo);
+			us.getEndereco().setCidade(novo);
 			break;
 		case 7:
 			// Estado
-			BancoDados.cadastrarUsuario[BancoDados.pos].getEndereco().setEstado(novo);
+			us.getEndereco().setEstado(novo);
 			break;
 		case 8:
 			// País
-			BancoDados.cadastrarUsuario[BancoDados.pos].getEndereco().setPais(novo);
+			us.getEndereco().setPais(novo);
 			break;
 		}
 	}

@@ -114,9 +114,8 @@ public class MenuUsuario extends JFrame {
 		btnEditar.setBounds(10, 70, 121, 40);
 		panel_2.add(btnEditar);
 		btnEditar.addActionListener(new ActionListener() {
-			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				new UsuarioEditar().Construtor();
+				UsuarioEditar.Construtor(BancoDados.cadastrarUsuario[BancoDados.pos]);
 			}
 		});
 		
@@ -125,9 +124,8 @@ public class MenuUsuario extends JFrame {
 		btnNewButton_1_1.setBounds(10, 19, 121, 40);
 		panel_2.add(btnNewButton_1_1);
 		btnNewButton_1_1.addActionListener(new ActionListener() {
-			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				new UsuarioPerfil(BancoDados.cadastrarUsuario[BancoDados.pos]).Construtor();
+				UsuarioPerfil.Construtor(BancoDados.cadastrarUsuario[BancoDados.pos]);
 			}
 		});
 		

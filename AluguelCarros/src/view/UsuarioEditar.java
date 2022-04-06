@@ -32,11 +32,11 @@ public class UsuarioEditar extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void Construtor() {
+	public static void Construtor(Usuario us) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UsuarioEditar frame = new UsuarioEditar();
+					UsuarioEditar frame = new UsuarioEditar(us);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,7 @@ public class UsuarioEditar extends JFrame {
 	}
 
 	
-	public UsuarioEditar() {
+	public UsuarioEditar(Usuario us) {
 		setBounds(100, 100, 400, 200);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -96,7 +96,7 @@ public class UsuarioEditar extends JFrame {
 				if (texto.length() <= 0)
 					JOptionPane.showMessageDialog(null, "Favor inserir um dado valido");
 				else {
-					Usuario.Editar(index, texto);
+					Usuario.Editar(index, texto, us);
 					JOptionPane.showMessageDialog(null, "Dado Alterado com sucesso!");
 					textDado.setText("");
 				}

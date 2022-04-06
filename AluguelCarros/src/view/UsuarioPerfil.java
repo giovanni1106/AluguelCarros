@@ -22,11 +22,11 @@ public class UsuarioPerfil extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void Construtor() {
+	public static void Construtor(Usuario us) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UsuarioPerfil frame = new UsuarioPerfil(BancoDados.cadastrarUsuario[BancoDados.pos]);
+					UsuarioPerfil frame = new UsuarioPerfil(us);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
