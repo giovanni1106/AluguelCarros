@@ -64,13 +64,13 @@ public class MenuAdmin extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(SystemColor.controlLtHighlight);
-		panel_2.setBounds(10, 128, 264, 322);
+		panel_2.setBounds(10, 67, 264, 383);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
 		JButton btnEncerrar = new JButton("Encerrar");
 		btnEncerrar.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnEncerrar.setBounds(10, 282, 244, 29);
+		btnEncerrar.setBounds(10, 343, 244, 29);
 		panel_2.add(btnEncerrar);
 		
 		JButton btnHistrico = new JButton("Ag\u00EAncias");
@@ -78,17 +78,21 @@ public class MenuAdmin extends JFrame {
 		btnHistrico.setBounds(10, 172, 244, 40);
 		panel_2.add(btnHistrico);
 		
-		JButton btnAlugar = new JButton("Classes");
-		btnAlugar.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnAlugar.setBounds(10, 121, 244, 40);
-		panel_2.add(btnAlugar);
+		JButton btnClasses = new JButton("Classes");
+		btnClasses.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnClasses.setBounds(10, 121, 244, 40);
+		panel_2.add(btnClasses);
+		btnClasses.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuClasses.Construtor();
+			}
+		});
 		
 		JButton btnEditar = new JButton("Carros");
 		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnEditar.setBounds(10, 70, 244, 40);
 		panel_2.add(btnEditar);
 		btnEditar.addActionListener(new ActionListener() {
-			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				MenuCarros.Construtor();
 			}
@@ -99,16 +103,19 @@ public class MenuAdmin extends JFrame {
 		btnNewButton_1_1.setBounds(10, 19, 244, 40);
 		panel_2.add(btnNewButton_1_1);
 		btnNewButton_1_1.addActionListener(new ActionListener() {
-			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				MenuUsuarios.Construtor();
 			}
 		});
 		
-		JButton btnFidelidade = new JButton("Tarifas");
-		btnFidelidade.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnFidelidade.setBounds(10, 223, 244, 40);
-		panel_2.add(btnFidelidade);
+		JButton btnSeguro = new JButton("Seguros");
+		btnSeguro.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnSeguro.setBounds(10, 223, 244, 40);
+		panel_2.add(btnSeguro);
+		
+		JButton btnCadeiras = new JButton("Cadeiras");
+		btnCadeiras.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnCadeiras.setBounds(10, 274, 244, 40);
+		panel_2.add(btnCadeiras);
 	}
-
 }

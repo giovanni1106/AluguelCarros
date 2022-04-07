@@ -101,13 +101,13 @@ public class BancoDados {
 		// ====================================
 		// --------------------------------------------------------------------------------
 
-		cadastrarClasse[0] = new Classe("SEDA", 90, "Porta malas espacoso");
+		cadastrarClasse[0] = new Classe("SEDA", 90);
 
-		cadastrarClasse[1] = new Classe("PICAPE", 150, "Capaz de carregar cargas pesadas");
+		cadastrarClasse[1] = new Classe("PICAPE", 150);
 
-		cadastrarClasse[2] = new Classe("SUV", 180, "Grande para toda a familia");
+		cadastrarClasse[2] = new Classe("SUV", 180);
 
-		cadastrarClasse[3] = new Classe("MINIVAN", 200, "Para passeios longos");
+		cadastrarClasse[3] = new Classe("MINIVAN", 200);
 
 		// ==================================== CARROS
 		// ====================================

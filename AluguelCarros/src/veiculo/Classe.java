@@ -11,24 +11,25 @@ public class Classe {
 
 	private String nome;
 	private int valorDia;
-	private String caracteristicas;
-	private boolean arCondicionado;
-	private boolean portas;
-	private boolean portaMalas;
-	private boolean cambio;
-	private boolean vidro;
-	private boolean assentos;
-	private boolean airBag;
-
-	public Classe(String no, int va, String carac) {
+	
+	public Classe(String no, int va) {
 
 		this.nome = no.toUpperCase();
 		this.valorDia = va;
-		this.caracteristicas = carac;
-
 	}
 
-	
+	public static void Editar(int escolha, Classe cl, String Dado) {
+		
+		switch(escolha) {
+		case 0:
+			cl.setNome(Dado);
+			break;
+		case 1:
+			cl.setValorDia(Integer.parseInt(Dado));
+			break;
+		}
+		
+	}
 
 	public static void Excluir() {
 		int total = Imprimir();
@@ -56,8 +57,6 @@ public class Classe {
 					BancoDados.cadastrarClasse[i] = BancoDados.cadastrarClasse[i+1];
 					BancoDados.cadastrarClasse[i+1] = null;
 				}
-				
-			System.out.println(" Classe excluida com sucesso");
 		}
 	}
 
@@ -77,63 +76,7 @@ public class Classe {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public boolean isArCondicionado() {
-		return arCondicionado;
-	}
-
-	public void setArCondicionado(boolean arCondicionado) {
-		this.arCondicionado = arCondicionado;
-	}
-
-	public boolean isPortas() {
-		return portas;
-	}
-
-	public void setPortas(boolean portas) {
-		this.portas = portas;
-	}
-
-	public boolean isPortaMalas() {
-		return portaMalas;
-	}
-
-	public void setPortaMalas(boolean portaMalas) {
-		this.portaMalas = portaMalas;
-	}
-
-	public boolean isCambio() {
-		return cambio;
-	}
-
-	public void setCambio(boolean cambio) {
-		this.cambio = cambio;
-	}
-
-	public boolean isVidro() {
-		return vidro;
-	}
-
-	public void setVidro(boolean vidro) {
-		this.vidro = vidro;
-	}
-
-	public boolean isAssentos() {
-		return assentos;
-	}
-
-	public void setAssentos(boolean assentos) {
-		this.assentos = assentos;
-	}
-
-	public boolean isAirBag() {
-		return airBag;
-	}
-
-	public void setAirBag(boolean airBag) {
-		this.airBag = airBag;
+		this.nome = nome.toUpperCase();
 	}
 
 	public int getValorDia() {
@@ -143,13 +86,4 @@ public class Classe {
 	public void setValorDia(int valorDia) {
 		this.valorDia = valorDia;
 	}
-
-	public String getCaracteristicas() {
-		return caracteristicas;
-	}
-
-	public void setCaracteristicas(String caracteristicas) {
-		this.caracteristicas = caracteristicas;
-	}
-
 }
