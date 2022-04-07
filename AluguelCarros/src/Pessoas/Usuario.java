@@ -13,7 +13,6 @@ public class Usuario {
 	private String cartaoCredito;
 	private EnderecoRes endereco;
 	private String celular;
-	private CNH cnh;
 	private String login;
 	private String senha;
 	private Historico historico;
@@ -232,14 +231,6 @@ public class Usuario {
 
 	public void setCelular(String celular) {
 		this.celular = celular;
-	}
-
-	public CNH getCnh() {
-		return cnh;
-	}
-
-	public void setCnh(CNH cnh) {
-		this.cnh = cnh;
 	}
 
 	public String getSenha() {

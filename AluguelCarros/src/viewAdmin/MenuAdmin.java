@@ -49,7 +49,7 @@ public class MenuAdmin extends JFrame {
 	public MenuAdmin(Admin ad) {
 		setTitle("Menu admin");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 300, 500);
+		setBounds(100, 100, 300, 650);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(173, 216, 230));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -64,13 +64,13 @@ public class MenuAdmin extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(SystemColor.controlLtHighlight);
-		panel_2.setBounds(10, 67, 264, 383);
+		panel_2.setBounds(10, 85, 264, 515);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
 		JButton btnEncerrar = new JButton("Encerrar");
 		btnEncerrar.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnEncerrar.setBounds(10, 343, 244, 29);
+		btnEncerrar.setBounds(10, 475, 244, 29);
 		panel_2.add(btnEncerrar);
 		
 		JButton btnHistrico = new JButton("Ag\u00EAncias");
@@ -117,5 +117,15 @@ public class MenuAdmin extends JFrame {
 		btnCadeiras.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnCadeiras.setBounds(10, 274, 244, 40);
 		panel_2.add(btnCadeiras);
+		
+		JButton btnWifi = new JButton("Wifi");
+		btnWifi.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnWifi.setBounds(10, 325, 244, 40);
+		panel_2.add(btnWifi);
+		
+		JButton btnAlugueis = new JButton("Alugueis");
+		btnAlugueis.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnAlugueis.setBounds(10, 376, 244, 40);
+		panel_2.add(btnAlugueis);
 	}
 }

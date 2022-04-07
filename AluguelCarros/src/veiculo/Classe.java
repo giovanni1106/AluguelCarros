@@ -11,7 +11,7 @@ public class Classe {
 
 	private String nome;
 	private int valorDia;
-	
+
 	public Classe(String no, int va) {
 
 		this.nome = no.toUpperCase();
@@ -19,8 +19,8 @@ public class Classe {
 	}
 
 	public static void Editar(int escolha, Classe cl, String Dado) {
-		
-		switch(escolha) {
+
+		switch (escolha) {
 		case 0:
 			cl.setNome(Dado);
 			break;
@@ -28,36 +28,26 @@ public class Classe {
 			cl.setValorDia(Integer.parseInt(Dado));
 			break;
 		}
-		
+
 	}
 
-	public static void Excluir() {
-		int total = Imprimir();
+	public static boolean Excluir(Classe cl) {
 
-		int escolha = 0;
-		boolean valido = true;
-
-		System.out.print(" Classe que deseja excluir (0-" + total + "): ");
-		escolha = ler.nextInt();
-
-		for (int a = 0; a < MAX; a++)
-			if (BancoDados.cadastrarCarro[a] != null)
-				if (BancoDados.cadastrarCarro[a].getClasse() == BancoDados.cadastrarClasse[escolha]) {
-					System.out.println(
-							"\n Ainda existem carros cadastrados!\n Favor excluir todos os veiculos vinculados a essa classe");
-					valido = false;
-					break;
-				}
-
-		if (valido == true) {
-			BancoDados.cadastrarClasse[escolha] = null;
-			
-			for (int i = 0; i < MAX - 1; i++)
-				if(BancoDados.cadastrarClasse[i] == null && BancoDados.cadastrarClasse[i+1] != null) {
-					BancoDados.cadastrarClasse[i] = BancoDados.cadastrarClasse[i+1];
-					BancoDados.cadastrarClasse[i+1] = null;
-				}
-		}
+		boolean excluir = false;
+		
+		for(int i = 0; i < BancoDados.MAX; i++)
+			if(BancoDados.cadastrarClasse[i] == cl) {
+				BancoDados.cadastrarClasse[i] = null;
+				excluir = true;
+			}
+		
+		for (int i = 0; i < MAX - 1; i++)
+			if (BancoDados.cadastrarClasse[i] == null && BancoDados.cadastrarClasse[i + 1] != null) {
+				BancoDados.cadastrarClasse[i] = BancoDados.cadastrarClasse[i + 1];
+				BancoDados.cadastrarClasse[i + 1] = null;
+			}
+		
+		return excluir;
 	}
 
 	public static int Imprimir() {

@@ -17,20 +17,20 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import Pessoas.Usuario;
+import veiculo.Classe;
 
-public class UsuarioExcluir extends JFrame {
+public class ClasseExcluir extends JFrame {
 
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void Construtor(Usuario us) {
+	public static void Construtor(Classe cl) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UsuarioExcluir frame = new UsuarioExcluir(us);
+					ClasseExcluir frame = new ClasseExcluir(cl);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,8 +42,8 @@ public class UsuarioExcluir extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public UsuarioExcluir(Usuario us) {
-		setTitle("Excluir usuário");
+	public ClasseExcluir(Classe cl) {
+		setTitle("Excluir classe");
 		setBounds(100, 100, 300, 250);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.activeCaption);
@@ -57,7 +57,7 @@ public class UsuarioExcluir extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblCarro = new JLabel(us.getNome());
+		JLabel lblCarro = new JLabel(cl.getNome());
 		lblCarro.setBounds(10, 11, 244, 42);
 		panel.add(lblCarro);
 		lblCarro.setHorizontalAlignment(SwingConstants.CENTER);
@@ -69,10 +69,10 @@ public class UsuarioExcluir extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(Usuario.Excluir(us) == true)
-					JOptionPane.showMessageDialog(null, "Usuario excluído com sucesso");
+				if(Classe.Excluir(cl) == true)
+					JOptionPane.showMessageDialog(null, "Classe excluida com sucesso");
 				else
-					JOptionPane.showMessageDialog(null, "Carro não encontrado");
+					JOptionPane.showMessageDialog(null, "Classe não encontrada");
 			}
 		});
 	}

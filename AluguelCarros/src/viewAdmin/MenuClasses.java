@@ -90,7 +90,7 @@ public class MenuClasses extends JFrame {
 		panel.add(btnPerfil);
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CarroCadastrar.Construtor();
+				ClasseCadastrar.Construtor();
 			}
 		});
 		
@@ -100,7 +100,7 @@ public class MenuClasses extends JFrame {
 		panel.add(btnDetalhar);
 		btnDetalhar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MostrarCarro.Construtor(BancoDados.cadastrarCarro[comboBox.getSelectedIndex()]);
+				ClasseDetalhar.Construtor(BancoDados.cadastrarClasse[comboBox.getSelectedIndex()]);
 			}
 		});
 	}
