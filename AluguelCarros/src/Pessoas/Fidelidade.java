@@ -7,6 +7,10 @@ public class Fidelidade {
 	private int pontos;
 	private float desconto;
 	
+	/**
+	 * Construtor da classe Fidelidade
+	 * @param pontos
+	 */
 	public Fidelidade(int pontos) {
 		
 		this.setPontos(pontos);
@@ -20,6 +24,10 @@ public class Fidelidade {
 		this.pontos += pontos;
 	}
 	
+	/**
+	 * Calcula o desconto com base nos pontos acumulados
+	 * @return a quantidade de desconto em %
+	 */
 	public float getDesconto() {
 		
 		int qtd = pontos;

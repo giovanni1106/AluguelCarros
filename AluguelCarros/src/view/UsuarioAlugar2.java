@@ -34,6 +34,7 @@ import veiculo.Agencia;
 import Pessoas.Fidelidade;
 import veiculo.CadeiraCrianca;
 import veiculo.SeguroCarro;
+import Sistema.Aluguel;
 
 public class UsuarioAlugar2 extends JFrame {
 
@@ -55,7 +56,7 @@ public class UsuarioAlugar2 extends JFrame {
 
 	public UsuarioAlugar2(Carro carro) {
 		setTitle("Alugar");
-		
+
 		int cont = 0;
 
 		Calendar DataAtual = Calendar.getInstance();
@@ -320,10 +321,107 @@ public class UsuarioAlugar2 extends JFrame {
 		carroEscolhido.setBounds(10, 11, 237, 38);
 		panel_2.add(carroEscolhido);
 
+		JLabel nomeUsuario = new JLabel(BancoDados.cadastrarUsuario[BancoDados.pos].getNome());
+		nomeUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+		nomeUsuario.setFont(new Font("Tahoma", Font.BOLD, 13));
+		nomeUsuario.setBounds(10, 60, 237, 30);
+		panel_2.add(nomeUsuario);
+
+		JLabel emailUsuario = new JLabel(BancoDados.cadastrarUsuario[BancoDados.pos].getEmail());
+		emailUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+		emailUsuario.setFont(new Font("Tahoma", Font.BOLD, 13));
+		emailUsuario.setBounds(10, 101, 237, 30);
+		panel_2.add(emailUsuario);
+
+		JPanel panel_3 = new JPanel();
+		panel_3.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		panel_3.setBounds(467, 11, 257, 136);
+		contentPane.add(panel_3);
+		panel_3.setLayout(null);
+
+		JLabel lblFidelidade = new JLabel("FIDELIDADE");
+		lblFidelidade.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFidelidade.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblFidelidade.setBounds(10, 11, 237, 25);
+		panel_3.add(lblFidelidade);
+
+		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Desconto");
+		chckbxNewCheckBox_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		chckbxNewCheckBox_1.setBounds(10, 70, 97, 23);
+		panel_3.add(chckbxNewCheckBox_1);
+
+		JComboBox<Float> comboDesconto = new JComboBox<Float>();
+		comboDesconto.setBounds(10, 100, 97, 22);
+		panel_3.add(comboDesconto);
+		if (BancoDados.cadastrarUsuario[BancoDados.pos].getFidelidade() != null)
+			comboDesconto.addItem(BancoDados.cadastrarUsuario[BancoDados.pos].getFidelidade().getDesconto());
+
 		JButton btnConfirmarAluguel = new JButton("Confirmar Aluguel");
 		btnConfirmarAluguel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnConfirmarAluguel.setBounds(10, 277, 237, 54);
 		panel_2.add(btnConfirmarAluguel);
+		btnConfirmarAluguel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					int pos = BancoDados.CadastrarAluguel();
+
+					CadeiraCrianca cad = null;
+					SeguroCarro seg = null;
+
+					if (chckbxNewCheckBox.isSelected())
+						cad = BancoDados.cadastrarCadeira[comboCadeira.getSelectedIndex()];
+
+					if (chckbxSeguro.isSelected())
+						seg = BancoDados.cadastrarSeguro[comboSeguro.getSelectedIndex()];
+
+					int diaR = Integer.parseInt(String.valueOf(comboDiaRetirada.getSelectedItem()));
+					int mesR = Integer.parseInt(String.valueOf(comboMesRetirada.getSelectedItem()));
+					int anoR = Integer.parseInt(String.valueOf(comboAnoRetirada.getSelectedItem()));
+
+					LocalDateTime dataRetirada = LocalDateTime.of(anoR, mesR, diaR, 0, 0, 0);
+					Calendar dR = new GregorianCalendar(anoR, mesR, diaR);
+
+					int diaE = Integer.parseInt(String.valueOf(comboDiaEntrega.getSelectedItem()));
+					int mesE = Integer.parseInt(String.valueOf(comboMesEntrega.getSelectedItem()));
+					int anoE = Integer.parseInt(String.valueOf(comboAnoEntrega.getSelectedItem()));
+
+					LocalDateTime dataEntrega = LocalDateTime.of(anoE, mesE, diaE, 0, 0, 0);
+					Calendar dE = new GregorianCalendar(anoE, mesE, diaE);
+
+					long dias = dataRetirada.until(dataEntrega, ChronoUnit.DAYS);
+
+					SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/YYYY");
+
+					Calendar dataA = Calendar.getInstance();
+					LocalDateTime dataAtual = LocalDateTime.of(dataA.get(Calendar.YEAR), dataA.get(Calendar.MONTH),
+							dataA.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+
+					long dias2 = dataAtual.until(dataRetirada, ChronoUnit.DAYS);
+
+					long valorTotal = (carro.getClasse().getValorDia()) * dias;
+
+					if (seg != null)
+						valorTotal += seg.getValor();
+
+					if (cad != null)
+						valorTotal += cad.getValor() * dias;
+
+					if (dias < 3)
+						JOptionPane.showMessageDialog(null, "Tempo mínimo de aluguel são 3 dias");
+					else if (dias2 < 2)
+						JOptionPane.showMessageDialog(null, "Favor reservar com mais de 2 dias de antecedencia");
+					else {
+						BancoDados.cadastrarAluguel[pos] = new Aluguel(BancoDados.cadastrarUsuario[BancoDados.pos],
+								BancoDados.cadastrarAgencia[comboRetirada.getSelectedIndex()], dR,
+								BancoDados.cadastrarAgencia[comboEntrega.getSelectedIndex()], dE, seg, cad, carro,
+								valorTotal);
+						JOptionPane.showMessageDialog(null, "Aluguel realizado com sucesso");
+					}
+				} catch (Exception nexc) {
+					JOptionPane.showMessageDialog(null, "Favor inserir uma data válida");
+				}
+			}
+		});
 
 		JButton btnRevisar = new JButton("Revisar pedido");
 		btnRevisar.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -380,40 +478,5 @@ public class UsuarioAlugar2 extends JFrame {
 				}
 			}
 		});
-
-		JLabel nomeUsuario = new JLabel(BancoDados.cadastrarUsuario[BancoDados.pos].getNome());
-		nomeUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		nomeUsuario.setFont(new Font("Tahoma", Font.BOLD, 13));
-		nomeUsuario.setBounds(10, 60, 237, 30);
-		panel_2.add(nomeUsuario);
-
-		JLabel emailUsuario = new JLabel(BancoDados.cadastrarUsuario[BancoDados.pos].getEmail());
-		emailUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		emailUsuario.setFont(new Font("Tahoma", Font.BOLD, 13));
-		emailUsuario.setBounds(10, 101, 237, 30);
-		panel_2.add(emailUsuario);
-
-		JPanel panel_3 = new JPanel();
-		panel_3.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		panel_3.setBounds(467, 11, 257, 136);
-		contentPane.add(panel_3);
-		panel_3.setLayout(null);
-
-		JLabel lblFidelidade = new JLabel("FIDELIDADE");
-		lblFidelidade.setHorizontalAlignment(SwingConstants.CENTER);
-		lblFidelidade.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblFidelidade.setBounds(10, 11, 237, 25);
-		panel_3.add(lblFidelidade);
-
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Desconto");
-		chckbxNewCheckBox_1.setFont(new Font("Tahoma", Font.BOLD, 12));
-		chckbxNewCheckBox_1.setBounds(10, 70, 97, 23);
-		panel_3.add(chckbxNewCheckBox_1);
-
-		JComboBox<Float> comboDesconto = new JComboBox<Float>();
-		comboDesconto.setBounds(10, 100, 97, 22);
-		panel_3.add(comboDesconto);
-		if (BancoDados.cadastrarUsuario[BancoDados.pos].getFidelidade() != null)
-			comboDesconto.addItem(BancoDados.cadastrarUsuario[BancoDados.pos].getFidelidade().getDesconto());
 	}
 }

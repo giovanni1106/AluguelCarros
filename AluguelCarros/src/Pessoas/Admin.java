@@ -13,6 +13,11 @@ public class Admin {
 	private String senha;
 	private boolean logado;
 	
+	/**
+	 * Construtor da classe Admin
+	 * @param lo
+	 * @param se
+	 */
 	public Admin(String lo, String se) {
 		
 		this.login = lo;
@@ -20,6 +25,11 @@ public class Admin {
 		
 	}
 	
+	/**
+	 * Valida se o login ja existe na hora de realizar o cadastro
+	 * @param login
+	 * @return false = existe; true = não existe
+	 */
 	public static boolean TesteLogin(String login) {
 		for (int a = 0; a < BancoDados.MAX; a++)
 			if (BancoDados.cadastrarAdm[a] != null)

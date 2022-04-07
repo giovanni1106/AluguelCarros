@@ -10,6 +10,12 @@ public class CadeiraCrianca {
 	private int idade;
 	private int valor;
 	
+	/**
+	 * Construtor da classe CadeiraCrianca
+	 * @param id
+	 * @param idade
+	 * @param valor
+	 */
 	public CadeiraCrianca(String id, int idade, int valor) {
 		
 		this.identificacao = id;
@@ -18,6 +24,10 @@ public class CadeiraCrianca {
 		
 	}
 	
+	/**
+	 * Cria um array com todas as cadeiras cadastradas
+	 * @return Retorna o array com todas as cadeiras
+	 */
 	public CadeiraCrianca[] ImprimirCadeiras() {
 		CadeiraCrianca[] Cadeiras = new CadeiraCrianca[BancoDados.MAX];
 		

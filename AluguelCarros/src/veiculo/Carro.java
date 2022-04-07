@@ -29,6 +29,25 @@ public class Carro {
 	private boolean alugado;
 	private int ano;
 
+	/**
+	 * Construtor da classe Carro
+	 * @param cl
+	 * @param ma
+	 * @param mo
+	 * @param co
+	 * @param km
+	 * @param pl
+	 * @param ai
+	 * @param as
+	 * @param vi
+	 * @param po
+	 * @param di
+	 * @param ar
+	 * @param em
+	 * @param ca
+	 * @param com
+	 * @param ano
+	 */
 	public Carro(Classe cl, String ma, String mo, String co, int km, String pl, boolean ai, int as, boolean vi, int po,
 			int di, boolean ar, int em, int ca, int com, int ano) {
 
@@ -51,6 +70,13 @@ public class Carro {
 		this.alugado = false;
 	}
 	
+	/**
+	 * Edita os dados do carro
+	 * @param escolha
+	 * @param dado
+	 * @param car
+	 * @param cl
+	 */
 	public static void Editar(int escolha, String dado, Carro car, Classe cl) {
 		switch(escolha) {
 		case 0:
@@ -73,6 +99,23 @@ public class Carro {
 		}
 	}
 
+	/**
+	 * Exclui os dados do carro e preenche os espaços vazios com os carros da posição seguinte do array
+	 * 
+	 * Exemplo:
+	 * 
+	 * array[carro1, carro2, carro3, carro4];
+	 * 
+	 * Exclui o carro 2
+	 * 
+	 * array[carro1, null, carro3, carro4];
+	 * 
+	 * Após preencher
+	 * 
+	 * array[carro1, carro3, carro4];
+	 * @param car
+	 * @return
+	 */
 	public static boolean Excluir(Carro car) {
 		boolean excluir = false;
 		
@@ -91,7 +134,10 @@ public class Carro {
 		return excluir;
 	}
 
-	
+	/**
+	 * Cria uma string com todas as classes vinculadas aos veículos
+	 * @return Retorna essa String preenchida
+	 */
 	public static String[] ImprimirClasse() {
 
 		String[] Classes = new String[BancoDados.MAX];
@@ -112,6 +158,10 @@ public class Carro {
 		return Classes;
 	}
 
+	/**
+	 * Cria um array com todos os modelos disponiveis
+	 * @return Retorna esse array preenchido
+	 */
 	public static String[] ImprimirModelo() {
 
 		String[] carros = new String[MAX];
@@ -125,6 +175,10 @@ public class Carro {
 		return carros;
 	}
 	
+	/**
+	 * Cria um array com todos os veículos organizadamente
+	 * @return Retorna esse array preenchido
+	 */
 	public static String[] ImprimirCarro() {
 
 		String[] carros = new String[MAX];
@@ -139,6 +193,10 @@ public class Carro {
 		return carros;
 	}
 
+	/**
+	 * Cria um array com todas as marcas disponiveis
+	 * @return Retorna esse array preenchido
+	 */
 	public static String[] ImprimirMarca() {
 
 		String marca[] = new String[BancoDados.MAX];
@@ -158,6 +216,11 @@ public class Carro {
 		return marca;
 	}
 
+	/**
+	 * Cria um array com todos os carros vinculados a uma marca
+	 * @param marca Marca a ser verificada
+	 * @return Retorna o array com todos os carros da marca
+	 */
 	public static String[] ImprimirCarroMarca(String marca) {
 		int cont = 0;
 		
@@ -177,6 +240,11 @@ public class Carro {
 		return CarroMarca;
 	}
 
+	/**
+	 * Cria um array com todos os veículos vinculados a uma mesma classe
+	 * @param classe Classe a ser verificada
+	 * @return Reotrna o array preenchido com os veículos
+	 */
 	public static String[] ImprimirCarroClasse(String classe) {
 		int cont = 0;
 		
@@ -196,6 +264,11 @@ public class Carro {
 		return CarroClasse;
 	}
 
+	/**
+	 * Cria um array com todos carros do mesmo modelo
+	 * @param modelo
+	 * @return Retorna o array preenchido
+	 */
 	public static String[] ImprimirCarroModelo(String modelo) {
 		int cont = 0;
 		

@@ -4,6 +4,12 @@ public interface Login {
 
 	public static int MAX = BancoDados.MAX;
 
+	/**
+	 * Verifica se o login e senha inseridos correspondem a alguma conta
+	 * @param login 
+	 * @param senha
+	 * @return true = corresponde; false = não corresponde
+	 */
 	public static boolean Logando(String login, String senha) {
 
 		boolean cadastrado = false;

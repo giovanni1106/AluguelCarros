@@ -12,6 +12,10 @@ import view.UsuarioPerfil;
 
 public class SoftwareManager {
 
+	/**
+	 * Organiza os primeiros comandos do software
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		BancoDados.DadosPreCadastrados();

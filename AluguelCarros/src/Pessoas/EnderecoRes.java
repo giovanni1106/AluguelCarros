@@ -9,6 +9,15 @@ public class EnderecoRes {
 	private String estado;
 	private String pais;
 	
+	/**
+	 * Construtor da classe EnderecoRes
+	 * @param lo
+	 * @param nu
+	 * @param ba
+	 * @param ci
+	 * @param es
+	 * @param pa
+	 */
 	public EnderecoRes(String lo, String nu, String ba, String ci, String es, String pa) {
 		
 		this.logradouro = lo;

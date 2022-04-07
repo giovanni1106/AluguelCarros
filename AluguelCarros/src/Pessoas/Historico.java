@@ -7,7 +7,10 @@ public class Historico {
 
 	private Aluguel aluguel[];
 
-	
+	/**
+	 * Construtor da classe Histórico
+	 * @param aluguel
+	 */
 	public Historico(Aluguel aluguel) {
 		
 		this.setAluguel(aluguel);
@@ -18,7 +21,10 @@ public class Historico {
 		return aluguel;
 	}
 
-
+	/**
+	 * Salva o aluguel em um espaço vazio no array
+	 * @param aluguel
+	 */
 	public void setAluguel(Aluguel aluguel) {
 		
 		Aluguel[] alugueis = getAluguel();

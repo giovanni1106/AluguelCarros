@@ -19,6 +19,16 @@ public class Agencia {
 	private String pais;
 	public Carro carro[] = new Carro[BancoDados.MAX];
 
+	/**
+	 * Construtor da classe Agencia
+	 * @param id
+	 * @param lo
+	 * @param nu
+	 * @param ba
+	 * @param ci
+	 * @param es
+	 * @param pa
+	 */
 	public Agencia(String id, String lo, String nu, String ba, String ci, String es, String pa) {
 
 		this.identificacao = id;
@@ -30,6 +40,11 @@ public class Agencia {
 		this.pais = pa;
 	}
 
+	/**
+	 * Exclui a agencia recebida
+	 * @param ag recebe a agencia
+	 * @return true = excluido; false = não excluido
+	 */
 	public static boolean Excluir(Agencia ag) {
 
 		boolean excluir = false;

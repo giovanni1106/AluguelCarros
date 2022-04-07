@@ -8,6 +8,12 @@ public class SeguroCarro {
 	private int valor;
 	private String Identificacao;
 	
+	/**
+	 * Construtor da classe SeguroCarro
+	 * @param Id
+	 * @param carac
+	 * @param valor
+	 */
 	public SeguroCarro(String Id, String carac, int valor) {
 		
 		this.caracteristicas = carac;
@@ -16,7 +22,10 @@ public class SeguroCarro {
 		
 	}
 	
-	
+	/**
+	 * Cria um array com todos os seguros cadastrados
+	 * @return Retorna esse array preenchido
+	 */
 	public SeguroCarro[] ImprimirSeguros() {
 		SeguroCarro[] Seguros = new SeguroCarro[BancoDados.MAX];
 		

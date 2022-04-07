@@ -24,6 +24,7 @@ public class BancoDados {
 	public static Agencia cadastrarAgencia[] = new Agencia[MAX];
 	public static CadeiraCrianca cadastrarCadeira[] = new CadeiraCrianca[MAX];
 	public static SeguroCarro cadastrarSeguro[] = new SeguroCarro[MAX];
+	public static Aluguel cadastrarAluguel[] = new Aluguel[MAX*2];
 
 	// Se o usuario conseguir logar
 	public static boolean Logado = false;
@@ -34,6 +35,11 @@ public class BancoDados {
 	// Posição do no Array do Usuario/Admin logado
 	public static int pos;
 
+	/**
+	 * Cria um array com todas as agencias que o carro está vinculado
+	 * @param car Objeto carro
+	 * @return Retorna um array com todas as agencias com o carro vinculado
+	 */
 	public static Agencia[] ImprimirAgencias(Carro car) {
 		Agencia[] Agencias = new Agencia[MAX];
 		int cont = 0;
@@ -50,6 +56,10 @@ public class BancoDados {
 		return Agencias;
 	}
 
+	/**
+	 * Procura espaço vazio no array de cadastrar usuário
+	 * @return Retorna a posição vazia
+	 */
 	public static int CadastrarUsu() {
 
 		for (int a = 0; a < MAX; a++)
@@ -59,6 +69,10 @@ public class BancoDados {
 		return -1;
 	}
 
+	/**
+	 * Procura espaço vazio no array de cadastrar admin
+	 * @return Retorna a posição vazia
+	 */
 	public static int CadastrarAdmin() {
 
 		for (int a = 0; a < MAX; a++)
@@ -68,6 +82,10 @@ public class BancoDados {
 		return -1;
 	}
 	
+	/**
+	 * Procura espaço vazio no array de cadastrar carro
+	 * @return Retorna a posição vazia
+	 */
 	public static int CadastrarCarro() {
 
 		for (int a = 0; a < MAX; a++)
@@ -77,6 +95,10 @@ public class BancoDados {
 		return -1;
 	}
 	
+	/**
+	 * Procura espaço vazio no array de cadastrar classe
+	 * @return Retorna a posição vazia
+	 */
 	public static int CadastrarClasse() {
 		for (int a = 0; a < MAX; a++)
 			if (cadastrarClasse[a] == null)
@@ -85,6 +107,10 @@ public class BancoDados {
 		return -1;
 	}
 	
+	/**
+	 * Procura espaço vazio no array de cadastrar agencia
+	 * @return Retorna a posição vazia
+	 */
 	public static int CadastrarAgencia() {
 		for (int a = 0; a < MAX; a++)
 			if (cadastrarAgencia[a] == null)
@@ -92,7 +118,23 @@ public class BancoDados {
 
 		return -1;
 	}
+	
+	/**
+	 * Procura espaço vazio no array de cadastrar aluguel
+	 * @return Retorna a posição vazia
+	 */
+	public static int CadastrarAluguel() {
 
+		for (int a = 0; a < MAX; a++)
+			if (cadastrarAluguel[a] == null)
+				return a;
+
+		return -1;
+	}
+
+	/**
+	 * Preenche todos os arrays com dados pre cadastrados
+	 */
 	public static void DadosPreCadastrados() {
 
 		// ================================== USUARIOS

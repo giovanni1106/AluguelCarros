@@ -109,6 +109,11 @@ public class MenuUsuario extends JFrame {
 		btnAlugar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnAlugar.setBounds(10, 121, 121, 40);
 		panel_2.add(btnAlugar);
+		btnAlugar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UsuarioAlugar.Construtor();
+			}
+		});
 		
 		JButton btnEditar = new JButton("Editar");
 		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 16));

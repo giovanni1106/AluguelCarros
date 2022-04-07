@@ -1,58 +1,66 @@
 package Sistema;
 
+import java.util.Calendar;
 import java.util.Date;
-import java.util.Scanner;
 
 import Pessoas.Fidelidade;
 import Pessoas.Usuario;
 import veiculo.Agencia;
 import veiculo.Carro;
-import veiculo.TarifasAd;
+import veiculo.CadeiraCrianca;
+import veiculo.SeguroCarro;
 
 public class Aluguel {
 
 	private Usuario usuario;
-	private LocalRetirada retirada;
-	private LocalEntrega entrega;
+	private Agencia agenciaReitrada;
+	private Agencia agenciaEntrega;
+	private Calendar dataRetirada;
+	private Calendar dataEntrega;
 	private Carro carro;
-	private TarifasAd tarifas;
+	private SeguroCarro seguro;
+	private CadeiraCrianca cadeira;
 	private Fidelidade fidelidade;
-	private int valorTotal;
-	private Pagamento pagamento;
+	private long valorTotal;
 
-	public Aluguel(Usuario usuario, LocalRetirada LR, LocalEntrega LE, Carro carro, int valorTotal) {
-
-		this.usuario = usuario;
+	/**
+	 * Construtor da classe Aluguel
+	 * @param usuario
+	 * @param agR
+	 * @param dataR
+	 * @param agE
+	 * @param dataE
+	 * @param seguro
+	 * @param cadeira
+	 * @param carro
+	 * @param valorTotal
+	 */
+	public Aluguel(Usuario usuario, Agencia agR, Calendar dataR, Agencia agE, Calendar dataE, SeguroCarro seguro,
+			CadeiraCrianca cadeira, Carro carro, long valorTotal) {
+		
 		this.carro = carro;
+		this.agenciaEntrega = agE;
+		this.agenciaReitrada = agR;
+		this.dataEntrega = dataE;
+		this.dataRetirada = dataR;
+		this.seguro = seguro;
+		this.cadeira = cadeira;
 		this.valorTotal = valorTotal;
-		setRetirada(LR);
-		setEntrega(LE);
 		carro.setAlugado(true);
-
+		this.setUsuario(usuario);
 	}
 
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
+	/**
+	 * Salva o usuário e o aluguel em seu histórico
+	 * @param usuario
+	 */
 	public void setUsuario(Usuario usuario) {
+		usuario.getHistorico().setAluguel(this);
 		this.usuario = usuario;
-	}
-
-	public LocalRetirada getRetirada() {
-		return retirada;
-	}
-
-	public void setRetirada(LocalRetirada retirada) {
-		this.retirada = retirada;
-	}
-
-	public LocalEntrega getEntrega() {
-		return entrega;
-	}
-
-	public void setEntrega(LocalEntrega entrega) {
-		this.entrega = entrega;
 	}
 
 	public Carro getCarro() {
@@ -62,13 +70,53 @@ public class Aluguel {
 	public void setCarro(Carro carro) {
 		this.carro = carro;
 	}
-
-	public TarifasAd getTarifas() {
-		return tarifas;
+	
+	public Agencia getAgenciaReitrada() {
+		return agenciaReitrada;
 	}
 
-	public void setTarifas(TarifasAd tarifas) {
-		this.tarifas = tarifas;
+	public void setAgenciaReitrada(Agencia agenciaReitrada) {
+		this.agenciaReitrada = agenciaReitrada;
+	}
+
+	public Agencia getAgenciaEntrega() {
+		return agenciaEntrega;
+	}
+
+	public void setAgenciaEntrega(Agencia agenciaEntrega) {
+		this.agenciaEntrega = agenciaEntrega;
+	}
+
+	public Calendar getDataRetirada() {
+		return dataRetirada;
+	}
+
+	public void setDataRetirada(Calendar dataRetirada) {
+		this.dataRetirada = dataRetirada;
+	}
+
+	public Calendar getDataEntrega() {
+		return dataEntrega;
+	}
+
+	public void setDataEntrega(Calendar dataEntrega) {
+		this.dataEntrega = dataEntrega;
+	}
+
+	public SeguroCarro getSeguro() {
+		return seguro;
+	}
+
+	public void setSeguro(SeguroCarro seguro) {
+		this.seguro = seguro;
+	}
+
+	public CadeiraCrianca getCadeira() {
+		return cadeira;
+	}
+
+	public void setCadeira(CadeiraCrianca cadeira) {
+		this.cadeira = cadeira;
 	}
 
 	public Fidelidade getFidelidade() {
@@ -79,20 +127,11 @@ public class Aluguel {
 		this.fidelidade = fidelidade;
 	}
 
-	public int getValorTotal() {
+	public long getValorTotal() {
 		return valorTotal;
 	}
 
-	public void setValorTotal(int valorTotal) {
+	public void setValorTotal(long valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-
-	public Pagamento getPagamento() {
-		return pagamento;
-	}
-
-	public void setPagamento(Pagamento pagamento) {
-		this.pagamento = pagamento;
-	}
-
 }

@@ -12,12 +12,23 @@ public class Classe {
 	private String nome;
 	private int valorDia;
 
+	/**
+	 * Construtor da classe Classe
+	 * @param no
+	 * @param va
+	 */
 	public Classe(String no, int va) {
 
 		this.nome = no.toUpperCase();
 		this.valorDia = va;
 	}
 
+	/**
+	 * Permite editar alguma variavel da classe
+	 * @param escolha A variavel que deseja alterar
+	 * @param cl A classe a ser alterada
+	 * @param Dado A nova String a ser salva
+	 */
 	public static void Editar(int escolha, Classe cl, String Dado) {
 
 		switch (escolha) {
@@ -31,6 +42,11 @@ public class Classe {
 
 	}
 
+	/**
+	 * Exclui a classe escolhida e preenche o espaço null deixado no array com as classes de posições superiores
+	 * @param cl Classe a ser excluida
+	 * @return true = excluida; false = não excluida
+	 */
 	public static boolean Excluir(Classe cl) {
 
 		boolean excluir = false;
@@ -48,17 +64,6 @@ public class Classe {
 			}
 		
 		return excluir;
-	}
-
-	public static int Imprimir() {
-
-		int a;
-		for (a = 0; a < MAX; a++)
-			if (BancoDados.cadastrarClasse[a] != null)
-				System.out.println(" " + a + "- " + BancoDados.cadastrarClasse[a].getNome());
-			else
-				break;
-		return a - 1;
 	}
 
 	public String getNome() {
