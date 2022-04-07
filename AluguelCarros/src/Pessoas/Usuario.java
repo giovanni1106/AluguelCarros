@@ -33,9 +33,15 @@ public class Usuario {
 		endereco = new EnderecoRes(log, nu, ba, ci, es, pa);
 	}
 
-	public static void Excluir(int escolha) {
+	public static boolean Excluir(Usuario us) {
 
-		BancoDados.cadastrarUsuario[escolha] = null;
+		boolean excluir = false;
+		
+		for(int i = 0; i < BancoDados.MAX; i++)
+			if(BancoDados.cadastrarUsuario[i] == us) {
+				BancoDados.cadastrarUsuario[i] = null;
+				excluir = true;
+			}
 
 		for (int a = 0; a < BancoDados.MAX - 1; a++)
 			if (BancoDados.cadastrarUsuario[a] == null && BancoDados.cadastrarUsuario[a + 1] != null) {
@@ -43,7 +49,7 @@ public class Usuario {
 				BancoDados.cadastrarUsuario[a + 1] = null;
 			}
 
-		System.out.println(" Usuario excluido com sucesso!");
+		return excluir;
 	}
 
 	public static int Imprimir() {

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -81,6 +82,11 @@ public class MenuUsuarios extends JFrame {
 		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnExcluir.setBounds(219, 169, 185, 59);
 		panel.add(btnExcluir);
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UsuarioExcluir.Construtor(BancoDados.cadastrarUsuario[comboBox.getSelectedIndex()]);
+			}
+		});
 		
 		JButton btnPerfil = new JButton("Perfil");
 		btnPerfil.setFont(new Font("Tahoma", Font.PLAIN, 15));
