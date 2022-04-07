@@ -140,6 +140,20 @@ public class BancoDados {
 
 		return -1;
 	}
+	
+	/**
+	 * Procura espaço vazio no array de cadastrar seguro
+	 * 
+	 * @return Retorna a posição vazia
+	 */
+	public static int CadastrarSeguro() {
+
+		for (int a = 0; a < MAX; a++)
+			if (cadastrarSeguro[a] == null)
+				return a;
+
+		return -1;
+	}
 
 	/**
 	 * Preenche todos os arrays com dados pre cadastrados

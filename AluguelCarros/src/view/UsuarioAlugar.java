@@ -51,6 +51,9 @@ public class UsuarioAlugar extends JFrame {
 	public static String[] Lista2 = new String[BancoDados.MAX];
 	public static String ItemList1;
 
+	/**
+	 * Launch the application.
+	 */
 	public static void Construtor() {
 
 		BancoDados.DadosPreCadastrados();
@@ -76,6 +79,9 @@ public class UsuarioAlugar extends JFrame {
 		});
 	}
 
+	/**
+	 * Create the frame.
+	 */
 	public UsuarioAlugar() {
 		setTitle("Escolher veículo");
 
@@ -217,6 +223,10 @@ public class UsuarioAlugar extends JFrame {
 
 	}
 
+	/**
+	 * Preenche o list com o array recebido
+	 * @param List Recebe o array para preencher o list
+	 */
 	public void ConstruirList(String[] List) {
 
 		for (int i = 0; i < BancoDados.MAX; i++)
@@ -230,6 +240,10 @@ public class UsuarioAlugar extends JFrame {
 		ResetList(1);
 	}
 
+	/**
+	 * Preenche o list1 com o array recebido
+	 * @param Cars Recebe o array para preencher o list
+	 */
 	public static void ConstruirList2(String[] Cars) {
 
 		for (int i = 0; i < BancoDados.MAX; i++)
@@ -244,6 +258,10 @@ public class UsuarioAlugar extends JFrame {
 		ResetList(2);
 	}
 
+	/**
+	 * Reseta o list para atualizar
+	 * @param Opc Recebe qual list quer atualizar
+	 */
 	public static void ResetList(int Opc) {
 
 		if (Opc == 1) {
