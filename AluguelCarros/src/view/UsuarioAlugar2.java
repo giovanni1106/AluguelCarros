@@ -54,7 +54,8 @@ public class UsuarioAlugar2 extends JFrame {
 	}
 
 	public UsuarioAlugar2(Carro carro) {
-
+		setTitle("Alugar");
+		
 		int cont = 0;
 
 		Calendar DataAtual = Calendar.getInstance();

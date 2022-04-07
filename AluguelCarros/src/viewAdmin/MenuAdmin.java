@@ -47,6 +47,7 @@ public class MenuAdmin extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuAdmin(Admin ad) {
+		setTitle("Menu admin");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 300, 500);
 		contentPane = new JPanel();

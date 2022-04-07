@@ -44,6 +44,7 @@ public class MenuCarros extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuCarros() {
+		setTitle("Menu carros");
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.activeCaption);

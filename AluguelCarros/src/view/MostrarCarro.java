@@ -35,6 +35,7 @@ public class MostrarCarro extends JFrame {
 	 * Create the frame.
 	 */
 	public MostrarCarro(Carro carro) {
+		setTitle("Carro");
 		
 		String Classe = carro.getClasse().getNome();
 		String Marca = carro.getMarca();

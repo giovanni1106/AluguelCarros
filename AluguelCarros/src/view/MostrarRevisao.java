@@ -46,6 +46,7 @@ public class MostrarRevisao extends JFrame {
 	public MostrarRevisao(Usuario us, Carro ca, SeguroCarro se, CadeiraCrianca cadeira, boolean wifi, int valorWifi, Agencia agR,
 			Agencia agE, String dataR, String dataE, long diasTotais) {
 		
+		setTitle("Revisão do aluguel");
 		
 		long valorTotal = (ca.getClasse().getValorDia())*diasTotais;
 		

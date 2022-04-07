@@ -46,6 +46,7 @@ public class CarroEditar extends JFrame {
 	 * Create the frame.
 	 */
 	public CarroEditar(Carro car) {
+		setTitle("Editar carro");
 		setBounds(100, 100, 400, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

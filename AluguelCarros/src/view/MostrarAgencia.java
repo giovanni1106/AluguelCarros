@@ -33,6 +33,7 @@ public class MostrarAgencia extends JFrame {
 	}
 
 	public MostrarAgencia(Agencia agencia) {
+		setTitle("Agencia");
 		setBounds(100, 100, 450, 210);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

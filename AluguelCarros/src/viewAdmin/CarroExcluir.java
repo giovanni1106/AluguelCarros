@@ -45,6 +45,7 @@ public class CarroExcluir extends JFrame {
 	 * Create the frame.
 	 */
 	public CarroExcluir(Carro car) {
+		setTitle("Excluir carro");
 		setBounds(100, 100, 300, 250);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.activeCaption);

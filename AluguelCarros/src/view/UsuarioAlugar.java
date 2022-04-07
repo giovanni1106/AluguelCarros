@@ -50,7 +50,7 @@ public class UsuarioAlugar extends JFrame {
 	public static String[] Lista2 = new String[BancoDados.MAX];
 	public static String ItemList1;
 
-	public static void main(String[] args) {
+	public static void Construtor() {
 
 		BancoDados.DadosPreCadastrados();
 
@@ -76,6 +76,7 @@ public class UsuarioAlugar extends JFrame {
 	}
 
 	public UsuarioAlugar() {
+		setTitle("Escolher veículo");
 
 		for (int i = 0; i < BancoDados.MAX; i++) {
 			Lista[i] = "-";

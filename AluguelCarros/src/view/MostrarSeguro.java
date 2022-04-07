@@ -38,6 +38,7 @@ public class MostrarSeguro extends JFrame {
 	 * Create the frame.
 	 */
 	public MostrarSeguro(SeguroCarro Seguro) {
+		setTitle("Seguro");
 		setBounds(100, 100, 300, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

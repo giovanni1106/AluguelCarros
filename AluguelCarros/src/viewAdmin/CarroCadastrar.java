@@ -56,6 +56,7 @@ public class CarroCadastrar extends JFrame {
 	 * Create the frame.
 	 */
 	public CarroCadastrar() {
+		setTitle("Cadastrar carro");
 		setBounds(100, 100, 565, 645);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.activeCaption);

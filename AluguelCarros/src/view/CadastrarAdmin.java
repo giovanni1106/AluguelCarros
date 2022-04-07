@@ -49,6 +49,7 @@ public class CadastrarAdmin extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastrarAdmin() {
+		setTitle("Cadastrar Admin");
 		setBounds(100, 100, 450, 200);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(240, 255, 240));

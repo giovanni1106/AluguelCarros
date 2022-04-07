@@ -58,6 +58,7 @@ public class CadastrarUsuario extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastrarUsuario() {
+		setTitle("Cadastrar usuário");
 		getContentPane().setBackground(new Color(135, 206, 235));
 		setBounds(100, 100, 600, 500);
 		contentPane = new JPanel();

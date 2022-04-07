@@ -47,6 +47,7 @@ public class UsuarioEditar extends JFrame {
 
 	
 	public UsuarioEditar(Usuario us) {
+		setTitle("Editar usuário");
 		setBounds(100, 100, 400, 200);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
