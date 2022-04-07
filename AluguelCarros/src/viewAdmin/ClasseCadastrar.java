@@ -27,6 +27,7 @@ import javax.swing.JButton;
 public class ClasseCadastrar extends JFrame {
 
 	private JPanel contentPane;
+	private static ClasseCadastrar frame;
 	private JTextField textNome;
 	private JTextField textValor;
 
@@ -37,7 +38,7 @@ public class ClasseCadastrar extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ClasseCadastrar frame = new ClasseCadastrar();
+					frame = new ClasseCadastrar();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -106,5 +107,13 @@ public class ClasseCadastrar extends JFrame {
 				}
 			}
 		});
+	}
+	
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
 	}
 }

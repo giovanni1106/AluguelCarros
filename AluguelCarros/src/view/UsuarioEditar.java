@@ -27,6 +27,7 @@ import Pessoas.Usuario;
 public class UsuarioEditar extends JFrame {
 
 	private JPanel contentPane;
+	private static UsuarioEditar frame;
 	private JTextField textDado;
 
 	/**
@@ -36,7 +37,7 @@ public class UsuarioEditar extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UsuarioEditar frame = new UsuarioEditar(us);
+					frame = new UsuarioEditar(us);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +46,10 @@ public class UsuarioEditar extends JFrame {
 		});
 	}
 
-	
+	/**
+	 * Cria um frame para editar o usuario
+	 * @param us usuario q será editado
+	 */
 	public UsuarioEditar(Usuario us) {
 		setTitle("Editar usuário");
 		setBounds(100, 100, 400, 200);
@@ -93,7 +97,6 @@ public class UsuarioEditar extends JFrame {
 				String texto = textDado.getText();
 				int index = comboDado.getSelectedIndex();
 				
-				System.out.println(texto);
 				if (texto.length() <= 0)
 					JOptionPane.showMessageDialog(null, "Favor inserir um dado valido");
 				else {
@@ -103,5 +106,13 @@ public class UsuarioEditar extends JFrame {
 				}
 			}
 		});
+	}
+
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
 	}
 }

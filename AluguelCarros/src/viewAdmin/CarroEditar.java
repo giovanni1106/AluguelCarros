@@ -24,6 +24,7 @@ import view.MostrarCarro;
 public class CarroEditar extends JFrame {
 
 	private JPanel contentPane;
+	private static CarroEditar frame;
 	private JTextField textDado;
 
 	/**
@@ -33,7 +34,7 @@ public class CarroEditar extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CarroEditar frame = new CarroEditar(car);
+					frame = new CarroEditar(car);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -129,4 +130,11 @@ public class CarroEditar extends JFrame {
 
 	}
 
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
+	}
 }

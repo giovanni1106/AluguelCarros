@@ -5,7 +5,7 @@ import Sistema.BancoDados;
 
 public class Historico {
 
-	private Aluguel aluguel[];
+	private Aluguel aluguel[] = new Aluguel[BancoDados.MAX];
 
 	/**
 	 * Construtor da classe Histórico

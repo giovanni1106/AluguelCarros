@@ -37,6 +37,7 @@ public class CadastrarUsuario extends JFrame {
 	private JTextField textCelular;
 	private JTextField textLogin;
 	private JTextField textSenha;
+	private static CadastrarUsuario frame;
 
 	/**
 	 * Launch the application.
@@ -45,7 +46,7 @@ public class CadastrarUsuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastrarUsuario frame = new CadastrarUsuario();
+					frame = new CadastrarUsuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -240,5 +241,13 @@ public class CadastrarUsuario extends JFrame {
 				}
 			}
 		});
+	}
+	
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
 	}
 }

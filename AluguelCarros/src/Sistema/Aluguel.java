@@ -35,7 +35,7 @@ public class Aluguel {
 	 * @param carro
 	 * @param valorTotal
 	 */
-	public Aluguel(Usuario usuario, Agencia agR, Calendar dataR, Agencia agE, Calendar dataE, SeguroCarro seguro,
+	public Aluguel(Usuario us, Agencia agR, Calendar dataR, Agencia agE, Calendar dataE, SeguroCarro seguro,
 			CadeiraCrianca cadeira, Carro carro, long valorTotal) {
 		
 		this.carro = carro;
@@ -47,7 +47,7 @@ public class Aluguel {
 		this.cadeira = cadeira;
 		this.valorTotal = valorTotal;
 		carro.setAlugado(true);
-		this.setUsuario(usuario);
+		this.setUsuario(us);
 	}
 
 	public Usuario getUsuario() {
@@ -58,9 +58,9 @@ public class Aluguel {
 	 * Salva o usuário e o aluguel em seu histórico
 	 * @param usuario
 	 */
-	public void setUsuario(Usuario usuario) {
-		usuario.getHistorico().setAluguel(this);
-		this.usuario = usuario;
+	public void setUsuario(Usuario us) {
+		this.usuario = us;
+		usuario.setAlugueis(this);
 	}
 
 	public Carro getCarro() {

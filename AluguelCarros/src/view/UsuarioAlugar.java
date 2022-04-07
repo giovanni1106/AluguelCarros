@@ -35,6 +35,7 @@ import java.awt.SystemColor;
 public class UsuarioAlugar extends JFrame {
 
 	private JPanel contentPane;
+	private static UsuarioAlugar frame;
 	private static JList<String[]> list;
 	private static JList<String[]> list_1;
 
@@ -259,5 +260,13 @@ public class UsuarioAlugar extends JFrame {
 			list_1.setBackground(Color.WHITE);
 		}
 
+	}
+
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
 	}
 }

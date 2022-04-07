@@ -28,6 +28,7 @@ import Sistema.BancoDados;
 public class CarroCadastrar extends JFrame {
 
 	private JPanel contentPane;
+	private static CarroCadastrar frame;
 	private JTextField textMarca;
 	private JTextField textModelo;
 	private JTextField textCor;
@@ -43,7 +44,7 @@ public class CarroCadastrar extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CarroCadastrar frame = new CarroCadastrar();
+					frame = new CarroCadastrar();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -276,5 +277,13 @@ public class CarroCadastrar extends JFrame {
 				}
 			}
 		});
+	}
+	
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
 	}
 }

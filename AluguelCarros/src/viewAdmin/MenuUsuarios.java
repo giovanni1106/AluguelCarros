@@ -25,6 +25,7 @@ import java.awt.Font;
 public class MenuUsuarios extends JFrame {
 
 	private JPanel contentPane;
+	private static MenuUsuarios frame;
 
 	/**
 	 * Launch the application.
@@ -33,7 +34,7 @@ public class MenuUsuarios extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuUsuarios frame = new MenuUsuarios();
+					frame = new MenuUsuarios();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -102,5 +103,13 @@ public class MenuUsuarios extends JFrame {
 		btnHistrico.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnHistrico.setBounds(219, 99, 185, 59);
 		panel.add(btnHistrico);
+	}
+	
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
 	}
 }

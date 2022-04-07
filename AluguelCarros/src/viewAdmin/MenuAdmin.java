@@ -16,6 +16,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Sistema.BancoDados;
+import Sistema.SoftwareManager;
 import view.MenuUsuario;
 import view.UsuarioEditar;
 import view.UsuarioPerfil;
@@ -26,6 +27,7 @@ import Pessoas.Admin;
 public class MenuAdmin extends JFrame {
 
 	private JPanel contentPane;
+	private static MenuAdmin frame;
 
 	/**
 	 * Launch the application.
@@ -34,7 +36,7 @@ public class MenuAdmin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuAdmin frame = new MenuAdmin(BancoDados.cadastrarAdm[BancoDados.pos]);
+					frame = new MenuAdmin(BancoDados.cadastrarAdm[BancoDados.pos]);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -72,6 +74,11 @@ public class MenuAdmin extends JFrame {
 		btnEncerrar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnEncerrar.setBounds(10, 475, 244, 29);
 		panel_2.add(btnEncerrar);
+		btnEncerrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SoftwareManager.Encerrar();
+			}
+		});
 		
 		JButton btnAgencias = new JButton("Ag\u00EAncias");
 		btnAgencias.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -132,5 +139,13 @@ public class MenuAdmin extends JFrame {
 		btnAlugueis.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnAlugueis.setBounds(10, 376, 244, 40);
 		panel_2.add(btnAlugueis);
+	}
+	
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
 	}
 }

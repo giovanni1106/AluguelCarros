@@ -17,12 +17,13 @@ import javax.swing.SwingConstants;
 public class MostrarCarro extends JFrame {
 
 	private JPanel contentPane;
+	private static MostrarCarro frame;
 
 	public static void Construtor(Carro carro) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MostrarCarro frame = new MostrarCarro(carro);
+					frame = new MostrarCarro(carro);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -229,5 +230,13 @@ public class MostrarCarro extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("/Dia");
 		lblNewLabel_1.setBounds(210, 53, 46, 14);
 		panel.add(lblNewLabel_1);
+	}
+
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
 	}
 }

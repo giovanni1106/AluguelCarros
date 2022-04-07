@@ -18,6 +18,7 @@ import Sistema.BancoDados;
 public class UsuarioPerfil extends JFrame {
 
 	private JPanel contentPane;
+	private static UsuarioPerfil frame;
 
 	/**
 	 * Launch the application.
@@ -26,7 +27,7 @@ public class UsuarioPerfil extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UsuarioPerfil frame = new UsuarioPerfil(us);
+					frame = new UsuarioPerfil(us);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -113,4 +114,11 @@ public class UsuarioPerfil extends JFrame {
 		contentPane.add(lblEndereo);
 	}
 
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
+	}
 }

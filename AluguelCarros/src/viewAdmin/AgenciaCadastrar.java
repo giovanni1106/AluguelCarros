@@ -24,6 +24,7 @@ import veiculo.Agencia;
 public class AgenciaCadastrar extends JFrame {
 
 	private JPanel contentPane;
+	private static AgenciaCadastrar frame;
 	private JTextField textId;
 	private JTextField textLogradouro;
 	private JTextField textNumero;
@@ -39,7 +40,7 @@ public class AgenciaCadastrar extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AgenciaCadastrar frame = new AgenciaCadastrar();
+					frame = new AgenciaCadastrar();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -162,4 +163,11 @@ public class AgenciaCadastrar extends JFrame {
 		});
 	}
 
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
+	}
 }

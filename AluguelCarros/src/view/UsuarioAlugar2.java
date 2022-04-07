@@ -39,13 +39,14 @@ import Sistema.Aluguel;
 public class UsuarioAlugar2 extends JFrame {
 
 	private JPanel contentPane;
+	private static UsuarioAlugar2 frame;
 	private int valorWifi = 100;
 
 	public static void Construtor(Carro carro) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UsuarioAlugar2 frame = new UsuarioAlugar2(carro);
+					frame = new UsuarioAlugar2(carro);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -217,7 +218,7 @@ public class UsuarioAlugar2 extends JFrame {
 		panel_1.add(comboMesRetirada);
 
 		for (int i = 0; i < 12; i++) {
-			comboMesRetirada.addItem(mesAtual + i + 1);
+			comboMesRetirada.addItem(i + 1);
 		}
 
 		JComboBox comboDiaRetirada = new JComboBox();
@@ -363,7 +364,7 @@ public class UsuarioAlugar2 extends JFrame {
 		btnConfirmarAluguel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					int pos = BancoDados.CadastrarAluguel();
+					int posAl = BancoDados.CadastrarAluguel();
 
 					CadeiraCrianca cad = null;
 					SeguroCarro seg = null;
@@ -375,14 +376,14 @@ public class UsuarioAlugar2 extends JFrame {
 						seg = BancoDados.cadastrarSeguro[comboSeguro.getSelectedIndex()];
 
 					int diaR = Integer.parseInt(String.valueOf(comboDiaRetirada.getSelectedItem()));
-					int mesR = Integer.parseInt(String.valueOf(comboMesRetirada.getSelectedItem()));
+					int mesR = Integer.parseInt(String.valueOf(comboMesRetirada.getSelectedItem())) - 1;
 					int anoR = Integer.parseInt(String.valueOf(comboAnoRetirada.getSelectedItem()));
 
 					LocalDateTime dataRetirada = LocalDateTime.of(anoR, mesR, diaR, 0, 0, 0);
 					Calendar dR = new GregorianCalendar(anoR, mesR, diaR);
 
 					int diaE = Integer.parseInt(String.valueOf(comboDiaEntrega.getSelectedItem()));
-					int mesE = Integer.parseInt(String.valueOf(comboMesEntrega.getSelectedItem()));
+					int mesE = Integer.parseInt(String.valueOf(comboMesEntrega.getSelectedItem())) - 1;
 					int anoE = Integer.parseInt(String.valueOf(comboAnoEntrega.getSelectedItem()));
 
 					LocalDateTime dataEntrega = LocalDateTime.of(anoE, mesE, diaE, 0, 0, 0);
@@ -411,7 +412,7 @@ public class UsuarioAlugar2 extends JFrame {
 					else if (dias2 < 2)
 						JOptionPane.showMessageDialog(null, "Favor reservar com mais de 2 dias de antecedencia");
 					else {
-						BancoDados.cadastrarAluguel[pos] = new Aluguel(BancoDados.cadastrarUsuario[BancoDados.pos],
+						BancoDados.cadastrarAluguel[posAl] = new Aluguel(BancoDados.cadastrarUsuario[BancoDados.pos],
 								BancoDados.cadastrarAgencia[comboRetirada.getSelectedIndex()], dR,
 								BancoDados.cadastrarAgencia[comboEntrega.getSelectedIndex()], dE, seg, cad, carro,
 								valorTotal);
@@ -440,14 +441,14 @@ public class UsuarioAlugar2 extends JFrame {
 						seg = BancoDados.cadastrarSeguro[comboSeguro.getSelectedIndex()];
 
 					int diaR = Integer.parseInt(String.valueOf(comboDiaRetirada.getSelectedItem()));
-					int mesR = Integer.parseInt(String.valueOf(comboMesRetirada.getSelectedItem()));
+					int mesR = Integer.parseInt(String.valueOf(comboMesRetirada.getSelectedItem())) - 1;
 					int anoR = Integer.parseInt(String.valueOf(comboAnoRetirada.getSelectedItem()));
 
 					LocalDateTime dataRetirada = LocalDateTime.of(anoR, mesR, diaR, 0, 0, 0);
 					Calendar dR = new GregorianCalendar(anoR, mesR, diaR);
 
 					int diaE = Integer.parseInt(String.valueOf(comboDiaEntrega.getSelectedItem()));
-					int mesE = Integer.parseInt(String.valueOf(comboMesEntrega.getSelectedItem()));
+					int mesE = Integer.parseInt(String.valueOf(comboMesEntrega.getSelectedItem())) - 1;
 					int anoE = Integer.parseInt(String.valueOf(comboAnoEntrega.getSelectedItem()));
 
 					LocalDateTime dataEntrega = LocalDateTime.of(anoE, mesE, diaE, 0, 0, 0);
@@ -478,5 +479,13 @@ public class UsuarioAlugar2 extends JFrame {
 				}
 			}
 		});
+	}
+
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
 	}
 }

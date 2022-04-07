@@ -22,6 +22,7 @@ import veiculo.Agencia;
 public class AgenciaExcluir extends JFrame {
 
 	private JPanel contentPane;
+	private static AgenciaExcluir frame;
 
 	/**
 	 * Launch the application.
@@ -30,7 +31,7 @@ public class AgenciaExcluir extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AgenciaExcluir frame = new AgenciaExcluir(ag);
+					frame = new AgenciaExcluir(ag);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -77,4 +78,11 @@ public class AgenciaExcluir extends JFrame {
 		});
 	}
 
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
+	}
 }

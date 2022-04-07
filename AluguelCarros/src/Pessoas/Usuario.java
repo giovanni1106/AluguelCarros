@@ -1,6 +1,8 @@
 package Pessoas;
 
 import java.util.InputMismatchException;
+
+import Sistema.Aluguel;
 import Sistema.BancoDados;
 
 public class Usuario {
@@ -17,6 +19,7 @@ public class Usuario {
 	private String senha;
 	private Historico historico;
 	private Fidelidade fidelidade;
+	private Aluguel alugueis[] = new Aluguel[BancoDados.MAX];
 
 	/**
 	 * Construtor da classe Usuario
@@ -195,6 +198,23 @@ public class Usuario {
 		return true;
 	}
 	
+	
+	
+	public Aluguel[] getAlugueis() {
+		return alugueis;
+	}
+
+	public void setAlugueis(Aluguel aluguel) {
+		
+		Aluguel[] alugueiss = getAlugueis();
+		
+		for(int i = 0; i < BancoDados.MAX; i++)
+			if(alugueiss[i] == null) {
+				this.alugueis[i] = aluguel;
+				break; // Após salvar no primeiro espaço null
+			}
+	}
+
 	public String getLogin() {
 		return login;
 	}

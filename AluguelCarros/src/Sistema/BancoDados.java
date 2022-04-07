@@ -1,5 +1,7 @@
 package Sistema;
 
+import java.util.Calendar;
+
 import Pessoas.Admin;
 import Pessoas.Usuario;
 import veiculo.Agencia;
@@ -24,7 +26,7 @@ public class BancoDados {
 	public static Agencia cadastrarAgencia[] = new Agencia[MAX];
 	public static CadeiraCrianca cadastrarCadeira[] = new CadeiraCrianca[MAX];
 	public static SeguroCarro cadastrarSeguro[] = new SeguroCarro[MAX];
-	public static Aluguel cadastrarAluguel[] = new Aluguel[MAX*2];
+	public static Aluguel cadastrarAluguel[] = new Aluguel[MAX * 2];
 
 	// Se o usuario conseguir logar
 	public static boolean Logado = false;
@@ -37,6 +39,7 @@ public class BancoDados {
 
 	/**
 	 * Cria um array com todas as agencias que o carro está vinculado
+	 * 
 	 * @param car Objeto carro
 	 * @return Retorna um array com todas as agencias com o carro vinculado
 	 */
@@ -58,6 +61,7 @@ public class BancoDados {
 
 	/**
 	 * Procura espaço vazio no array de cadastrar usuário
+	 * 
 	 * @return Retorna a posição vazia
 	 */
 	public static int CadastrarUsu() {
@@ -71,6 +75,7 @@ public class BancoDados {
 
 	/**
 	 * Procura espaço vazio no array de cadastrar admin
+	 * 
 	 * @return Retorna a posição vazia
 	 */
 	public static int CadastrarAdmin() {
@@ -81,9 +86,10 @@ public class BancoDados {
 
 		return -1;
 	}
-	
+
 	/**
 	 * Procura espaço vazio no array de cadastrar carro
+	 * 
 	 * @return Retorna a posição vazia
 	 */
 	public static int CadastrarCarro() {
@@ -94,9 +100,10 @@ public class BancoDados {
 
 		return -1;
 	}
-	
+
 	/**
 	 * Procura espaço vazio no array de cadastrar classe
+	 * 
 	 * @return Retorna a posição vazia
 	 */
 	public static int CadastrarClasse() {
@@ -106,9 +113,10 @@ public class BancoDados {
 
 		return -1;
 	}
-	
+
 	/**
 	 * Procura espaço vazio no array de cadastrar agencia
+	 * 
 	 * @return Retorna a posição vazia
 	 */
 	public static int CadastrarAgencia() {
@@ -118,9 +126,10 @@ public class BancoDados {
 
 		return -1;
 	}
-	
+
 	/**
 	 * Procura espaço vazio no array de cadastrar aluguel
+	 * 
 	 * @return Retorna a posição vazia
 	 */
 	public static int CadastrarAluguel() {
@@ -265,10 +274,20 @@ public class BancoDados {
 		// ================================== CADASTRAR SEGURO
 		// ==================================
 		// --------------------------------------------------------------------------------
-		
+
 		cadastrarSeguro[0] = new SeguroCarro("Seguro 1", "Muita coisa", 200);
 		cadastrarSeguro[1] = new SeguroCarro("Seguro 2", "Coisa", 100);
 		cadastrarSeguro[2] = new SeguroCarro("Seguro 3", "Pouca coisa", 50);
+
+		// ================================== ALUGUEIS
+		// ==================================
+		// --------------------------------------------------------------------------------
+
+		Calendar dataA = Calendar.getInstance();
+		cadastrarAluguel[0] = new Aluguel(cadastrarUsuario[0], cadastrarAgencia[0], dataA, cadastrarAgencia[1], dataA,
+				cadastrarSeguro[0], cadastrarCadeira[0], cadastrarCarro[0], 2000);
+		cadastrarAluguel[1] = new Aluguel(cadastrarUsuario[0], cadastrarAgencia[0], dataA, cadastrarAgencia[1], dataA,
+				cadastrarSeguro[0], cadastrarCadeira[0], cadastrarCarro[3], 1500);
 
 	}
 }

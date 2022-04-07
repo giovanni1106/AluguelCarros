@@ -28,6 +28,7 @@ public class CadastrarAdmin extends JFrame {
 	private JTextField textSenha;
 	private JTextField textChave;
 	private JButton btnNewButton;
+	public static CadastrarAdmin frame;
 
 	/**
 	 * Launch the application.
@@ -36,7 +37,7 @@ public class CadastrarAdmin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastrarAdmin frame = new CadastrarAdmin();
+					frame = new CadastrarAdmin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -108,4 +109,14 @@ public class CadastrarAdmin extends JFrame {
 			}
 		});
 	}
+	
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
+	}
 }
+
+

@@ -22,6 +22,7 @@ import veiculo.Classe;
 public class ClasseExcluir extends JFrame {
 
 	private JPanel contentPane;
+	private static ClasseExcluir frame;
 
 	/**
 	 * Launch the application.
@@ -30,7 +31,7 @@ public class ClasseExcluir extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ClasseExcluir frame = new ClasseExcluir(cl);
+					frame = new ClasseExcluir(cl);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -77,4 +78,11 @@ public class ClasseExcluir extends JFrame {
 		});
 	}
 
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
+	}
 }

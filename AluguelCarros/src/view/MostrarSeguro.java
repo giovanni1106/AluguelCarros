@@ -17,6 +17,7 @@ import veiculo.SeguroCarro;
 public class MostrarSeguro extends JFrame {
 
 	private JPanel contentPane;
+	private static MostrarSeguro frame;
 
 	/**
 	 * Launch the application.
@@ -25,7 +26,7 @@ public class MostrarSeguro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MostrarSeguro frame = new MostrarSeguro(Seguro);
+					frame = new MostrarSeguro(Seguro);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -79,4 +80,11 @@ public class MostrarSeguro extends JFrame {
 		contentPane.add(lblIdade);
 	}
 
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
+	}
 }

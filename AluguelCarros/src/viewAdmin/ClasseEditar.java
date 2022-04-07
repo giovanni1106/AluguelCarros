@@ -24,6 +24,7 @@ import veiculo.Classe;
 public class ClasseEditar extends JFrame {
 
 	private JPanel contentPane;
+	private static ClasseEditar frame;
 	private JTextField textDado;
 
 	/**
@@ -33,7 +34,7 @@ public class ClasseEditar extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ClasseEditar frame = new ClasseEditar(cl);
+					frame = new ClasseEditar(cl);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -98,5 +99,13 @@ public class ClasseEditar extends JFrame {
 				}
 			}
 		});
+	}
+	
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
 	}
 }

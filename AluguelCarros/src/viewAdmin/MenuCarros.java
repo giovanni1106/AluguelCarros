@@ -23,6 +23,7 @@ import view.MostrarCarro;
 public class MenuCarros extends JFrame {
 
 	private JPanel contentPane;
+	private static MenuCarros frame;
 
 	/**
 	 * Launch the application.
@@ -31,7 +32,7 @@ public class MenuCarros extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuCarros frame = new MenuCarros();
+					frame = new MenuCarros();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -107,4 +108,11 @@ public class MenuCarros extends JFrame {
 		});
 	}
 
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
+	}
 }

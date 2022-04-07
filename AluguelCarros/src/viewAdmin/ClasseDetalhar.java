@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 public class ClasseDetalhar extends JFrame {
 
 	private JPanel contentPane;
+	private static ClasseDetalhar frame;
 
 	/**
 	 * Launch the application.
@@ -26,7 +27,7 @@ public class ClasseDetalhar extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ClasseDetalhar frame = new ClasseDetalhar(cl);
+					frame = new ClasseDetalhar(cl);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,4 +67,11 @@ public class ClasseDetalhar extends JFrame {
 		panel.add(lblValor);
 	}
 
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
+	}
 }

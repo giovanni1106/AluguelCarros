@@ -22,6 +22,7 @@ import Pessoas.Usuario;
 public class UsuarioExcluir extends JFrame {
 
 	private JPanel contentPane;
+	private static UsuarioExcluir frame;
 
 	/**
 	 * Launch the application.
@@ -30,7 +31,7 @@ public class UsuarioExcluir extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UsuarioExcluir frame = new UsuarioExcluir(us);
+					frame = new UsuarioExcluir(us);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -77,4 +78,11 @@ public class UsuarioExcluir extends JFrame {
 		});
 	}
 
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
+	}
 }

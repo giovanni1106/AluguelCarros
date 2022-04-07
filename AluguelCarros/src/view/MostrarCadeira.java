@@ -17,6 +17,7 @@ import veiculo.CadeiraCrianca;
 public class MostrarCadeira extends JFrame {
 
 	private JPanel contentPane;
+	private static MostrarCadeira frame;
 
 	/**
 	 * Launch the application.
@@ -25,7 +26,7 @@ public class MostrarCadeira extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MostrarCadeira frame = new MostrarCadeira(Cadeira);
+					frame = new MostrarCadeira(Cadeira);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -75,5 +76,13 @@ public class MostrarCadeira extends JFrame {
 		JLabel lblIdade = new JLabel(String.valueOf(Cadeira.getIdade()));
 		lblIdade.setBounds(66, 105, 46, 33);
 		contentPane.add(lblIdade);
+	}
+
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
 	}
 }

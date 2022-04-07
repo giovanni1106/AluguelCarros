@@ -15,6 +15,7 @@ import veiculo.Agencia;
 public class MostrarAgencia extends JFrame {
 
 	private JPanel contentPane;
+	private static MostrarAgencia frame;
 
 	/**
 	 * Launch the application.
@@ -23,7 +24,7 @@ public class MostrarAgencia extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MostrarAgencia frame = new MostrarAgencia(agencia);
+					frame = new MostrarAgencia(agencia);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -54,5 +55,13 @@ public class MostrarAgencia extends JFrame {
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_2.setBounds(10, 106, 70, 22);
 		contentPane.add(lblNewLabel_2);
+	}
+	
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
 	}
 }

@@ -29,6 +29,7 @@ import javax.swing.JList;
 public class AgenciaDetalhar extends JFrame {
 
 	private JPanel contentPane;
+	private static AgenciaDetalhar frame;
 
 	/**
 	 * Launch the application.
@@ -37,7 +38,7 @@ public class AgenciaDetalhar extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AgenciaDetalhar frame = new AgenciaDetalhar(ag);
+					frame = new AgenciaDetalhar(ag);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -103,5 +104,13 @@ public class AgenciaDetalhar extends JFrame {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(453, 11, 138, 27);
 		contentPane.add(lblNewLabel_1);
+	}
+
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
 	}
 }

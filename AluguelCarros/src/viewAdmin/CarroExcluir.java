@@ -24,6 +24,7 @@ import java.awt.SystemColor;
 public class CarroExcluir extends JFrame {
 
 	private JPanel contentPane;
+	private static CarroExcluir frame;
 
 	/**
 	 * Launch the application.
@@ -32,7 +33,7 @@ public class CarroExcluir extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CarroExcluir frame = new CarroExcluir(car);
+					frame = new CarroExcluir(car);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -79,4 +80,11 @@ public class CarroExcluir extends JFrame {
 		});
 	}
 
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
+	}
 }

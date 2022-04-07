@@ -22,6 +22,7 @@ import veiculo.Agencia;
 public class MostrarRevisao extends JFrame {
 
 	private JPanel contentPane;
+	private static MostrarRevisao frame;
 
 	/**
 	 * Launch the application.
@@ -31,7 +32,7 @@ public class MostrarRevisao extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MostrarRevisao frame = new MostrarRevisao(us, ca, se, cadeira, wifi, valorWifi, agR, agE, dataR, dataE, diasTotais);
+					frame = new MostrarRevisao(us, ca, se, cadeira, wifi, valorWifi, agR, agE, dataR, dataE, diasTotais);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -235,5 +236,13 @@ public class MostrarRevisao extends JFrame {
 		lblDiasAluguel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblDiasAluguel.setBounds(10, 326, 260, 24);
 		panel_1_1.add(lblDiasAluguel);
+	}
+
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
 	}
 }

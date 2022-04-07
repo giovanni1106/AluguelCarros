@@ -20,6 +20,7 @@ import Sistema.BancoDados;
 public class MenuAgencias extends JFrame {
 
 	private JPanel contentPane;
+	private static MenuAgencias frame;
 
 	/**
 	 * Launch the application.
@@ -28,7 +29,7 @@ public class MenuAgencias extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuAgencias frame = new MenuAgencias();
+					frame = new MenuAgencias();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -112,5 +113,13 @@ public class MenuAgencias extends JFrame {
 		btnDesvincularVeculo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnDesvincularVeculo.setBounds(219, 169, 185, 59);
 		panel.add(btnDesvincularVeculo);
+	}
+	
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
 	}
 }

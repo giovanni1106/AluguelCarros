@@ -21,6 +21,7 @@ import veiculo.Agencia;
 public class AgenciaEditar extends JFrame {
 
 	private JPanel contentPane;
+	private static AgenciaEditar frame;
 	private JTextField textDado;
 
 	/**
@@ -30,7 +31,7 @@ public class AgenciaEditar extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AgenciaEditar frame = new AgenciaEditar(ag);
+					frame = new AgenciaEditar(ag);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -99,4 +100,11 @@ public class AgenciaEditar extends JFrame {
 		});
 	}
 
+	/**
+	 * Fecha a janela
+	 */
+	public static void Encerrar() {
+		if(frame != null)
+			frame.dispose();
+	}
 }
