@@ -76,6 +76,22 @@ public class BancoDados {
 
 		return -1;
 	}
+	
+	public static int CadastrarClasse() {
+		for (int a = 0; a < MAX; a++)
+			if (cadastrarClasse[a] == null)
+				return a;
+
+		return -1;
+	}
+	
+	public static int CadastrarAgencia() {
+		for (int a = 0; a < MAX; a++)
+			if (cadastrarAgencia[a] == null)
+				return a;
+
+		return -1;
+	}
 
 	public static void DadosPreCadastrados() {
 

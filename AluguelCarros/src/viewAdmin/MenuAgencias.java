@@ -16,9 +16,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import Sistema.BancoDados;
-import view.MostrarCarro;
 
-public class MenuClasses extends JFrame {
+public class MenuAgencias extends JFrame {
 
 	private JPanel contentPane;
 
@@ -29,7 +28,7 @@ public class MenuClasses extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuClasses frame = new MenuClasses();
+					MenuAgencias frame = new MenuAgencias();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,9 +40,9 @@ public class MenuClasses extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MenuClasses() {
-		setTitle("Menu classes");
-		setBounds(100, 100, 450, 300);
+	public MenuAgencias() {
+		setTitle("Menu agencias");
+		setBounds(100, 100, 450, 375);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.activeCaption);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -52,7 +51,7 @@ public class MenuClasses extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		panel.setBounds(10, 11, 414, 239);
+		panel.setBounds(10, 11, 414, 313);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -61,26 +60,26 @@ public class MenuClasses extends JFrame {
 		panel.add(comboBox);
 		
 		for(int i = 0; i < BancoDados.MAX; i ++)
-			if(BancoDados.cadastrarClasse[i] != null)
-				comboBox.addItem(BancoDados.cadastrarClasse[i].getNome());
+			if(BancoDados.cadastrarAgencia[i] != null)
+				comboBox.addItem(BancoDados.cadastrarAgencia[i].getIdentificacao());
 		
 		JButton btnEditar = new JButton("Editar");
 		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnEditar.setBounds(10, 169, 185, 59);
+		btnEditar.setBounds(10, 239, 185, 59);
 		panel.add(btnEditar);
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ClasseEditar.Construtor(BancoDados.cadastrarClasse[comboBox.getSelectedIndex()]);
+				AgenciaEditar.Construtor(BancoDados.cadastrarAgencia[comboBox.getSelectedIndex()]);
 			}
 		});
 		
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnExcluir.setBounds(219, 169, 185, 59);
+		btnExcluir.setBounds(219, 239, 185, 59);
 		panel.add(btnExcluir);
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ClasseExcluir.Construtor(BancoDados.cadastrarClasse[comboBox.getSelectedIndex()]);
+				AgenciaExcluir.Construtor(BancoDados.cadastrarAgencia[comboBox.getSelectedIndex()]);
 			}
 		});
 		
@@ -90,7 +89,7 @@ public class MenuClasses extends JFrame {
 		panel.add(btnPerfil);
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ClasseCadastrar.Construtor();
+				AgenciaCadastrar.Construtor();
 			}
 		});
 		
@@ -100,9 +99,18 @@ public class MenuClasses extends JFrame {
 		panel.add(btnDetalhar);
 		btnDetalhar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ClasseDetalhar.Construtor(BancoDados.cadastrarClasse[comboBox.getSelectedIndex()]);
+				AgenciaDetalhar.Construtor(BancoDados.cadastrarAgencia[comboBox.getSelectedIndex()]);
 			}
 		});
+		
+		JButton btnVincularVeculo = new JButton("Vincular ve\u00EDculo");
+		btnVincularVeculo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnVincularVeculo.setBounds(10, 169, 185, 59);
+		panel.add(btnVincularVeculo);
+		
+		JButton btnDesvincularVeculo = new JButton("Desvincular ve\u00EDculo");
+		btnDesvincularVeculo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnDesvincularVeculo.setBounds(219, 169, 185, 59);
+		panel.add(btnDesvincularVeculo);
 	}
-
 }

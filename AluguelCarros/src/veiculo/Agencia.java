@@ -2,6 +2,7 @@ package veiculo;
 
 import java.util.Scanner;
 
+import Pessoas.Usuario;
 import Sistema.BancoDados;
 import view.UsuarioAlugar;
 
@@ -27,6 +28,67 @@ public class Agencia {
 		this.cidade = ci;
 		this.estado = es;
 		this.pais = pa;
+	}
+
+	public static boolean Excluir(Agencia ag) {
+
+		boolean excluir = false;
+		
+		for(int i = 0; i < BancoDados.MAX; i++)
+			if(BancoDados.cadastrarAgencia[i] == ag) {
+				BancoDados.cadastrarAgencia[i] = null;
+				excluir = true;
+			}
+
+		for (int a = 0; a < BancoDados.MAX - 1; a++)
+			if (BancoDados.cadastrarAgencia[a] == null && BancoDados.cadastrarAgencia[a + 1] != null) {
+				BancoDados.cadastrarAgencia[a] = BancoDados.cadastrarAgencia[a + 1];
+				BancoDados.cadastrarAgencia[a + 1] = null;
+			}
+
+		return excluir;
+	}
+	
+	public static void Editar(int escolha, String novo, Agencia us) {
+
+		switch (escolha) {
+		case 0:
+			// Nome
+			us.setIdentificacao(novo);
+			break;
+		case 1:
+			// Logradouro
+			us.setLogradouro(novo);
+			break;
+		case 2:
+			// Numero
+			us.setNumero(novo);
+			break;
+		case 3:
+			// Bairro
+			us.setBairro(novo);
+			break;
+		case 4:
+			// Cidade
+			us.setCidade(novo);
+			break;
+		case 5:
+			// Estado
+			us.setEstado(novo);
+			break;
+		case 6:
+			// País
+			us.setPais(novo);
+			break;
+		}
+	}
+	
+	public static boolean TesteId(String ag) {
+		for (int i = 0; i < BancoDados.MAX; i++)
+			if (BancoDados.cadastrarAgencia[i].getIdentificacao().equals(ag))
+				return false; // é igual
+
+		return true; // n é igual
 	}
 
 	public static String[] ImprimirCidades() {
@@ -90,28 +152,39 @@ public class Agencia {
 		System.out.println(" Carro desvinculado com sucesso!");
 	}
 
-	public static String[] ImprimirCarrosVinculados(String cidade) {
+	public static String[] ImprimirCarrosVinculados(String cidade, Agencia ag) {
 		int cont = 0;
 
 		String[] CarroCidade = new String[BancoDados.MAX];
-		
-		// Zera o vetor de carros 
-		for(int i = 0; i < BancoDados.MAX; i++) {
-			UsuarioAlugar.Carros[i] = null;
-		}
 
-		
-		// Salva os novos carros
-		for (int a = 0; a < BancoDados.MAX; a++)
-			if (BancoDados.cadastrarAgencia[a] != null)
-				if (BancoDados.cadastrarAgencia[a].getCidade().equals(cidade) == true) {
-					for (int i = 0; i < BancoDados.MAX; i++)
-						if (BancoDados.cadastrarAgencia[a].carro[i] != null) {
-							CarroCidade[cont] = BancoDados.cadastrarAgencia[a].carro[i].getModelo();
-							UsuarioAlugar.Carros[cont] = BancoDados.cadastrarAgencia[a].carro[i];
-							cont++;
-						}
+		if (ag == null) {
+			// Zera o vetor de carros
+			for (int i = 0; i < BancoDados.MAX; i++) {
+				UsuarioAlugar.Carros[i] = null;
+			}
+
+			// Salva os novos carros
+			for (int a = 0; a < BancoDados.MAX; a++)
+				if (BancoDados.cadastrarAgencia[a] != null)
+					if (BancoDados.cadastrarAgencia[a].getCidade().equals(cidade) == true) {
+						for (int i = 0; i < BancoDados.MAX; i++)
+							if (BancoDados.cadastrarAgencia[a].carro[i] != null) {
+								CarroCidade[cont] = BancoDados.cadastrarAgencia[a].carro[i].getModelo();
+								UsuarioAlugar.Carros[cont] = BancoDados.cadastrarAgencia[a].carro[i];
+								cont++;
+							}
+					}
+		} else {
+
+			for (int i = 0; i < BancoDados.MAX; i++)
+				if (BancoDados.cadastrarAgencia[i] == ag) {
+					Carro[] cars = BancoDados.cadastrarAgencia[i].getCarro();
+					
+					for(int a = 0; a <BancoDados.MAX; a++)
+						if(cars[a] != null)
+							CarroCidade[a] = cars[a].getModelo();
 				}
+		}
 
 		return CarroCidade;
 	}
@@ -179,13 +252,13 @@ public class Agencia {
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
-	
+
 	public String getEndereco() {
 		String Endereco = "";
-		
-		
-		Endereco = getLogradouro() + ", " + getNumero() + ", " + getBairro() + ", " + getCidade() + ", " + getEstado() + ", " + getPais();
-		
+
+		Endereco = getLogradouro() + ", " + getNumero() + ", " + getBairro() + ", " + getCidade() + ", " + getEstado()
+				+ ", " + getPais();
+
 		return Endereco;
 	}
 

@@ -92,11 +92,15 @@ public class ClasseCadastrar extends JFrame {
 		panel.add(btnCadastrar);
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int pos = BancoDados.CadastrarClasse();
 				try {
 					if (textValor.getText().length() <= 0 || textNome.getText().length() <= 0)
 						JOptionPane.showMessageDialog(null, "Dados incompletos");
-					else
-						BancoDados.cadastrarClasse[0] = new Classe(textNome.getText(), Integer.parseInt(textValor.getText()));
+					else {
+						BancoDados.cadastrarClasse[pos] = new Classe(textNome.getText(), Integer.parseInt(textValor.getText()));
+						JOptionPane.showMessageDialog(null, "Classe cadastrada com sucesso");
+						
+					}
 				} catch (Exception nexc) {
 					JOptionPane.showMessageDialog(null, "Favor inserir um valor inteiro no 'Valor/Dia'");
 				}

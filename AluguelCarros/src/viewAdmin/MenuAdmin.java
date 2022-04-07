@@ -73,10 +73,15 @@ public class MenuAdmin extends JFrame {
 		btnEncerrar.setBounds(10, 475, 244, 29);
 		panel_2.add(btnEncerrar);
 		
-		JButton btnHistrico = new JButton("Ag\u00EAncias");
-		btnHistrico.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnHistrico.setBounds(10, 172, 244, 40);
-		panel_2.add(btnHistrico);
+		JButton btnAgencias = new JButton("Ag\u00EAncias");
+		btnAgencias.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnAgencias.setBounds(10, 172, 244, 40);
+		panel_2.add(btnAgencias);
+		btnAgencias.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuAgencias.Construtor();
+			}
+		});
 		
 		JButton btnClasses = new JButton("Classes");
 		btnClasses.setFont(new Font("Tahoma", Font.PLAIN, 16));

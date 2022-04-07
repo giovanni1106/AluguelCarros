@@ -115,7 +115,7 @@ public class UsuarioAlugar extends JFrame {
 				ConstruirList2(Carro.ImprimirCarroModelo(ItemList1));
 				break;
 			case 3:
-				ConstruirList2(Agencia.ImprimirCarrosVinculados(ItemList1));
+				ConstruirList2(Agencia.ImprimirCarrosVinculados(ItemList1, null));
 				break;
 			}
 
