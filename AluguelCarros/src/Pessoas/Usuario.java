@@ -17,7 +17,6 @@ public class Usuario {
 	private String celular;
 	private String login;
 	private String senha;
-	private Historico historico;
 	private Fidelidade fidelidade;
 	private Aluguel alugueis[] = new Aluguel[BancoDados.MAX];
 
@@ -285,14 +284,6 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public Historico getHistorico() {
-		return historico;
-	}
-
-	public void setHistorico(Historico historico) {
-		this.historico = historico;
 	}
 
 	/**

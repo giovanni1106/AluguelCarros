@@ -139,7 +139,7 @@ public class AgenciaCadastrar extends JFrame {
 		panel.add(textEstado);
 
 		JButton btnNewButton = new JButton("Cadastrar");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnNewButton.setBounds(242, 233, 89, 78);
 		panel.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {

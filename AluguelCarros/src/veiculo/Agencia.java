@@ -21,6 +21,7 @@ public class Agencia {
 
 	/**
 	 * Construtor da classe Agencia
+	 * 
 	 * @param id
 	 * @param lo
 	 * @param nu
@@ -42,15 +43,16 @@ public class Agencia {
 
 	/**
 	 * Exclui a agencia recebida
+	 * 
 	 * @param ag recebe a agencia
 	 * @return true = excluido; false = não excluido
 	 */
 	public static boolean Excluir(Agencia ag) {
 
 		boolean excluir = false;
-		
-		for(int i = 0; i < BancoDados.MAX; i++)
-			if(BancoDados.cadastrarAgencia[i] == ag) {
+
+		for (int i = 0; i < BancoDados.MAX; i++)
+			if (BancoDados.cadastrarAgencia[i] == ag) {
 				BancoDados.cadastrarAgencia[i] = null;
 				excluir = true;
 			}
@@ -63,7 +65,7 @@ public class Agencia {
 
 		return excluir;
 	}
-	
+
 	public static void Editar(int escolha, String novo, Agencia us) {
 
 		switch (escolha) {
@@ -97,11 +99,17 @@ public class Agencia {
 			break;
 		}
 	}
-	
+
+	/**
+	 * Testa se não existe outra identificação igual
+	 * @param ag String para testar
+	 * @return true = não existe; false = existe
+	 */
 	public static boolean TesteId(String ag) {
 		for (int i = 0; i < BancoDados.MAX; i++)
-			if (BancoDados.cadastrarAgencia[i].getIdentificacao().equals(ag))
-				return false; // é igual
+			if (BancoDados.cadastrarAgencia[i] != null)
+				if (BancoDados.cadastrarAgencia[i].getIdentificacao().equals(ag))
+					return false; // é igual
 
 		return true; // n é igual
 	}
@@ -122,17 +130,6 @@ public class Agencia {
 				}
 			}
 		return Cidades;
-	}
-
-	public static int Imprimir() {
-		int a;
-
-		for (a = 0; a < BancoDados.MAX; a++)
-			if (BancoDados.cadastrarAgencia[a] != null)
-				System.out.println(" " + a + "- " + BancoDados.cadastrarAgencia[a].getIdentificacao());
-			else
-				break;
-		return a - 1;
 	}
 
 	public static String[] ImprimirCarrosVinculados(String cidade, Agencia ag) {
@@ -162,14 +159,29 @@ public class Agencia {
 			for (int i = 0; i < BancoDados.MAX; i++)
 				if (BancoDados.cadastrarAgencia[i] == ag) {
 					Carro[] cars = BancoDados.cadastrarAgencia[i].getCarro();
-					
-					for(int a = 0; a <BancoDados.MAX; a++)
-						if(cars[a] != null)
+
+					for (int a = 0; a < BancoDados.MAX; a++)
+						if (cars[a] != null)
 							CarroCidade[a] = cars[a].getModelo();
 				}
 		}
 
 		return CarroCidade;
+	}
+
+	/**
+	 * Desvincula o carro fornecido e repassa os carros para ocupar a posição nula
+	 * 
+	 * @param pos posição de exclusão
+	 */
+	public void DesvincularCarro(int pos) {
+		this.carro[pos] = null;
+
+		for (int a = 0; a < BancoDados.MAX - 1; a++)
+			if (this.carro[a] == null && this.carro[a + 1] != null) {
+				this.carro[a] = this.carro[a + 1];
+				this.carro[a + 1] = null;
+			}
 	}
 
 	public Carro[] getCarro() {
@@ -178,8 +190,8 @@ public class Agencia {
 
 	public void setCarro(Carro car) {
 		Carro[] cars = getCarro();
-		for(int i = 0; i < BancoDados.MAX; i++)
-			if(cars[i] == null) {
+		for (int i = 0; i < BancoDados.MAX; i++)
+			if (cars[i] == null) {
 				this.carro[i] = car;
 				break; // salva apenas no primeiro null
 			}

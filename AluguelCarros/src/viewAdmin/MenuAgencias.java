@@ -108,11 +108,22 @@ public class MenuAgencias extends JFrame {
 		btnVincularVeculo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnVincularVeculo.setBounds(10, 169, 185, 59);
 		panel.add(btnVincularVeculo);
+		btnVincularVeculo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AgenciaVincular.Construtor(BancoDados.cadastrarAgencia[comboBox.getSelectedIndex()]);
+			}
+		});
 		
 		JButton btnDesvincularVeculo = new JButton("Desvincular ve\u00EDculo");
 		btnDesvincularVeculo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnDesvincularVeculo.setBounds(219, 169, 185, 59);
 		panel.add(btnDesvincularVeculo);
+		btnDesvincularVeculo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AgenciaDesvincular.Construtor(BancoDados.cadastrarAgencia[comboBox.getSelectedIndex()]);
+			}
+		});
+		
 	}
 	
 	/**

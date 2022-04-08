@@ -50,6 +50,7 @@ public class SoftwareManager {
 	public static void main(String[] args) {
 		
 		BancoDados.DadosPreCadastrados();
+		System.out.println("Estou resetando os dados");
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -76,6 +77,7 @@ public class SoftwareManager {
 	 */
 	public static void Encerrar() {
 		BancoDados.Logado = false;
+		BancoDados.Administrador = false;
 		
 		// view
 		MenuUsuario.Encerrar();
