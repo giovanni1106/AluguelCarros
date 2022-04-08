@@ -258,23 +258,23 @@ public class BancoDados {
 		// ==================================
 		// --------------------------------------------------------------------------------
 
-		Agencia.VincularCarroBD(cadastrarCarro[0], cadastrarAgencia[0]);
-		Agencia.VincularCarroBD(cadastrarCarro[3], cadastrarAgencia[0]);
-		Agencia.VincularCarroBD(cadastrarCarro[5], cadastrarAgencia[0]);
+		cadastrarAgencia[0].setCarro(cadastrarCarro[0]);
+		cadastrarAgencia[0].setCarro(cadastrarCarro[5]);
+		cadastrarAgencia[0].setCarro(cadastrarCarro[8]);
 
-		Agencia.VincularCarroBD(cadastrarCarro[1], cadastrarAgencia[1]);
-		Agencia.VincularCarroBD(cadastrarCarro[6], cadastrarAgencia[1]);
-		Agencia.VincularCarroBD(cadastrarCarro[10], cadastrarAgencia[1]);
-		Agencia.VincularCarroBD(cadastrarCarro[12], cadastrarAgencia[1]);
+		cadastrarAgencia[1].setCarro(cadastrarCarro[0]);
+		cadastrarAgencia[1].setCarro(cadastrarCarro[3]);
+		cadastrarAgencia[1].setCarro(cadastrarCarro[5]);
+		cadastrarAgencia[1].setCarro(cadastrarCarro[7]);
+		cadastrarAgencia[1].setCarro(cadastrarCarro[10]);
+		cadastrarAgencia[1].setCarro(cadastrarCarro[14]);
 
-		Agencia.VincularCarroBD(cadastrarCarro[2], cadastrarAgencia[2]);
-		Agencia.VincularCarroBD(cadastrarCarro[4], cadastrarAgencia[2]);
-		Agencia.VincularCarroBD(cadastrarCarro[7], cadastrarAgencia[2]);
-		Agencia.VincularCarroBD(cadastrarCarro[8], cadastrarAgencia[2]);
-		Agencia.VincularCarroBD(cadastrarCarro[9], cadastrarAgencia[2]);
-		Agencia.VincularCarroBD(cadastrarCarro[11], cadastrarAgencia[2]);
-		Agencia.VincularCarroBD(cadastrarCarro[13], cadastrarAgencia[2]);
-		Agencia.VincularCarroBD(cadastrarCarro[14], cadastrarAgencia[2]);
+		cadastrarAgencia[2].setCarro(cadastrarCarro[1]);
+		cadastrarAgencia[2].setCarro(cadastrarCarro[2]);
+		cadastrarAgencia[2].setCarro(cadastrarCarro[4]);
+		cadastrarAgencia[2].setCarro(cadastrarCarro[7]);
+		cadastrarAgencia[2].setCarro(cadastrarCarro[11]);
+		cadastrarAgencia[2].setCarro(cadastrarCarro[13]);
 
 		// ================================== CADASTRAR CADEIRAS
 		// ==================================
@@ -299,9 +299,9 @@ public class BancoDados {
 
 		Calendar dataA = Calendar.getInstance();
 		cadastrarAluguel[0] = new Aluguel(cadastrarUsuario[0], cadastrarAgencia[0], dataA, cadastrarAgencia[1], dataA,
-				cadastrarSeguro[0], cadastrarCadeira[0], cadastrarCarro[0], 2000);
+				cadastrarSeguro[0], cadastrarCadeira[0], cadastrarCarro[0], 2000, 0);
 		cadastrarAluguel[1] = new Aluguel(cadastrarUsuario[0], cadastrarAgencia[0], dataA, cadastrarAgencia[1], dataA,
-				cadastrarSeguro[0], cadastrarCadeira[0], cadastrarCarro[3], 1500);
+				cadastrarSeguro[0], cadastrarCadeira[0], cadastrarCarro[3], 1500, 0);
 
 	}
 }

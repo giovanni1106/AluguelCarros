@@ -21,6 +21,8 @@ import javax.swing.JList;
 
 import Pessoas.Usuario;
 import Sistema.BancoDados;
+import veiculo.Agencia;
+import veiculo.Carro;
 import Sistema.Aluguel;
 
 public class UsuarioHistorico extends JFrame {
@@ -29,6 +31,7 @@ public class UsuarioHistorico extends JFrame {
 	private static UsuarioHistorico frame;
 	private static String[] alugueis = new String[BancoDados.MAX];
 	private static JList<String[]> list;
+	private static boolean first = false;
 
 	/**
 	 * Launch the application.
@@ -76,6 +79,16 @@ public class UsuarioHistorico extends JFrame {
 		list = new JList(alugueis);
 		list.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		scrollPane.setViewportView(list);
+		list.addListSelectionListener(e -> {
+			int itemList = list.getSelectedIndex();
+			Aluguel[] al = BancoDados.cadastrarUsuario[BancoDados.pos].getAlugueis();
+
+			if (first) {
+				MostrarAluguel.Construtor(al[itemList]);
+				first = false;
+			} else
+				first = true;
+		});
 	}
 
 	public static void AtualizaList() {
@@ -107,7 +120,7 @@ public class UsuarioHistorico extends JFrame {
 	 * Fecha a janela
 	 */
 	public static void Encerrar() {
-		if(frame != null)
+		if (frame != null)
 			frame.dispose();
 	}
 }

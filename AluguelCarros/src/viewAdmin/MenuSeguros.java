@@ -16,7 +16,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import Sistema.BancoDados;
-import view.MostrarCarro;
 import view.MostrarSeguro;
 
 public class MenuSeguros extends JFrame {
@@ -72,7 +71,7 @@ public class MenuSeguros extends JFrame {
 		panel.add(btnEditar);
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CarroEditar.Construtor(BancoDados.cadastrarCarro[comboBox.getSelectedIndex()]);
+				SeguroEditar.Construtor(BancoDados.cadastrarSeguro[comboBox.getSelectedIndex()]);
 			}
 		});
 		
@@ -82,7 +81,7 @@ public class MenuSeguros extends JFrame {
 		panel.add(btnExcluir);
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CarroExcluir.Construtor(BancoDados.cadastrarCarro[comboBox.getSelectedIndex()]);
+				SeguroExcluir.Construtor(BancoDados.cadastrarSeguro[comboBox.getSelectedIndex()]);
 			}
 		});
 		
@@ -92,7 +91,7 @@ public class MenuSeguros extends JFrame {
 		panel.add(btnPerfil);
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CarroCadastrar.Construtor();
+				SeguroCadastrar.Construtor();
 			}
 		});
 		
@@ -114,5 +113,4 @@ public class MenuSeguros extends JFrame {
 		if(frame != null)
 			frame.dispose();
 	}
-
 }

@@ -135,38 +135,6 @@ public class Agencia {
 		return a - 1;
 	}
 
-	public static void VincularCarroBD(Carro C, Agencia A) {
-
-		int a;
-
-		for (a = 0; a < BancoDados.MAX; a++)
-			if (A.carro[a] == null)
-				break;
-
-		A.carro[a] = C;
-	}
-
-	public static void DesvincularCarro() {
-
-		int total1 = Imprimir();
-		int escolha1;
-
-		System.out.print(" Agencia que deseja vincular (0-" + total1 + "): ");
-		escolha1 = ler.nextInt();
-		System.out.println("");
-
-		Agencia A = BancoDados.cadastrarAgencia[escolha1];
-
-		// repassar carros para posição anterior
-		for (int a = 0; a < BancoDados.MAX - 1; a++)
-			if (A.carro[a] == null && A.carro[a + 1] != null) {
-				A.carro[a] = A.carro[a + 1];
-				A.carro[a + 1] = null;
-			}
-
-		System.out.println(" Carro desvinculado com sucesso!");
-	}
-
 	public static String[] ImprimirCarrosVinculados(String cidade, Agencia ag) {
 		int cont = 0;
 
@@ -208,8 +176,13 @@ public class Agencia {
 		return carro;
 	}
 
-	public void setCarro(Carro[] carro) {
-		this.carro = carro;
+	public void setCarro(Carro car) {
+		Carro[] cars = getCarro();
+		for(int i = 0; i < BancoDados.MAX; i++)
+			if(cars[i] == null) {
+				this.carro[i] = car;
+				break; // salva apenas no primeiro null
+			}
 	}
 
 	public String getIdentificacao() {

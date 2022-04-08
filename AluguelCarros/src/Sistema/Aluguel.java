@@ -22,6 +22,7 @@ public class Aluguel {
 	private CadeiraCrianca cadeira;
 	private Fidelidade fidelidade;
 	private long valorTotal;
+	private long diasTotais;
 
 	/**
 	 * Construtor da classe Aluguel
@@ -36,7 +37,7 @@ public class Aluguel {
 	 * @param valorTotal
 	 */
 	public Aluguel(Usuario us, Agencia agR, Calendar dataR, Agencia agE, Calendar dataE, SeguroCarro seguro,
-			CadeiraCrianca cadeira, Carro carro, long valorTotal) {
+			CadeiraCrianca cadeira, Carro carro, long valorTotal, long diasTotais) {
 		
 		this.carro = carro;
 		this.agenciaEntrega = agE;
@@ -46,6 +47,7 @@ public class Aluguel {
 		this.seguro = seguro;
 		this.cadeira = cadeira;
 		this.valorTotal = valorTotal;
+		this.diasTotais = diasTotais;
 		carro.setAlugado(true);
 		this.setUsuario(us);
 	}
@@ -61,6 +63,16 @@ public class Aluguel {
 	public void setUsuario(Usuario us) {
 		this.usuario = us;
 		usuario.setAlugueis(this);
+	}
+	
+	
+
+	public long getDiasTotais() {
+		return diasTotais;
+	}
+
+	public void setDiasTotais(long diasTotais) {
+		this.diasTotais = diasTotais;
 	}
 
 	public Carro getCarro() {

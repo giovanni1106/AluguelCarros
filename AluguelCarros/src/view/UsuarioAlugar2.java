@@ -133,21 +133,6 @@ public class UsuarioAlugar2 extends JFrame {
 		chckbxSeguro.setBounds(10, 95, 227, 23);
 		panel.add(chckbxSeguro);
 
-		JCheckBox chckbxWifi = new JCheckBox("Wi-fi");
-		chckbxWifi.setFont(new Font("Tahoma", Font.BOLD, 12));
-		chckbxWifi.setBounds(10, 345, 227, 23);
-		panel.add(chckbxWifi);
-
-		JLabel lblNewLabel = new JLabel("R$" + valorWifi + ",00");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel.setBounds(10, 388, 88, 25);
-		panel.add(lblNewLabel);
-
-		JLabel lblNewLabel_2 = new JLabel("/Aluguel");
-		lblNewLabel_2.setBounds(108, 395, 46, 14);
-		panel.add(lblNewLabel_2);
-
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(SystemColor.menu);
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 3));
@@ -415,7 +400,7 @@ public class UsuarioAlugar2 extends JFrame {
 						BancoDados.cadastrarAluguel[posAl] = new Aluguel(BancoDados.cadastrarUsuario[BancoDados.pos],
 								BancoDados.cadastrarAgencia[comboRetirada.getSelectedIndex()], dR,
 								BancoDados.cadastrarAgencia[comboEntrega.getSelectedIndex()], dE, seg, cad, carro,
-								valorTotal);
+								valorTotal, dias);
 						JOptionPane.showMessageDialog(null, "Aluguel realizado com sucesso");
 					}
 				} catch (Exception nexc) {
@@ -470,7 +455,6 @@ public class UsuarioAlugar2 extends JFrame {
 						JOptionPane.showMessageDialog(null, "Favor reservar com mais de 2 dias de antecedencia");
 					else
 						MostrarRevisao.Construtor(BancoDados.cadastrarUsuario[BancoDados.pos], carro, seg, cad,
-								chckbxWifi.isSelected(), valorWifi,
 								BancoDados.cadastrarAgencia[comboRetirada.getSelectedIndex()],
 								BancoDados.cadastrarAgencia[comboEntrega.getSelectedIndex()], sdf.format(dR.getTime()),
 								sdf.format(dE.getTime()), dias);

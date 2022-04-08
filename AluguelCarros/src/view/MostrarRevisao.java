@@ -27,12 +27,12 @@ public class MostrarRevisao extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void Construtor(Usuario us, Carro ca, SeguroCarro se, CadeiraCrianca cadeira, boolean wifi, int valorWifi, Agencia agR,
+	public static void Construtor(Usuario us, Carro ca, SeguroCarro se, CadeiraCrianca cadeira, Agencia agR,
 			Agencia agE, String dataR, String dataE, long diasTotais) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame = new MostrarRevisao(us, ca, se, cadeira, wifi, valorWifi, agR, agE, dataR, dataE, diasTotais);
+					frame = new MostrarRevisao(us, ca, se, cadeira, agR, agE, dataR, dataE, diasTotais);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +44,7 @@ public class MostrarRevisao extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MostrarRevisao(Usuario us, Carro ca, SeguroCarro se, CadeiraCrianca cadeira, boolean wifi, int valorWifi, Agencia agR,
+	public MostrarRevisao(Usuario us, Carro ca, SeguroCarro se, CadeiraCrianca cadeira, Agencia agR,
 			Agencia agE, String dataR, String dataE, long diasTotais) {
 		
 		setTitle("Revisão do aluguel");
@@ -56,9 +56,6 @@ public class MostrarRevisao extends JFrame {
 		
 		if(cadeira != null)
 			valorTotal += cadeira.getValor()*diasTotais;
-		
-		if(wifi)
-			valorTotal += valorWifi;
 		
 		setBounds(100, 100, 600, 600);
 		contentPane = new JPanel();
@@ -148,11 +145,8 @@ public class MostrarRevisao extends JFrame {
 		panel_1.add(lblWifi);
 		lblWifi.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWifi.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		
-		if(wifi)
-			lblWifi.setText("Adquirido");
-		else
-			lblWifi.setText("Não adquirido");
+		lblWifi.setText("Adquirido");
+
 
 		JLabel lblNewLabel_1_1_1_1 = new JLabel("Desconto");
 		lblNewLabel_1_1_1_1.setBounds(10, 291, 260, 24);

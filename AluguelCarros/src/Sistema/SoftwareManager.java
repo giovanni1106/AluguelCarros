@@ -35,6 +35,8 @@ import viewAdmin.UsuarioExcluir;
 
 import java.awt.EventQueue;
 
+import javax.swing.JFrame;
+
 
 
 public class SoftwareManager {
@@ -52,13 +54,21 @@ public class SoftwareManager {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame = new TelaLogin();
-					frame.setVisible(true);
+					OpenLogin();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
+	}
+	
+	public static void CloseLogin() {
+		frame.dispose();
+	}
+	
+	public static void OpenLogin() {
+		frame = new TelaLogin();
+		frame.setVisible(true);
 	}
 	
 	/**
@@ -102,7 +112,7 @@ public class SoftwareManager {
 		MenuUsuarios.Encerrar();
 		UsuarioExcluir.Encerrar();
 		
-		frame.setVisible(true);
+		OpenLogin();
 	}
 
 }

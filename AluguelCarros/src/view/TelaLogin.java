@@ -25,6 +25,7 @@ import java.awt.GridLayout;
 import java.awt.Font;
 
 import Sistema.Login;
+import Sistema.SoftwareManager;
 import Sistema.BancoDados;
 import viewAdmin.MenuAdmin;
 import java.awt.SystemColor;
@@ -93,7 +94,7 @@ public class TelaLogin extends JFrame {
 					else
 						MenuAdmin.Construtor();
 						
-					setVisible(false);
+					SoftwareManager.CloseLogin();
 				}
 			}
 		});
