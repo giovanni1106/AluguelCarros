@@ -13,7 +13,7 @@ import veiculo.SeguroCarro;
 public class BancoDados {
 
 	// Valor inteiro para definir o maximo de cadastros
-	public static int MAX = 1000;
+	public static int MAX = 6;
 
 	// Chave para poder cadastrar um Adm
 	public static String CHAVEADM = "X2iU7Ghl0@vbT";
@@ -34,11 +34,11 @@ public class BancoDados {
 	// Caso ele seja um Admin
 	public static boolean Administrador = false;
 
-	// Posição do no Array do Usuario/Admin logado
+	// Posiï¿½ï¿½o do no Array do Usuario/Admin logado
 	public static int pos;
 
 	/**
-	 * Cria um array com todas as agencias que o carro está vinculado
+	 * Cria um array com todas as agencias que o carro estï¿½ vinculado
 	 * 
 	 * @param car Objeto carro
 	 * @return Retorna um array com todas as agencias com o carro vinculado
@@ -60,9 +60,9 @@ public class BancoDados {
 	}
 
 	/**
-	 * Procura espaço vazio no array de cadastrar usuário
+	 * Procura espaï¿½o vazio no array de cadastrar usuï¿½rio
 	 * 
-	 * @return Retorna a posição vazia
+	 * @return Retorna a posiï¿½ï¿½o vazia
 	 */
 	public static int CadastrarUsu() {
 
@@ -74,9 +74,9 @@ public class BancoDados {
 	}
 
 	/**
-	 * Procura espaço vazio no array de cadastrar admin
+	 * Procura espaï¿½o vazio no array de cadastrar admin
 	 * 
-	 * @return Retorna a posição vazia
+	 * @return Retorna a posiï¿½ï¿½o vazia
 	 */
 	public static int CadastrarAdmin() {
 
@@ -88,9 +88,9 @@ public class BancoDados {
 	}
 
 	/**
-	 * Procura espaço vazio no array de cadastrar carro
+	 * Procura espaï¿½o vazio no array de cadastrar carro
 	 * 
-	 * @return Retorna a posição vazia
+	 * @return Retorna a posiï¿½ï¿½o vazia
 	 */
 	public static int CadastrarCarro() {
 
@@ -102,9 +102,9 @@ public class BancoDados {
 	}
 
 	/**
-	 * Procura espaço vazio no array de cadastrar classe
+	 * Procura espaï¿½o vazio no array de cadastrar classe
 	 * 
-	 * @return Retorna a posição vazia
+	 * @return Retorna a posiï¿½ï¿½o vazia
 	 */
 	public static int CadastrarClasse() {
 		for (int a = 0; a < MAX; a++)
@@ -115,9 +115,9 @@ public class BancoDados {
 	}
 
 	/**
-	 * Procura espaço vazio no array de cadastrar agencia
+	 * Procura espaï¿½o vazio no array de cadastrar agencia
 	 * 
-	 * @return Retorna a posição vazia
+	 * @return Retorna a posiï¿½ï¿½o vazia
 	 */
 	public static int CadastrarAgencia() {
 		for (int a = 0; a < MAX; a++)
@@ -128,9 +128,9 @@ public class BancoDados {
 	}
 
 	/**
-	 * Procura espaço vazio no array de cadastrar aluguel
+	 * Procura espaï¿½o vazio no array de cadastrar aluguel
 	 * 
-	 * @return Retorna a posição vazia
+	 * @return Retorna a posicao vazia
 	 */
 	public static int CadastrarAluguel() {
 
@@ -142,9 +142,9 @@ public class BancoDados {
 	}
 	
 	/**
-	 * Procura espaço vazio no array de cadastrar seguro
+	 * Procura espaÃ§o vazio no array de cadastrar seguro
 	 * 
-	 * @return Retorna a posição vazia
+	 * @return Retorna a posicao vazia
 	 */
 	public static int CadastrarSeguro() {
 
@@ -155,6 +155,90 @@ public class BancoDados {
 		return -1;
 	}
 
+	public static Carro[] ordenarCarros(String categoria) {
+		int valor = 0;
+		int valorCmp = 0;
+		Carro aux;
+
+		for(int i = cadastrarCarro.length-1; i > 0; i--) {
+			if(cadastrarCarro[i] == null) continue;
+			
+			int[] response = retornaValor(categoria, i, i-1);
+			
+			valor = response[0];
+			valorCmp = response[1];
+
+			if(valor < valorCmp) {
+				aux = cadastrarCarro[i-1];
+				cadastrarCarro[i-1] = cadastrarCarro[i];
+				cadastrarCarro[i] = aux;
+			}
+		}
+		
+		for (int i = 2; i <= cadastrarCarro.length-1; i++){						
+			if(cadastrarCarro[i] == null) continue;
+			Carro chave; 
+			int j;
+			
+			chave = cadastrarCarro[i];
+			j = i;
+			
+			int[] response = retornaValor(categoria, i, j-1);
+			
+			valor = response[0];
+			valorCmp = response[1];
+			
+			while (valor < valorCmp){
+				if(cadastrarCarro[j] == null) continue;
+
+				cadastrarCarro[j] = cadastrarCarro[j-1];
+				j--;
+				
+				valorCmp = retornaValor(categoria, 0, j-1)[1];
+				
+			}
+			cadastrarCarro[j] = chave;
+		}
+				
+		return cadastrarCarro;
+	}
+
+	private static int[] retornaValor(String categoria, int i, int j) {
+		int[] retorno = {0, 0};
+		switch(categoria) {
+		case "preco":
+			retorno[0] = cadastrarCarro[i].getClasse().getValorDia();
+			retorno[1] = cadastrarCarro[j].getClasse().getValorDia();
+			break;
+		case "km":
+			retorno[0] = cadastrarCarro[i].getKm();
+			retorno[1] = cadastrarCarro[j].getKm();
+			break;
+		case "assentos":
+			retorno[0] = cadastrarCarro[i].getAssentos();
+			retorno[1] = cadastrarCarro[j].getAssentos();
+			break;
+		case "carga":
+			retorno[0] = cadastrarCarro[i].getCarga();
+			retorno[1] = cadastrarCarro[j].getCarga();
+			break;
+		case "ano":
+			retorno[0] = cadastrarCarro[i].getAno();
+			retorno[1] = cadastrarCarro[j].getAno();
+			break;
+		}
+		
+		return retorno;
+	}
+	
+	
+//	System.out.println("---- " + categoria);
+//	for(int i = 0; i <= cadastrarCarro.length-1; i++) {
+//		if(cadastrarCarro[i] == null) continue;
+//		System.out.println(i + " - " + cadastrarCarro[i].getKm() + " - " + cadastrarCarro[i].getModelo());
+//	}
+//	System.out.println("\n");
+	
 	/**
 	 * Preenche todos os arrays com dados pre cadastrados
 	 */
@@ -169,7 +253,7 @@ public class BancoDados {
 				"Rua 3", "35", "Bairro principal", "Cidade de Deus", "Estado do bem", "Melhor Pais");
 		cadastrarUsuario[1] = new Usuario("Maria Luiza", "64626578047", "malu@gmail.com", "Brasileira", "Feminino",
 				"(61) 99650-2450", "malu1212", "malu2809", "Rua 4", "70", "Bairro da capital", "Cidade do amanha",
-				"Estado do mal", "País dos deuses");
+				"Estado do mal", "Paï¿½s dos deuses");
 
 		// ================================== ADMINISTRADORES
 		// ==================================
@@ -247,9 +331,9 @@ public class BancoDados {
 		// ==================================
 		// --------------------------------------------------------------------------------
 
-		cadastrarAgencia[0] = new Agencia("AG001", "Rua 3", "35", "Bairro principal", "São Paulo", "Estado do bem",
+		cadastrarAgencia[0] = new Agencia("AG001", "Rua 3", "35", "Bairro principal", "Sï¿½o Paulo", "Estado do bem",
 				"Melhor Pais");
-		cadastrarAgencia[1] = new Agencia("AG002", "Rua 3", "35", "Bairro principal", "Brasília", "Estado do bem",
+		cadastrarAgencia[1] = new Agencia("AG002", "Rua 3", "35", "Bairro principal", "Brasï¿½lia", "Estado do bem",
 				"Melhor Pais");
 		cadastrarAgencia[2] = new Agencia("AG003", "Rua 3", "35", "Bairro principal", "Manaus", "Estado do bem",
 				"Melhor Pais");
